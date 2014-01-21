@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "PasswordResets" do
   describe "GET /password_resets" do
-    it "works! (now write some real specs)", :js do
+    it "works! (now write some real specs)", :focus, :js do
     	debugger
     	visit root_path
     	debugger
