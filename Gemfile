@@ -43,5 +43,23 @@ end
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
-# Use debugger
-# gem 'debugger', group: [:development, :test]
+ group :development, :test do
+
+    gem 'yaml_db'
+    gem 'rb-inotify', '~> 0.8.8'
+    gem 'turn'
+    gem 'rspec-rails'
+    gem 'capybara', '~> 2.1.0'
+    gem 'selenium-webdriver',   '~> 2.35.1'
+    gem 'launchy'
+    gem 'factory_girl_rails'
+    gem 'database_cleaner'
+    gem 'guard-rspec'
+    gem "minitest"
+    # Gemfile
+
+    gem 'debugger'
+    
+   
+    
+end

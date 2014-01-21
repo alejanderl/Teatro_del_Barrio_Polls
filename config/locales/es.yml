@@ -1,23 +1,174 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 es:
-  hello: "Hello world"
+
+  confirm:
+    delete_property: ¿Estás seguro que quieres dejar de asociar esta propiedad a tu cuenta?
+    delete_expense:  ¿Estás seguro que quieres eliminar la definición de este gasto?
+    delete_rfp:      ¿Estás seguro que quieres eliminar este concurso?
+# auth forms -----------------------------------------------------------------
+  users:
+
+    user_type:            "Tipo de Usuario"
+  
+
+
+  
+  # homepage -------------------------------------------------------------------
+  home:
+    hola: "caracola"
+
+  nav:
+    change_to_en: EN
+  global:
+    title: "Teatro del Barrio"
+
+
+  # active support overrides ---------------------------------------------------
+  date:
+    months: "meses"
+    days: "días"
+    formats:
+      default: "%e/%m/%Y"
+      short: "%e-%b-%Y"
+      dot_short: "%e.%m.%y"
+      long:    "%e de %B de %Y"
+      edit: "%d/%m/%Y"
+    day_names: [Domingo, Lunes, Martes, Miércoles, Jueves, Viernes, Sábado]
+    abbr_day_names: [Dom, Lun, Mar, Mie, Jue, Vie, Sab]
+    # Don't forget the nil at the beginning; there's no such thing as a 0th month
+    month_names: [~, Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre]
+    abbr_month_names: [~, Ene, Feb, Mar, Abr, May, Jun, Jul, Ago, Sep, Oct, Nov, Dic]
+    # Used in date_select and datime_select.
+    order:
+        - :day
+        - :month
+        - :year
+  time:
+    formats:
+      default: "%a, %d %b %Y %H:%M:%S %z"
+      short: "%e-%b-%Y"
+      long: "%e de %B, %Y a las %l:%M %P"
+      short_with_time: "%e-%b-%Y a las %l:%M %P"
+      edit: "%d/%m/%Y"
+      dot_short: "%e.%m.%y"
+    am: "am"
+    pm: "pm"
+  datetime:
+    distance_in_words:
+      half_a_minute: "medio minuto"
+      less_than_x_seconds:
+        one: "menos de un segundo"
+        other: "menos de %{count} segundos"
+      x_seconds:
+        one: "1 segundo"
+        other: "%{count} segundos"
+      less_than_x_minutes:
+        one: "menos de un minuto"
+        other: "menos de %{count} minutos"
+      x_minutes:
+        one: "1 minuto"
+        other: "%{count} minutos"
+      about_x_hours:
+        one: "casi una hora"
+        other: "casi %{count} horas"
+      x_days:
+        one: "1 día"
+        other: "%{count} días"
+      about_x_months:
+        one: "casi un mes"
+        other: "casi %{count} meses"
+      x_months:
+        one: "1 mes"
+        other: "%{count} meses"
+      about_x_years:
+        one: "casi 1 año"
+        other: "casi %{count} años"
+      over_x_years:
+        one: "más de 1 año"
+        other: "%{count} años"
+      almost_x_years:
+        one: "casi un año"
+        other: "casi %{count} años"
+    prompts:
+      year: "Año"
+      month: "Mes"
+      day: "Día"
+      hour: "Hora"
+      minute: "Minuto"
+      second: "Segundos"
+
+
+  # errors ------------------------
+  errors:
+    messages:
+      expired: "ha expirado, por favor pide una nueva"
+      not_found: "no encontrado"
+      already_confirmed: "ya fue confirmada. Intenta ingresar."
+      not_locked: "no ha sido bloqueada"
+      not_saved:
+        one: "Ha habido 1 error:"
+        other: "Por favor, corrige los siguientes %{count} errores :"
+    validation:
+       one_expense_for_this_sector_already_exist_for_this_property:  "Ya existe un gasto en este sector para la propiedad"
+       wrong_user_type: "Por favor, seleccione su relación con la propiedad."
+       one_house_number_required: ", se requiere al menos una ubicación "
+
+  countries:
+    es: España
+    ar: Argentina
+    us: EE.UU.
+    
+  custom_validators:
+    unique_or_blank: "ya está cogido por otro usuario. Se permite dejar este campo vacío."
+    
+  activerecord:
+    
+    attributes:
+      user:
+        name:     Nombre
+        email:    E-mail
+        password: Clave
+        username: Alias
+        phone_number: "Número de teléfono"
+        roles_mask: "Tipo de usuario"
+        privacy_terms_acceptance: "Política de privacidad"
+
+
+
+
+    errors:
+        template: 
+            body: Ha habido problemas con los siguientes campos
+            header: 
+                one: No se ha podido guardar este %{model} porque ha habido 1 error
+                other: No se ha podido guardar este %{model} porque han habido %{count} errores
+        messages:
+            a_role_is_needed: "Por favor, selecciona un tipo de usuario"
+            inclusion: "no esta icludido en la lista"
+            exclusion: "está reservado"
+            invalid: "es inválido"
+            confirmation: "no coincide con la confirmación"
+            accepted: "debe ser aceptado"
+            empty: "no puede estar vacío"
+            blank: "no puede estar en blanco"
+            too_long: "debe contener menos de %{count} caracteres"
+            too_short: "debe contener por lo menos %{count} caracteres"
+            wrong_length: "translation missing: is the wrong length (should be %{count} characters)"
+            taken: "ya está cogido por otro usuario"
+            not_a_number: "translation missing: is not a number"
+            greater_than: "debe ser mayor que %{count}"
+            greater_than_or_equal_to: "translation missing: must be greater than or equal to %{count}"
+            equal_to: "translation missing: must be equal to %{count}"
+            less_than: "translation missing: must be less than %{count}"
+            less_than_or_equal_to: "translation missing: must be less than or equal to %{count}"
+            odd: "translation missing: must be odd"
+            even: "translation missing: must be even"
+            unique_or_blank: "ya está cogido por otro usuario"
+            models:
+              user:
+                attributes:
+                  roles_mask:
+                    a_role_is_needed: "Por favor, selecciona un tipo de usuario"           
+
