@@ -1,0 +1,21 @@
+<h1> Users </h1>
+
+<table id="userstable">
+
+<tr>
+	<th> email </th>
+	<th></th>
+	<th></th>
+	<th></th>
+</tr>
+<% @users.each { |u| %>
+<tr>
+<th><%= u.email%></th>
+<th><%= link_to 'Edit profile', edit_user_registration_path %></th>
+<th></th>
+<th></th>
+</tr>
+<% } %>
+</table>
+
+
