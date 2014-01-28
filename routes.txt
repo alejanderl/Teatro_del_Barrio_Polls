@@ -1,0 +1,19 @@
+                  Prefix Verb     URI Pattern                            Controller#Action
+                    root GET      /:locale(.:format)                     home#index {:locale=>/en|es/}
+        new_user_session GET      /:locale/users/sign_in(.:format)       devise/sessions#new {:locale=>/en|es/}
+            user_session POST     /:locale/users/sign_in(.:format)       devise/sessions#create {:locale=>/en|es/}
+    destroy_user_session DELETE   /:locale/users/sign_out(.:format)      devise/sessions#destroy {:locale=>/en|es/}
+           user_password POST     /:locale/users/password(.:format)      devise/passwords#create {:locale=>/en|es/}
+       new_user_password GET      /:locale/users/password/new(.:format)  devise/passwords#new {:locale=>/en|es/}
+      edit_user_password GET      /:locale/users/password/edit(.:format) devise/passwords#edit {:locale=>/en|es/}
+                         PATCH    /:locale/users/password(.:format)      devise/passwords#update {:locale=>/en|es/}
+                         PUT      /:locale/users/password(.:format)      devise/passwords#update {:locale=>/en|es/}
+cancel_user_registration GET      /:locale/users/cancel(.:format)        devise/registrations#cancel {:locale=>/en|es/}
+       user_registration POST     /:locale/users(.:format)               devise/registrations#create {:locale=>/en|es/}
+   new_user_registration GET      /:locale/users/sign_up(.:format)       devise/registrations#new {:locale=>/en|es/}
+  edit_user_registration GET      /:locale/users/edit(.:format)          devise/registrations#edit {:locale=>/en|es/}
+                         PATCH    /:locale/users(.:format)               devise/registrations#update {:locale=>/en|es/}
+                         PUT      /:locale/users(.:format)               devise/registrations#update {:locale=>/en|es/}
+                         DELETE   /:locale/users(.:format)               devise/registrations#destroy {:locale=>/en|es/}
+                         GET|POST /*path(.:format)                       redirect(301, /es/%{path})
+                         GET|POST /                                      redirect(301, /es)
