@@ -1,18 +1,34 @@
 TeatroDelBarrio::Application.routes.draw do
+
   
-  get "users/index"
-  resources :memberships
 
-  resources :roles do
 
-    member do
-      get 'newmember'
+
+
+  scope ":locale", locale: /#{I18n.available_locales.join("|")}/ do
+
+    root       :to => "home#index"
+    devise_for :users
+
+    get "users/index"
+    resources :memberships
+
+    resources :roles do
+      member do
+        get 'newmember'
+      end
     end
+    
+
+
   end
   
 
-  root :to => "home#index"
-  devise_for :users
+  match '*path', to: redirect("/#{I18n.default_locale}/%{path}"), constraints: lambda { |req| !req.path.starts_with? "/#{I18n.default_locale}/" }, via: [:get, :post]
+  match '', to: redirect("/#{I18n.default_locale}"), via: [:get, :post]
+
+end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -69,4 +85,4 @@ TeatroDelBarrio::Application.routes.draw do
   #   end
 
   
-end
+

@@ -43,5 +43,12 @@ end
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
-# Use debugger
-# gem 'debugger', group: [:development, :test]
+group :development, :test do
+    gem 'rspec-rails'
+    gem 'capybara'
+    gem 'selenium-webdriver'
+    gem 'database_cleaner'
+    gem 'launchy'
+    gem 'database_cleaner'
+    gem 'debugger'
+end
