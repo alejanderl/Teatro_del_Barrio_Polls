@@ -19,6 +19,7 @@ TeatroDelBarrio::Application.routes.draw do
       end
     end
     
+    resources :polls
 
 
   end
