@@ -3,10 +3,10 @@
 
 es:
 
-  confirm:
-    delete_property: ¿Estás seguro que quieres dejar de asociar esta propiedad a tu cuenta?
-    delete_expense:  ¿Estás seguro que quieres eliminar la definición de este gasto?
-    delete_rfp:      ¿Estás seguro que quieres eliminar este concurso?
+  polls:
+    title: "Título"
+    total_questions: "Preguntas"
+    total_answers:   "Han respondido"
 # auth forms -----------------------------------------------------------------
   users:
 
@@ -23,6 +23,7 @@ es:
     change_to_en: EN
   global:
     title: "Teatro del Barrio"
+    create: "Nuevo"
 
 
   # active support overrides ---------------------------------------------------

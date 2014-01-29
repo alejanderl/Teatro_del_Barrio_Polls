@@ -53,6 +53,5 @@ group :development, :test do
     gem 'selenium-webdriver'
     gem 'database_cleaner'
     gem 'launchy'
-    gem 'database_cleaner'
     gem 'debugger'
 end
