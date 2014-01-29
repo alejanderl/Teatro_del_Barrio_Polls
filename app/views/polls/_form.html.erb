@@ -1,1 +1,31 @@
-_form.html.erb
+<%= form_for @poll do |t| %>
+  	<div class="form-group col-md-7 col-xs-12">
+		<%= t.label :title %>
+		<%= t.text_field	 :title , :class => "form-control" %>
+		<%= t.label :description  %>
+		<%= t.text_area :description  , :class => "form-control"  %>
+
+		<%= t.label  	:start_date %>
+		<%= t.date_field :start_date,  :class => "form-control"  %>
+
+		<%= t.label  	:end_date %>
+		<%= t.date_field :end_date,  :class => "form-control"  %>
+
+		<%= t.fields_for :questions do |f| %>
+
+			<p>
+			  <%= f.label :matter, "Question" %><br />
+			  <%= f.text_field :matter, :rows => 3 %><br />
+			  <%= f.check_box :_destroy %>
+			  <%= f.label :_destroy, "Remove Question" %>
+			</p>
+		<% end %>
+
+
+		<br/>
+		<%= t.submit "global.save".t , :class => "btn btn-default btn-primary"  %>
+	</div>
+
+
+
+<% end %>
