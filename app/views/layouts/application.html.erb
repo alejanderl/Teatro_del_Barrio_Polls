@@ -9,14 +9,29 @@
 <body>
 
 	<div id='container'>
-    <%= render "layouts/shared/user_login" %>
+
+    <%= render "layouts/header" %>
 
 
+    <div id="separator" class="centered"></div>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
+  <article>
+    <div class="centered container">
+      <%= yield %>
+    </div>
+  </article>
+  <div id="footer">
+  
+  
+  </div>
 
-
-		<%= yield %>
 	</div>
 </body>
 </html>
+
+
+
+
+
+  

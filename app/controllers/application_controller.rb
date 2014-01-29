@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   private
 
   def set_locale
-    debugger
+    
     I18n.locale = params[:locale]  || I18n.default_locale
     # current_user.locale
     # request.subdomain
