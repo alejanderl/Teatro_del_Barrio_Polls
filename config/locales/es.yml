@@ -7,6 +7,10 @@ es:
     title: "Título"
     total_questions: "Preguntas"
     total_answers:   "Han respondido"
+    questions:       "Preguntas"
+  questions:
+    total_answers:  "Respuestas"
+    matter:   "Pregunta"
 # auth forms -----------------------------------------------------------------
   users:
 

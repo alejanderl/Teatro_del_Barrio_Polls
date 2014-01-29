@@ -153,9 +153,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', end
  
 
 #footer {
-    height:200px;
+    min-height:100px;
     border-top:1px solid #ccc;
     background-color:#000;
+    margin-top:10px;
     
 }
 

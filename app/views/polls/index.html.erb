@@ -13,7 +13,7 @@
 
 
             <tr>
-              <td><%=  poll.title %></td>
+              <td><%= link_to  poll.title, poll %></td>
               <td><%= poll.questions.count %></td>
               <td><%= poll.questions.first.answers.count   %></td>
             </tr>
@@ -23,4 +23,5 @@
 	</tbody>
 </table>
 
-<%= link_to "global.create".t, new_poll_path %>
+<%= link_to "global.create".t, new_poll_path, :class => "btn btn-lg btn-default" %>
+

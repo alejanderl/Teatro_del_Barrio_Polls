@@ -1,1 +1,34 @@
-show.html.erb
+<h1 class="title" ><%= @poll.title   %></h1>
+
+<p>
+<%= @poll.description %>
+</p>
+
+<%= "polls.questions".t %>
+
+
+
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th><%= "questions.matter".t %></th>
+      <th><%= "questions.total_answers".t %></th>
+
+    </tr>
+  </thead>
+  <tbody>
+		<% @poll.questions.each do |question|%>
+
+
+            <tr>
+              <td><%= question.matter %></td>
+              <td><%= question.answers.count %></td>
+            </tr>
+
+			
+		<%end %>
+	</tbody>
+</table>
+
+
+
