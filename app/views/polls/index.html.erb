@@ -23,5 +23,5 @@
 	</tbody>
 </table>
 
-<%= link_to "global.create".t, new_poll_path, :class => "btn btn-lg btn-default" %>
+<%= link_to "global.create".t, new_poll_path, :class => "btn btn-lg btn-default" if user_signed_in? %>
 

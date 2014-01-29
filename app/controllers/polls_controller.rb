@@ -4,7 +4,7 @@ class PollsController < ApplicationController
 		@polls = Poll.all
 
 	end
-	
+
 	def show
 
 		@poll = Poll.find params[:id]
@@ -13,12 +13,17 @@ class PollsController < ApplicationController
 	end
 	def new
 
-		
+		@poll = Poll.new
+
 	end
 	def create
+
+
 		
 	end
 	def edit
+
+		@poll = Poll.find params[:id]
 		
 	end
 	def update
@@ -26,6 +31,10 @@ class PollsController < ApplicationController
 		
 	end
 	def destroy
+
+		@poll = Poll.find params[:id]
+
+		@poll.destroy
 		
 	end
 end
