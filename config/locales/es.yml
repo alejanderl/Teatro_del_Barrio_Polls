@@ -12,6 +12,7 @@ es:
     are_you_sure?: "Está seguro?"
     save: "Guardar"
   polls:
+    polls: "Votaciones"
     title: "Título"
     total_questions: "Preguntas"
     total_answers:   "Han respondido"

@@ -1,27 +1,13 @@
 <header>    
-    <div id="nav" class=" navbar navbar-fixed-top">
-      <div id="navbar-inner">
-      	<div class="centered">
-            <div id="logo">
-                <%= link_to image_tag("tdb.png"), root_path %>
-            </div>
-            <%= render "devise/shared/sign_in" %>
-            <div id="top_menu">                
-                <div class="btn-group">
-               	 <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Looking for: <span class="caret"></span></button>
-                 <ul class="dropdown-menu">
-                		<li><%= link_to "Polls",polls_path %></li>
-                    	
-                 </ul>
-              	</div><!-- /btn-group -->
-            </div>
+  <div id="nav" class=" navbar navbar-fixed-top">
+    <div id="navbar-inner">
+    	<div class="centered">
+        <div id="logo">
+          <%= link_to image_tag("tdb.png"), root_path %>
         </div>
+        <%= render "devise/shared/sign_in" %>
       </div>
-
     </div>
-    
 
-
-
-
+  </div>
 </header>
