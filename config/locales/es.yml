@@ -20,6 +20,7 @@ es:
   questions:
     total_answers:  "Respuestas"
     matter:   "Pregunta"
+    remove_question: "Borrar la pregunta"
 
 # auth forms -----------------------------------------------------------------
   users:

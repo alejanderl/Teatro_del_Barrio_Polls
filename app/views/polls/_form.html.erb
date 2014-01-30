@@ -22,12 +22,12 @@
 					  	<%= f.text_field :matter,:class => "form-control" %><br />
 						<%= f.hidden_field :_destroy , :class => "destroy"%>
 						<div class="input-group-btn">
-							 <%= link_to "<span class='glyphicon glyphicon-remove'></span>".html_safe, "#", :class => "remove_old_question  btn btn-warning " %>
+							 <%= link_to "<span class='glyphicon glyphicon-remove'></span>".html_safe, "#", :class => "remove_old_question  btn btn-warning " , :title => "questions.remove_question".t %>
 						</div>
 					</div>
 
 				  
-				  <%= f.label :_destroy, "Remove Question" %>
+
 				</li>
 
 			<% end %>
@@ -57,7 +57,7 @@
 			  			
 				  <input id="poll_questions_attributes_{{random}}_matter" name="poll[questions_attributes][{{random}}][matter]"  type="text" class="form-control"  />
 				 <div class="input-group-btn">
-			    	<%= link_to "<span class='glyphicon glyphicon-remove'></span>".html_safe, "#", :class => "remove_new_question  btn btn-warning " %>
+			    	<%= link_to "<span class='glyphicon glyphicon-remove'></span>".html_safe, "#", :class => "remove_new_question  btn btn-warning " , :title => "questions.remove_question".t %>
 			  	</div>
 		</div>
 
