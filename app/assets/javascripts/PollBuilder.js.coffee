@@ -14,8 +14,18 @@ class TdB.PollBuilder
         _this = this
         this.set_bind =>
 
-    set_bind:->
-    	$("body").on "click", @button_add, =>
-    		console.log _this.questions_field
+    set_bind:=>
+    	$( @button_add ).on "click", =>
+    		
     		attributes = {}
-    		_this.questions_field.prepend Mustache.to_html($('#poll_question').html(), attributes)
+    		attributes["random"] = Math.floor(Math.random()*12213413)
+    		_this.questions_field.append Mustache.to_html($('#poll_question').html(), attributes)
+    	$(".remove_old_question").on "click" , -> 	
+    		$(".destroy",$(this).parents(".input-group")).val 1
+    		$(this).parents("li.old_question").toggle "1000" , ->
+
+    	$(document).on "click", ".remove_new_question" , ->
+    		$(this).parents("li.new_question").toggle "1000" , ->
+    			$(this).remove()
+
+    		

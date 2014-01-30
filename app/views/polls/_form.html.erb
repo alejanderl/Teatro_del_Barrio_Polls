@@ -15,14 +15,26 @@
 		<ul id="questions">
 			<%= t.fields_for :questions do |f| %>
 
-				<li>
+				<li class="old_question">
+
 				  <%= f.label :matter, "Question" %><br />
-				  <%= f.text_field :matter,:class => "form-control" %><br />
-				  <%= f.check_box :_destroy %>
+				  <div class="input-group">
+					  	<%= f.text_field :matter,:class => "form-control" %><br />
+						<%= f.hidden_field :_destroy , :class => "destroy"%>
+						<div class="input-group-btn">
+							 <%= link_to "<span class='glyphicon glyphicon-remove'></span>".html_safe, "#", :class => "remove_old_question  btn btn-warning " %>
+						</div>
+					</div>
+
+				  
 				  <%= f.label :_destroy, "Remove Question" %>
 				</li>
+
 			<% end %>
+			hola
 		</ul>
+
+
 		<%= link_to "<span class='glyphicon glyphicon-plus'></span>".html_safe, "#",:id => "add_question",:title => "polls.add_question".t, :class => "btn btn-default btn-small ", :data =>{"no-turbolink" => "true"} %>
 	
 		<hr>
@@ -39,18 +51,26 @@
 
 
   		<li class="new_question">
-			  <label for="poll_questions_attributes_0_matter">Question</label><br />
-			  <input id="poll_questions_attributes_0_matter" name="poll[questions_attributes][][matter]"  type="text"  /><br />
+  		  <label for="poll_questions_attributes_{{random}}_matter"><%= "questions.matter".t %></label><br />
+	  		<div class="input-group">
 
-			  <label for="poll_questions_attributes_0__destroy">Remove Question</label>
+			  			
+				  <input id="poll_questions_attributes_{{random}}_matter" name="poll[questions_attributes][{{random}}][matter]"  type="text" class="form-control"  />
+				 <div class="input-group-btn">
+			    	<%= link_to "<span class='glyphicon glyphicon-remove'></span>".html_safe, "#", :class => "remove_new_question  btn btn-warning " %>
+			  	</div>
+		</div>
+
 		</li>
 
 </script>
-<script >
+<%= content_for :footer_scripts do %>
+	<script >
 
-$(document).ready(function(){
-	window.Questionnaire = new TdB.PollBuilder();
+		$(document).ready(function(){
+			window.Questionnaire = new TdB.PollBuilder();
 
-})
+		})
 
-</script> 
+	</script> 
+<% end %>

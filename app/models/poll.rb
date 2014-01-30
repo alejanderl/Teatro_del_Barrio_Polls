@@ -7,7 +7,7 @@ class Poll < ActiveRecord::Base
 
 	belongs_to :user
 
-	accepts_nested_attributes_for :questions
+	accepts_nested_attributes_for :questions, :allow_destroy => true
 
 
 	validates :user_id , :presence => :true

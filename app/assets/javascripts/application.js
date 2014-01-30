@@ -16,3 +16,8 @@
 //= require bootstrap
 //= require mustache
 //= require_tree .
+$(document).ready(function(){
+	$( document ).on("click","a[href='#']", function( event ) {
+	  event.preventDefault();
+	});
+});

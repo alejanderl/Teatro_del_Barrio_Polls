@@ -22,12 +22,12 @@ class PollsController < ApplicationController
 	end
 
 	def create
+		
 		@poll      = Poll.new standard_attributes
 		@poll.user = current_user
 		if @poll.save
 			redirect_to @poll
 		else 
-			debugger
 			render "new"
 		end
 		
@@ -40,8 +40,18 @@ class PollsController < ApplicationController
 	end
 
 	def update
+		@poll = Poll.find params[:id]
+		
+		if @poll.update_attributes standard_attributes
+			redirect_to @poll
 
-		Poll.update_attributes standard_attributes
+		else
+
+			render "edit"
+
+		end
+
+
 		
 	end
 
@@ -57,9 +67,11 @@ class PollsController < ApplicationController
 	private
 
 	def standard_attributes
+
+		
 		params.require(:poll).permit(:title,:description, 
 									 :start_date, :end_date,
-									 :questions_attributes => [:matter])
+									 :questions_attributes => [:matter, :id, :_destroy])
 
 	end
 end

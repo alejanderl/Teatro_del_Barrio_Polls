@@ -1,13 +1,4 @@
-$global_transition_time :500ms;
-$transition_style : linear;
-*{
-    -webkit-transition: all $global_transition_time  $transition_style ;
-    -moz-transition: all $global_transition_time  $transition_style ;
-    -ms-transition: all $global_transition_time  $transition_style ;
-    -o-transition: all $global_transition_time  $transition_style ;
-    transition: all $global_transition_time  $transition_style ;
-    
-}
+
 
 .globalWide {
     width:100%;
