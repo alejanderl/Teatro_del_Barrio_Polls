@@ -10,22 +10,47 @@
 
 		<%= t.label  	:end_date %>
 		<%= t.date_field :end_date,  :class => "form-control"  %>
+		<hr>
+		<p><%= "polls.questions".t %></p>
+		<ul id="questions">
+			<%= t.fields_for :questions do |f| %>
 
-		<%= t.fields_for :questions do |f| %>
-
-			<p>
-			  <%= f.label :matter, "Question" %><br />
-			  <%= f.text_field :matter, :rows => 3 %><br />
-			  <%= f.check_box :_destroy %>
-			  <%= f.label :_destroy, "Remove Question" %>
-			</p>
-		<% end %>
-
-
-		<br/>
+				<li>
+				  <%= f.label :matter, "Question" %><br />
+				  <%= f.text_field :matter,:class => "form-control" %><br />
+				  <%= f.check_box :_destroy %>
+				  <%= f.label :_destroy, "Remove Question" %>
+				</li>
+			<% end %>
+		</ul>
+		<%= link_to "<span class='glyphicon glyphicon-plus'></span>".html_safe, "#",:id => "add_question",:title => "polls.add_question".t, :class => "btn btn-default btn-small ", :data =>{"no-turbolink" => "true"} %>
+	
+		<hr>
 		<%= t.submit "global.save".t , :class => "btn btn-default btn-primary"  %>
 	</div>
 
 
 
 <% end %>
+
+
+
+  <script type="text/html" id="poll_question">
+
+
+  		<li class="new_question">
+			  <label for="poll_questions_attributes_0_matter">Question</label><br />
+			  <input id="poll_questions_attributes_0_matter" name="poll[questions_attributes][][matter]"  type="text"  /><br />
+
+			  <label for="poll_questions_attributes_0__destroy">Remove Question</label>
+		</li>
+
+</script>
+<script >
+
+$(document).ready(function(){
+	window.Questionnaire = new TdB.PollBuilder();
+
+})
+
+</script> 

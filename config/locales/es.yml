@@ -3,31 +3,36 @@
 
 es:
 
+
+  global:
+    title: "Teatro del Barrio"
+    create: "Nuevo"
+    edit:   "Editar"
+    delete: "Borrar"
+    are_you_sure?: "Está seguro?"
+    save: "Guardar"
   polls:
     title: "Título"
     total_questions: "Preguntas"
     total_answers:   "Han respondido"
     questions:       "Preguntas"
+    add_question: "Annadir pregunta"
   questions:
     total_answers:  "Respuestas"
     matter:   "Pregunta"
+
 # auth forms -----------------------------------------------------------------
   users:
 
     user_type:            "Tipo de Usuario"
-  
 
-
-  
   # homepage -------------------------------------------------------------------
   home:
     hola: "caracola"
 
   nav:
     change_to_en: EN
-  global:
-    title: "Teatro del Barrio"
-    create: "Nuevo"
+
 
 
   # active support overrides ---------------------------------------------------
