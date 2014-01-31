@@ -5,4 +5,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :memberships
   has_many :roles, :through => :memberships
+
+
+  def active_for_authentication?
+    super && self.enabled
+ 
+  end
 end
