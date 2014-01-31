@@ -30,10 +30,10 @@ class MembershipsController < ApplicationController
 
     respond_to do |format|
       if @membership.save
-        format.html { redirect_to @membership, notice: 'Membership was successfully created.' }
+        format.html { redirect_to :back , notice: 'Membership was successfully created.' }
         format.json { render action: 'show', status: :created, location: @membership }
       else
-        format.html { render action: 'new' }
+        format.html { redirect_to :back }
         format.json { render json: @membership.errors, status: :unprocessable_entity }
       end
     end
@@ -58,7 +58,7 @@ class MembershipsController < ApplicationController
   def destroy
     @membership.destroy
     respond_to do |format|
-      format.html { redirect_to memberships_url }
+      format.html { redirect_to :back }
       format.json { head :no_content }
     end
   end

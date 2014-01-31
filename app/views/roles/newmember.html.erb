@@ -2,38 +2,63 @@
 
 	<h1> <%= @role.name %> </h1>
 
-<div id="filter" >
+	<div id="filter" >
 
-<%= form_tag({controller: "roles", action: "newmember"}, method: "post", class: "nifty_form") do %>
+	<%= form_tag({controller: "roles", action: "newmember"}, method: "post", class: "nifty_form") do %>
 
- <%= label_tag(:filter, "Filter:") %>
- <%= text_field_tag(:filter) %>
- <%= submit_tag("Filter") %>
- <% end %>
+	 <%= label_tag(:filter, "Filter:") %>
+	 <%= text_field_tag(:filter) %>
+	 <%= submit_tag("Filter") %>
+	 <% end %>
 
 
-</div>
+	</div>
 
-<div id="user_list">
+	<div id="user_list">
 
-	<table id="userstable">
+		<table id="userstable">
 
-<tr>
-	<th> email </th>
-	<th></th>
-	<th></th>
-	<th></th>
-</tr>
-<% @users.each { |u| %>
-<tr>
-<th><%= u.email%></th>
-<th><%= link_to 'Add to role',  memberships_path(user_id: u, role_id: @role), method: "post" %></th>
-<th></th>
-<th></th>
-</tr>
-<% } %>
-</table>
+			<tr>
+				<th> email </th>
+				<th></th>
+				<th></th>
+				<th></th>
+			</tr>
+			<% @users.each { |u| %>
+			<tr>
+			<th><%= u.email%></th>
+			<th><%= link_to 'Add to role',  memberships_path(user_id: u, role_id: @role), method: "post" %></th>
+			<th></th>
+			<th></th>
+			</tr>
+			<% } %>
+		</table>
 
-</div>
+	</div>
+
+	<div id="members_list">
+
+		<table id="userstable">
+
+			<tr>
+				<th> email </th>
+				<th></th>
+				<th></th>
+				<th></th>
+			</tr>
+			<% @role.memberships.each { |m| %>
+			<tr>
+			<th><%= m.user.email %></th>
+			<th><%= link_to 'Remove from role', m , :method => :delete  %></th>
+			<th></th>
+			<th></th>
+			</tr>
+			<% } %>
+		</table>
+
+	</div>
+
+
+	
 
 </div>
