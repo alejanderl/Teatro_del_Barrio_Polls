@@ -11,6 +11,10 @@ es:
     delete: "Borrar"
     are_you_sure?: "Está seguro?"
     save: "Guardar"
+  users:
+    go_in:    "Entrar"
+    sign_in:  "Entrar"
+    sign_up:  "Registrarse"
   polls:
     polls: "Votaciones"
     title: "Título"
@@ -24,9 +28,7 @@ es:
     remove_question: "Borrar la pregunta"
 
 # auth forms -----------------------------------------------------------------
-  users:
 
-    user_type:            "Tipo de Usuario"
 
   # homepage -------------------------------------------------------------------
   home:

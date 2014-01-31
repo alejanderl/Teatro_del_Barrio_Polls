@@ -54,6 +54,7 @@ group :development, :test do
     gem 'database_cleaner'
     gem 'launchy'
     gem 'debugger'
+    gem 'factory_girl_rails'
 end
 
 
