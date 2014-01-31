@@ -48,13 +48,21 @@ gem 'rails_12factor', group: :production
 # gem 'capistrano', group: :development
 
 group :development, :test do
+
+
+
+    gem 'turn'
     gem 'rspec-rails'
     gem 'capybara'
     gem 'selenium-webdriver'
-    gem 'database_cleaner'
     gem 'launchy'
-    gem 'debugger'
     gem 'factory_girl_rails'
+    gem 'database_cleaner'
+
+
+    # Gemfile
+
+    gem 'debugger'
 end
 
 

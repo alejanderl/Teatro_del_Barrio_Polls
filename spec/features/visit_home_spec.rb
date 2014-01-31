@@ -3,7 +3,7 @@ require 'spec_helper'
 
 describe "Set" do
 
-    it "works! (now write some real specs)", :focus do
+    it "works! (now write some real specs)" do
     	
     	
     	

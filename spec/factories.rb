@@ -16,9 +16,11 @@ def user_login (email, password)
   visit new_user_session_path
   fill_in "user_email"   , :with => email
   fill_in "user_password", :with => password
-  # fakes current user in test scope
-  @current_user = User.find_by_username user
+  
+  
   click_button "Entrar" 
+	# fakes current user in test scope
+  @current_user = User.find_by_email email
 
 end
 

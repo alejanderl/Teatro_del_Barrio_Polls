@@ -7,18 +7,21 @@ describe "Polls testing"   do
   end
   
   
-  it "logged user create a poll " ,:focus  do
+  it "logged user create a poll " ,:focus, :js do
 
 
-  	user_login "admin", "admin123"
+  	user_login "admin@example.com", "admin123"
 
-  	click_button "Votaciones"
 
-  	click_button "Nuevo"
+  	
+  	click_link "Votaciones"
 
-  	debugger
+  	click_link "Nuevo"
+
+  	
 
   	sleep 1
+
 
 
   end
