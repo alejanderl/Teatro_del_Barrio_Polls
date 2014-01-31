@@ -10,7 +10,7 @@ TeatroDelBarrio::Application.routes.draw do
 
   end
   
-
+  
   match '*path', to: redirect("/#{I18n.default_locale}/%{path}"), constraints: lambda { |req| !req.path.starts_with? "/#{I18n.default_locale}/" }, via: [:get, :post]
   match '', to: redirect("/#{I18n.default_locale}"), via: [:get, :post]
 
