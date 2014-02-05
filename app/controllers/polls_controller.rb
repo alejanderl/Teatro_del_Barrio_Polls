@@ -2,10 +2,10 @@ class PollsController < ApplicationController
 
 	def index
 		@polls = Poll.all
-
 	end
 
 	def show
+
 
 		@poll = Poll.find params[:id]
 
@@ -30,16 +30,18 @@ class PollsController < ApplicationController
 		else 
 			render "new"
 		end
-		
+
 	end
 
 	def edit
 
 		@poll = Poll.find params[:id]
+
 		
 	end
 
 	def update
+
 		@poll = Poll.find params[:id]
 		
 		if @poll.update_attributes standard_attributes
@@ -55,13 +57,21 @@ class PollsController < ApplicationController
 		
 	end
 
+
+
+		
+
+
+
 	def destroy
 
 		@poll = Poll.find params[:id]
 
 		@poll.destroy
+
 		
 	end
+
 
 
 	private
@@ -74,4 +84,5 @@ class PollsController < ApplicationController
 									 :questions_attributes => [:matter, :id, :_destroy])
 
 	end
+
 end

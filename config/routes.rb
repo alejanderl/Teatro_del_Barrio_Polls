@@ -1,12 +1,30 @@
 TeatroDelBarrio::Application.routes.draw do
 
+  
+
+
+
+
   scope ":locale", locale: /#{I18n.available_locales.join("|")}/ do
 
     root       :to => "home#index"
     devise_for :users
 
-    resources :polls
 
+    get "users/index"
+    resources :memberships
+
+    resources :roles do
+      member do
+        get 'newmember'
+      end
+    end
+    
+
+    resources :polls 
+    match "vote/:question_id/:my_vote",:to =>  "votes#create", :via => [:get], :as => :voting
+
+    
 
   end
   
@@ -15,6 +33,7 @@ TeatroDelBarrio::Application.routes.draw do
   match '', to: redirect("/#{I18n.default_locale}"), via: [:get, :post]
 
 end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -23,6 +23,13 @@
             <tr>
               <td><%= question.matter %></td>
               <td><%= question.answers.count %></td>
+              <td>
+                <%= link_to "vote yes", voting_path(question, "yes") %>
+              </td>
+              <td>
+                <%= link_to "vote no", voting_path(question, "no") %>
+              </td>
+
             </tr>
 
 			
