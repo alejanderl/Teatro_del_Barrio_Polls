@@ -24,10 +24,10 @@
               <td><%= question.matter %></td>
               <td><%= question.answers.count %></td>
               <td>
-                <%= link_to "vote yes", voting_path(question, "yes") %>
+                <%=  question.voted?(current_user) ==  true ? "voted" : ( link_to "vote yes", voting_path(question, "yes") ) %>
               </td>
               <td>
-                <%= link_to "vote no", voting_path(question, "no") %>
+                <%= question.voted?(current_user) ==  true ? "voted" : ( link_to "vote no", voting_path(question, "no") ) %>
               </td>
 
             </tr>
@@ -37,7 +37,7 @@
 	</tbody>
 </table>
 
-<% if user_signed_in?  %>
+<% if current_user.admin?  %>
 	
 	<%= link_to "global.edit".t   , edit_poll_path(@poll), :class => "btn-default btn" %>
 	<%= link_to "global.delete".t , @poll , :method => :delete, :confirm => "global.are_you_sure?".t %>

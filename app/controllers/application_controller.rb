@@ -6,6 +6,9 @@ class ApplicationController < ActionController::Base
 
   before_filter :set_locale
   before_filter :authenticate_user!
+  before_filter :authorize
+  delegate :allow?, to: :current_permission
+  helper_method :allow?
 
   private
 
@@ -20,6 +23,17 @@ class ApplicationController < ActionController::Base
 
   def default_url_options(options = {})
     {locale: I18n.locale}
+  end
+
+
+  def current_permission
+  @current_permission ||= Permission.new(current_user)
+  end
+
+  def authorize
+    if !current_permission.allow?(params[:controller], params[:action])
+      redirect_to root_url, alert: "Not authorized."
+    end
   end
 
 end

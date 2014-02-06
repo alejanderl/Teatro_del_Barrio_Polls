@@ -22,6 +22,13 @@ class Question < ActiveRecord::Base
 		self.save
 
 	end
+
+	def voted? user
+
+		return true if self.answers.has_key?(user.id.to_s)
+		false
+
+	end
 	
 	class << self
 		def vote params
