@@ -23,6 +23,7 @@ describe "Polls testing"   do
     fill_in "poll_description", :with => "Título de la votación"
     fill_in "poll_start_date", :with => Time.now
     fill_in "poll_end_date", :with => Time.now + 1.month
+    
     4.times do 
       click_link "add_question"
     end

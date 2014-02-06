@@ -1,5 +1,8 @@
 <h1 class="title" ><%= @poll.title   %></h1>
+<div id="status pull-right">
+  <span class="">
 
+</div>
 <p>
 <%= @poll.description %>
 </p>
@@ -13,8 +16,8 @@
     <tr>
       <th><%= "questions.matter".t %></th>
       <th><%= "questions.total_answers".t %></th>
-      <th><%= "questions.votes_yes".t %></th>
-      <th><%= "questions.votes_no".t %></th>
+     
+
       <% if user_signed_in? %>
        <th><%= "questions.my_vote".t %></th>
        <% end %>
@@ -25,14 +28,26 @@
 
 
             <tr>
-              <td><%= question.matter %></td>
-              <td><%= question.answers.count %></td>
-              <td><%= question.answers.count_yeses %></td>
-              <td><%= question.answers.count_noes %></td>
+              <td><h4><%= question.matter %></h4></td>
+              <td>
+                <ul class="list-group vote-results" style="max-width:100px">
+          
+                  <li class="list-group-item list-group-item-success">
+                   <%= "questions.votes_yes".t %><span class="badge pull-right"><%= question.answers.count_yeses %></span>
+                 </li>
+                 <li class="list-group-item list-group-item-warning ">
+                   <%= "questions.votes_no".t %><span class="badge pull-right"><%= question.answers.count_noes %></span>
+                 </li>
+                 <li class="list-group-item list-group-item-info">
+                    
+                    Total<span class="badge pull-right"><%= question.answers.count %></span></span>
+                  </li>
+               </ul>
+              </td>
               <% if user_signed_in? %>
                 <td>
-                  <%= link_to "vote yes", voting_path(question, "yes"), :class => "btn btn-xs btn-default" %>&nbsp;
-                  <%= link_to "vote no", voting_path(question, "no") , :class => "btn btn-xs btn-default"%>
+                  <%= link_to "<span class='glyphicon glyphicon-ok-circle'></span>".html_safe, voting_path(question, "yes"), :class => "btn btn-lg btn-success" %>&nbsp;
+                  <%= link_to "<span class='glyphicon glyphicon-remove-circle'></span>".html_safe, voting_path(question, "no") , :class => "btn btn-lg btn-warning "%>
                 </td>
               <% end %>
 
