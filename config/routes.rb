@@ -5,13 +5,23 @@ TeatroDelBarrio::Application.routes.draw do
 
 
 
+  get "landing/index"
   scope ":locale", locale: /#{I18n.available_locales.join("|")}/ do
 
-    root       :to => "home#index"
+    
+    authenticated do
+
+    root       :to => "home#index", :as => :authenticated_root
+    
+    end
+
+    root :to => 'landing#index'
+
+
     devise_for :users
-
-
     get "users/index"
+
+
     resources :memberships
 
     resources :roles do

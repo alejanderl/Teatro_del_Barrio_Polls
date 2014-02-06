@@ -37,6 +37,9 @@ es:
   nav:
     change_to_en: EN
 
+  # Landing
+  landing:
+    welcome: "Bienvenido al sistema de votacion de Teatro del Barrioor."
 
 
   # active support overrides ---------------------------------------------------

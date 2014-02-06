@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
 
   before_filter :set_locale
+  before_filter :authenticate_user!
 
   private
 

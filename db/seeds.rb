@@ -8,6 +8,8 @@
 
 Role.create([{name: 'Admin'}])
 
+User.create(:email => "admin@localhost.localhost", :password => "teatrodelbarrio", :password_confirmation => "teatrodelbarrio", :admin => true)
+
 5.times do |i|
 	User.create( :email => "usuario#{i}@manolito.gafotas", :password => "usuario#{i}", :password_confirmation => "usuario#{i}")
 end
