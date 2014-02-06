@@ -13,6 +13,9 @@
     <tr>
       <th><%= "questions.matter".t %></th>
       <th><%= "questions.total_answers".t %></th>
+      <th><%= "questions.votes_yes" %></th>
+      <th><%= "questions.votes_no" %></th>
+      <th><%= "questions.vote".t %></th>
 
     </tr>
   </thead>
@@ -23,11 +26,11 @@
             <tr>
               <td><%= question.matter %></td>
               <td><%= question.answers.count %></td>
+              <td><%= question.answers.count_yeses %></td>
+              <td><%= question.answers.count_noes %></td>
               <td>
-                <%= link_to "vote yes", voting_path(question, "yes") %>
-              </td>
-              <td>
-                <%= link_to "vote no", voting_path(question, "no") %>
+                <%= link_to "vote yes", voting_path(question, "yes"), :class => "btn btn-xs btn-default" %>&nbsp;
+                <%= link_to "vote no", voting_path(question, "no") , :class => "btn btn-xs btn-default"%>
               </td>
 
             </tr>

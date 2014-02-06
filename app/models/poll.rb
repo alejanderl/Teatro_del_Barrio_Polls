@@ -10,11 +10,17 @@ class Poll < ActiveRecord::Base
 	accepts_nested_attributes_for :questions, :allow_destroy => true
 
 
-	validates :user_id , :presence => :true
+	validates :user_id, :start_date, :end_date, :title, :presence => :true
 
 
-	# Each poll has at least one question
+	# Each poll has at least one question. Question matter must be present.
 	before_validation {|_this| _this.questions.first || _this.questions.build  }
+
+	def is_open?
+		now = Time.now
+		
+		self.start_date < now && self.end_date > now
+	end
 
 
 

@@ -2,48 +2,56 @@ class Question < ActiveRecord::Base
 
 
 	belongs_to :poll
-	before_create {|_this| _this.answers ||= {}}
+	after_initialize {|_this| _this.answers ||= {}}
 	serialize :answers
 
 
 	validates :matter , :presence => true
 
-	
-
 
 
 	def vote! user, params
 
-		return false unless user
-		
-		the_vote = (params == "yes") ? 1 : 0
+		if self.poll.is_open?
 
-		self.answers[user.id.to_s] = the_vote
-		self.save
+			return false unless user
+			
+			the_vote = (params == "yes") ? 1 : 0
+			
+			self.answers[user.id] = the_vote
+			
+			self.save
+		else
+			return false
+		end
 
 	end
-	
-	class << self
-		def vote params
 
-			params.each do |voting_options|
+	# singleton methods for answers
+	def answers
+		
+		answers = super 
 
-				define_method("count_#{voting_options}") do 
-
-					debugger
-					sleep 1
-
-
-				end
-
-
-			end
-
+		def answers.count_yeses
+			self.yeses.count			
 		end
-	end	
 
-	vote [:yes, :no]
+		def answers.count_noes
+			self.noes.count
+		end
 
+		def answers.yeses
+			@yeses ||= self.select { |key, value| value == 1 }
+		end
+
+		def answers.noes
+			@noes ||= self.select { |key, value| value == 0 }
+		end 
+
+
+		answers
+
+	end
 
 
 
