@@ -33,6 +33,7 @@ TeatroDelBarrio::Application.routes.draw do
 
     resources :polls 
     match "vote/:question_id/:my_vote",:to =>  "votes#create", :via => [:get], :as => :voting
+    match "unvote/:question_id",:to =>  "votes#destroy", :via => [:get], :as => :destroy_vote
 
     
 

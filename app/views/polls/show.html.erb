@@ -29,12 +29,9 @@
 
             <tr>
               <td><%= question.matter %></td>
+
               <td>
 
-                <%=  question.voted?(current_user) ==  true ? "voted" : ( link_to "vote yes", voting_path(question, "yes") ) %>
-              </td>
-              <td>
-                <%= question.voted?(current_user) ==  true ? "voted" : ( link_to "vote no", voting_path(question, "no") ) %>
 
                 <ul class="list-group vote-results" style="max-width:100px">
           
@@ -53,8 +50,16 @@
               </td>
               <% if user_signed_in? %>
                 <td>
-                  <%= link_to "<span class='glyphicon glyphicon-ok-circle'></span>".html_safe, voting_path(question, "yes"), :class => "btn btn-lg btn-success" %>&nbsp;
-                  <%= link_to "<span class='glyphicon glyphicon-remove-circle'></span>".html_safe, voting_path(question, "no") , :class => "btn btn-lg btn-warning "%>
+                  <%  %>
+                 <% unless question.voted?(current_user) %>
+                    <%= link_to "<span class='glyphicon glyphicon-ok-circle'></span>".html_safe, voting_path(question, "yes"), :class => "btn btn-lg btn-success" %>&nbsp;
+                    <%= link_to "<span class='glyphicon glyphicon-remove-circle'></span>".html_safe, voting_path(question, "no") , :class => "btn btn-lg btn-warning "%>
+                  <% else %>
+
+                    <%= "questions.you_voted_%s".t % question.answers.my_vote(current_user) %>
+                    <%= link_to "questions.vote_again".t, destroy_vote_path(question), :class => "btn btn-xs btn-default" %>
+
+                  <% end %>
                 </td>
               <% end %>
 

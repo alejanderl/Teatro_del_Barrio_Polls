@@ -26,11 +26,21 @@ class Question < ActiveRecord::Base
 		end
 
 	end
+	def destroy_vote! user
+		
+
+		self.answers.delete user.id
+
+		self.save
+
+	end
+
 
 
 	def voted? user
-
-		return true if self.answers.has_key?(user.id.to_s)
+		
+		
+		return true if self.answers.has_key?(user.id)
 		false
 
 	end
@@ -56,6 +66,13 @@ class Question < ActiveRecord::Base
 			def answers.noes
 				@noes ||= self.select { |key, value| value == 0 }
 			end 
+
+			def answers.my_vote user
+
+				self[user.id] == 1 ? "yes" : "no"
+
+
+			end
 
 
 			answers
