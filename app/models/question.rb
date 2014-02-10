@@ -35,7 +35,6 @@ class Question < ActiveRecord::Base
 
 	end
 	
-	class << self
 
 		# singleton methods for answers
 		def answers
@@ -62,7 +61,7 @@ class Question < ActiveRecord::Base
 			answers
 
 		end
-	end
+
 
 
 	
