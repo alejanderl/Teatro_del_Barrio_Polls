@@ -12,6 +12,7 @@ class VotesController < ApplicationController
 		else
 
 			redirect_to question.poll
+			
 		end
 
 	end
