@@ -8,7 +8,7 @@ describe "Polls testing"   do
   end
   
   
-  it "logged user create a poll " ,:focus, :js do
+  it "logged user create a poll " , :js do
 
 
   	user_login "admin@example.com", "admin123"
@@ -20,7 +20,7 @@ describe "Polls testing"   do
   	click_link "Nuevo"
 
     fill_in "poll_title", :with => "Título de la votación"
-    fill_in "poll_description", :with => "Título de la votación"
+    fill_in "poll_description", :with => "Descripción de la votación"
     fill_in "poll_start_date", :with => Time.now
     fill_in "poll_end_date", :with => Time.now + 1.month
     
@@ -30,17 +30,19 @@ describe "Polls testing"   do
 
     within "#questions" do
       
-      all(:xpath ,".//input[@type='text']").each do |element|
-        debugger
-        fill_in element, :with => "prueba"
+      all(:xpath ,".//input[@type='text']").each_with_index do |element, index|
+
+        
+        element.set "Pregunta #{index.to_i + 1}"
       end
     end
-    debugger
 
+    click_button "Guardar"
+    
+    
 
-  	sleep 1
-
-    sleep 1
+    page.should have_content "Título de la votación"
+    page.should have_content "Pregunta 5"
 
   end
 
