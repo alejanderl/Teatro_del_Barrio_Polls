@@ -29,10 +29,15 @@ end
 
 def create_sample_users
 
-  User.create(:email => "admin@example.com",
+ user_admin ||= User.create(:email => "admin@example.com",
   			  :password => "admin123",
-  			  :password_confirmation => "admin123"
+  			  :password_confirmation => "admin123",
+          :admin => 1          
   			  )
+
+
+
+
 
  
 end
