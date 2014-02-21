@@ -21,3 +21,7 @@
 # Ignore database settings
 
 /config/database.yml
+
+
+#Ignore Apple finder trash files
+.DS_Store
