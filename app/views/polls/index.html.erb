@@ -13,7 +13,16 @@
 
 
             <tr>
-              <td><%= link_to  poll.title, poll %></td>
+              <td>
+                <%= link_to  poll.title, poll %>
+                <div class="status pull-right">
+                  <% if poll.is_open? %>
+                    <span class=" label label-success"><%= "polls.open".t %></span>
+                  <%else%>
+                    <span class=" label label-warning"><%= "polls.close".t %></span>
+                  <%end%>
+                </div>
+              </td>
               <td><%= poll.questions.count %></td>
               <td><%= poll.questions.first.answers.count   %></td>
             </tr>

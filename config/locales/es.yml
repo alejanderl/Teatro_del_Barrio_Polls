@@ -24,6 +24,9 @@ es:
     add_question:    "Annadir pregunta"
     active:          "Activa"
     close:           "Cerrada"
+    open:            "Abierta"
+    from_%s:         "Desde %s "
+    to_%s:           "hasta %s"
   questions:
     my_vote:         "Mi voto"
     votes_yes:       "Síes"
