@@ -76,7 +76,7 @@
                       <%= link_to "<span class='glyphicon glyphicon-remove-circle'></span>".html_safe, voting_path(question, "no") , :class => "btn btn-lg btn-warning "%>
                     <% else %>
 
-                      <%= question.voted?(current_user) ? ("questions.you_voted_%s".t % "questions.#{question.answers.my_vote(current_user)}".t) : ("questions.you_didn't_vote".t) %>
+                      <%= question.voted?(current_user) ? ("questions.you_voted_%s".t % "#{question.answers.my_vote(current_user)}") : ("questions.you_didn't_vote".t) %>
                       <%= link_to "questions.vote_again".t, destroy_vote_path(question), :class => "btn btn-xs btn-default" if @poll.is_open? %>
 
                     <% end %>
