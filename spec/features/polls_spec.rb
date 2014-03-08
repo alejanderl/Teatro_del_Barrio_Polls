@@ -13,12 +13,12 @@ describe "Polls testing"   do
 
   	user_login "admin@example.com", "admin123"
 
-
-  	
+    debugger
+  	luis = "hola"
   	click_link "Votaciones"
 
   	click_link "Nuevo"
-
+    debugger
     fill_in "poll_title", :with => "Título de la votación"
     fill_in "poll_description", :with => "Descripción de la votación"
     fill_in "poll_start_date", :with => Time.now

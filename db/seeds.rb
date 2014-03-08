@@ -7,8 +7,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-
-
 User.create(:email => "admin@localhost.localhost",
 			:password => "teatrodelbarrio",
 			:password_confirmation => "teatrodelbarrio",

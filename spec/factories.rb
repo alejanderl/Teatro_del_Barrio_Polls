@@ -35,9 +35,16 @@ def create_sample_users
           :admin => 1          
   			  )
 
-
-
-
-
- 
 end
+
+
+def create_poll (attrs = {})
+
+  attrs2 = attrs
+
+  attrs2[:title]       = attrs[:title] || "Título de prueba random  "
+  attrs2[:description] = ""
+
+
+end
+

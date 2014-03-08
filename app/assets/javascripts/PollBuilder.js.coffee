@@ -7,14 +7,15 @@ window.TdB = window.TdBTdB || {}
 class TdB.PollBuilder
    
     constructor:(init_form_values) ->
-        @init_form_values = init_form_values
-        @button_add = $("#add_question")
-        @questions_field = $('#questions')
-        @question_counter = 1
+        @init_form_values  = init_form_values
+        @button_add        = $("#add_question")
+        @questions_field   = $('#questions')
+        @question_counter  = 1
         _this = this
         this.set_bind =>
 
     set_bind:=>
+
     	$( @button_add ).on "click", =>
     		
     		attributes = {}
