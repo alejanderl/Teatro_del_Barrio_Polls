@@ -63,8 +63,17 @@ describe "Polls testing"   do
     visit poll_path(Poll.last.id, :locale => :es)
     #vote yes
     first(".btn-success").click
+     page.should have_content "Has votado si"
+    within ".vote-results" do
+      within ".list-group-item-success" do
+        page.should have_content "1"
+      end
 
+    end
+    sleep 1
     debugger
+    sleep 1
+
     sleep 1
 
 

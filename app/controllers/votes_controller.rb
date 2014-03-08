@@ -5,7 +5,7 @@ class VotesController < ApplicationController
 
 		
 		question = Question.find params[:question_id]
-		debugger
+		
 		if question.vote! current_user, params[:my_vote]
 			flash[:notice] = "Thanks for voting".t 
 			redirect_to question.poll

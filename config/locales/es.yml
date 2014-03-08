@@ -34,8 +34,11 @@ es:
     total_answers:   "Respuestas"
     matter:          "Pregunta"
     remove_question: "Borrar la pregunta"
-    you_voted_%s: "Has votado %s"
-    vote_again:  "Cambiar mi voto"
+    you_voted_%s:    "Has votado %s"
+    vote_again:      "Cambiar mi voto"
+    no:              "no"
+    yes:             "si"
+    you_didn't_vote: "No has votado"
 
 # auth forms -----------------------------------------------------------------
 
