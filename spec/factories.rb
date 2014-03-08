@@ -46,11 +46,32 @@ end
 
 def create_poll (attrs = {})
 
-  attrs2 = attrs
+  attrs2 = attrs.dup
+  random = Random.rand(42-10)
+  attrs2[:title]       = attrs[:title] || "Título de prueba #{random}  "
+  attrs2[:description] = attrs[:title] || "descripción de prueba #{random}  "
+  attrs2[:start_date]  = attrs[:start_date] || (Time.now - 1.hour)
+  attrs2[:end_date]    = attrs[:end_date]   || (Time.now + 1.day)
+  attrs2[:user_id]     = attrs[:user_id]    || User.where(:admin => "1").first.id
+  poll = Poll.create attrs2
+  questions   = attrs[:questions]  || [{:poll_id => poll.id}]
 
-  attrs2[:title]       = attrs[:title] || "Título de prueba random  "
-  attrs2[:description] = ""
+  questions.each do |question|
+    create_question question
+  end
 
+
+end
+
+def create_question attrs = {}
+
+  attrs2 = attrs.dup
+  random = Random.rand(42-10)
+  attrs2[:poll_id] = attrs[:poll_id] || Poll.first.id
+  attrs2[:matter]  = attrs[:matter]  || "pregunta de prueba #{random}  "
+  
+  question = Poll.find(attrs[:poll_id]).questions.build attrs2 
+  question.save
 
 
 end

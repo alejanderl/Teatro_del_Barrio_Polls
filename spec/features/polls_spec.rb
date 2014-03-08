@@ -19,7 +19,7 @@ describe "Polls testing"   do
   	click_link "Votaciones"
 
   	click_link "Nuevo"
-    debugger
+    
     fill_in "poll_title", :with => "Título de la votación"
     fill_in "poll_description", :with => "Descripción de la votación"
     fill_in "poll_start_date", :with => Time.now
@@ -55,5 +55,15 @@ describe "Polls testing"   do
     
       
     end
+
+  it "Members can vote" ,:focus  , :js do
+    create_poll
+    user_login "member@example.com", "member123"
+    click_link "Votaciones"
+    debugger
+    sleep 1
+
+
+  end
 
 end

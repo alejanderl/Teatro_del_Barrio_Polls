@@ -70,6 +70,7 @@ TeatroDelBarrio::Application.configure do
   # the I18n.default_locale when a translation can not be found).
   config.i18n.fallbacks = true
 
+
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
 
@@ -78,4 +79,16 @@ TeatroDelBarrio::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  ActionMailer::Base.smtp_settings = {
+    :address              => "smtp.mandrillapp.com",
+    :port                 => 587,
+    :user_name            => 'propiedadabiertaoviedo@gmail.com',
+    :password             => ENV["MANDRILL_API_KEY"],
+    :enable_starttls_auto => true, # detects and uses STARTTLS
+    :authentication => 'plain', # Mandrill supports 'plain' or 'login'
+    :domain => 'teatrodelbarrio.herokuapp.com' # your domain to identify your server when connecting
+ }
+
+    config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 end

@@ -27,6 +27,18 @@ TeatroDelBarrio::Application.configure do
   # number of complex assets.
   config.assets.debug = true
 
+  config.action_mailer.raise_delivery_errors = true
+
+  ActionMailer::Base.smtp_settings = {
+      :address              => "smtp.mandrillapp.com",
+      :port                 => 587,
+      :user_name            => 'propiedadabiertaoviedo@gmail.com',
+      :password             => ENV["MANDRILL_API_KEY"],
+      :enable_starttls_auto => true, # detects and uses STARTTLS
+      :authentication => 'plain', # Mandrill supports 'plain' or 'login'
+      :domain => 'teatrodelbarrio.herokuapp.com' # your domain to identify your server when connecting
+   }
+
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 end
