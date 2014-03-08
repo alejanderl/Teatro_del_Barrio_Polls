@@ -51,7 +51,7 @@ group :development, :test do
 
 
 
-    gem 'turn'
+    #gem 'turn'
     gem 'rspec-rails'
     gem 'capybara'
     gem 'selenium-webdriver'

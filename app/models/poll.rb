@@ -14,7 +14,7 @@ class Poll < ActiveRecord::Base
 
 
 	# Each poll has at least one question. Question matter must be present.
-	before_validation {|_this| _this.questions.first || _this.questions.build  }
+	#before_validation {|_this| _this.questions.first || _this.questions.build  }
 
 	def is_open?
 		now = Time.now

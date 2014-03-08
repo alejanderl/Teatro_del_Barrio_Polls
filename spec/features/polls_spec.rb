@@ -1,4 +1,6 @@
 #encoding: utf-8
+require 'spec_helper'
+
 describe "Polls testing"   do
   
   before :each do
@@ -13,8 +15,7 @@ describe "Polls testing"   do
 
   	user_login "admin@example.com", "admin123"
 
-    debugger
-  	luis = "hola"
+
   	click_link "Votaciones"
 
   	click_link "Nuevo"
@@ -32,20 +33,27 @@ describe "Polls testing"   do
       
       all(:xpath ,".//input[@type='text']").each_with_index do |element, index|
 
-        
         element.set "Pregunta #{index.to_i + 1}"
       end
+
     end
 
     click_button "Guardar"
-    
-    
-
     page.should have_content "Título de la votación"
     page.should have_content "Pregunta 5"
 
   end
 
 
+  it "Members can´t create polls", :js do
+    
+    user_login "member@example.com", "member123"
+    visit root_path(:locale => :es)
+    have_selector(:link_or_button, 'Votaciones')
+    click_link "Votaciones"
+    page.should_not have_selector(:link_or_button, 'Nuevo')
+    
+      
+    end
 
 end
