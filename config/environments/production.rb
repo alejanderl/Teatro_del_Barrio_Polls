@@ -90,5 +90,5 @@ TeatroDelBarrio::Application.configure do
     :domain => 'teatrodelbarrio.herokuapp.com' # your domain to identify your server when connecting
  }
 
-    config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+    config.action_mailer.default_url_options = { :host => 'teatrodelbarrio.herokuapp.com' }
 end
