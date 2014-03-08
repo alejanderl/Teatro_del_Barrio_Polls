@@ -23,8 +23,8 @@ TeatroDelBarrio::Application.routes.draw do
 
 
     resources :polls 
-    match "vote/:question_id/:my_vote",:to =>  "votes#create", :via => [:get], :as => :voting
-    match "unvote/:question_id",:to =>  "votes#destroy", :via => [:get], :as => :destroy_vote
+    match "vote/:question_id/:my_vote",:to =>  "votes#create" , :via => [:get], :as => :voting
+    match "unvote/:question_id"       ,:to =>  "votes#destroy", :via => [:get], :as => :destroy_vote
 
     
 
@@ -32,7 +32,7 @@ TeatroDelBarrio::Application.routes.draw do
   
   
   match '*path', to: redirect("/#{I18n.default_locale}/%{path}"), constraints: lambda { |req| !req.path.starts_with? "/#{I18n.default_locale}/" }, via: [:get, :post]
-  match '', to: redirect("/#{I18n.default_locale}"), via: [:get, :post]
+  match ''     , to: redirect("/#{I18n.default_locale}"), via: [:get, :post]
 
 end
 
