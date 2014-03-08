@@ -25,6 +25,7 @@ class Question < ActiveRecord::Base
 
 		if self.poll.is_open?
 
+
 			return false unless user
 			
 			the_vote = (params == "yes") ? 1 : 0
@@ -33,16 +34,22 @@ class Question < ActiveRecord::Base
 			
 			self.save
 		else
+			errors[:poll] << "activerecord.errors.messages.the_poll_is_closed".t
 			return false
 		end
 
 	end
 	def destroy_vote! user
 		
+		if self.poll.is_open?
+			self.answers.delete user.id
 
-		self.answers.delete user.id
-
-		self.save
+			self.save
+		else
+			errors[:poll] << "activerecord.errors.messages.the_poll_is_closed".t
+			return false
+		
+		end
 
 	end
 

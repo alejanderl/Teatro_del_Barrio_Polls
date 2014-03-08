@@ -2,15 +2,16 @@ class VotesController < ApplicationController
 
 
 	def create
+
 		
 		question = Question.find params[:question_id]
-
+		debugger
 		if question.vote! current_user, params[:my_vote]
-
+			flash[:notice] = "Thanks for voting".t 
 			redirect_to question.poll
 
 		else
-
+			flash[:error] = "There_was_an_error".t 
 			redirect_to question.poll
 			
 		end

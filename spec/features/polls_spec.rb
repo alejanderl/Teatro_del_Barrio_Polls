@@ -59,7 +59,11 @@ describe "Polls testing"   do
   it "Members can vote" ,:focus  , :js do
     create_poll
     user_login "member@example.com", "member123"
-    click_link "Votaciones"
+    
+    visit poll_path(Poll.last.id, :locale => :es)
+    #vote yes
+    first(".btn-success").click
+
     debugger
     sleep 1
 

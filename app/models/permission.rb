@@ -2,6 +2,7 @@ class Permission < Struct.new(:user)
   
 
   def allow?(controller, action)
+    
       
         return true if controller == "devise\/registrations"   
         return true if controller == "devise\/sessions"
@@ -11,6 +12,7 @@ class Permission < Struct.new(:user)
       
     if controller == "polls"
        return true if user.admin?
+
        return true if action.in?(%w[index show])
       
     end
