@@ -8,18 +8,9 @@ class Question < ActiveRecord::Base
 
 	validates :matter , :presence => true
 
-	class << self
-		def adios
-			"adios"
-		end
-	end
 
-	def hola
-		self.class
-	end
-	def self.hola
-		self.class.class
-	end
+
+
 
 	def vote! user, params
 
