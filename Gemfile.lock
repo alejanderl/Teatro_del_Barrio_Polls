@@ -30,7 +30,7 @@ GEM
     atomic (1.1.14)
     bcrypt-ruby (3.1.2)
     bcrypt-ruby (3.1.2-x86-mingw32)
-    bootstrap-sass (3.0.3.0)
+    bootstrap-sass (3.1.1.0)
       sass (~> 3.2)
     builder (3.1.4)
     capybara (2.2.1)
@@ -181,7 +181,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
-  bootstrap-sass (~> 3.0.3.0)
+  bootstrap-sass (~> 3.1.1)
   capybara
   coffee-rails (~> 4.0.0)
   database_cleaner
@@ -195,7 +195,7 @@ DEPENDENCIES
   rails (= 4.0.2)
   rails_12factor
   rspec-rails
-  sass-rails (~> 4.0.0)
+  sass-rails (>= 3.2)
   sdoc
   selenium-webdriver
   turbolinks
