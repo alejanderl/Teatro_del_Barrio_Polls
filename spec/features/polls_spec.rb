@@ -56,7 +56,7 @@ describe "Polls testing"   do
       
     end
 
-  it "Members can vote"  do
+  it "Members can vote yes, no and change their vote"  do
     create_poll
     user_login "member@example.com", "member123"
     
