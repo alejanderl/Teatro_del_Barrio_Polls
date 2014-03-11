@@ -1,0 +1,19 @@
+<div id="taxonomy-<%= taxonomy %>" class="taxonomy">
+
+  <h4><%= t"taxonomies.#{taxonomy}" %></h4>
+  
+  <ul id="taxonomy-<%= taxonomy %>">
+  
+    <% terms.each do |t|  %>
+    
+    <li class="taxonomy-term term-<%=t.id%>">
+    
+      <%= t.name %>
+    </li>
+    
+    
+    
+    <% end %>
+  </ul>
+  <div class="clearfix"></div>
+</div>

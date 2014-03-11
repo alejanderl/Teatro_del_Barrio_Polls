@@ -1,0 +1,37 @@
+<div class="taxonomy-terms taxonomy-terms-<%= taxonomy_name %>">
+  <h4><%=  t"taxonomies.#{taxonomy_name}" %></h4> <a href="javascript:void(0)" class="btn icon-plus-sign btn-edit open-dialog" data-taxonomy="<%= taxonomy_name %>"><span><%= t"misc.add" %></span></a>
+
+  
+  <div id="terms-names-<%= taxonomy_name%>" class="active-taxonomies <%= t"taxonomies.#{taxonomy_name}" %>">
+    <ul class="active-list">
+      <% @terms_ids_active ||= "," %>
+      <% object.terms.where(:taxonomy_name => taxonomy_name).each do |term| %>
+          <li class="term-<%= term.id %>" data-id="<%= term.id %>" data-name="<%= term.taxonomy_name %>" data-parent="<%= term.parent_id %>">
+           <a href="javascript:void(0)" class="remove-term"><span class="term-remove  icon-minus-sign hidden" ></span>&nbsp;<%= term.name %></a>
+          </li>
+        
+        <% @terms_ids_active += ",#{term.id}" %>
+      <% end %>
+          <div class= "clearfix"></div>
+    </ul>
+  </div>
+  <%= hidden_field_tag "terms-id[#{taxonomy_name}]", @terms_ids_active %>
+  <%  @terms_ids_active=""  %>
+  
+   <div class="dialog dialog-<%= taxonomy_name %>" data-taxonomy="<%= taxonomy_name %>" >
+    <% previous ||= taxonomy_terms[0] %>
+    <ul><% taxonomy_terms.each do |term| %>
+        <%=(previous.depth-term.depth).times  {  concat "</ul>".html_safe} if previous.depth > term.depth   %>
+        
+        
+        <%= "<ul>".html_safe if previous.depth < term.depth  %>
+        
+        
+        <li class="term-<%= term.id %> add-taxonomy-terms" data-id="<%= term.id %>" data-name="<%= term.taxonomy_name %>" data-parent="<%= term.parent_id %>">
+          <a href="javascript:void(0)" class="add-term"><span class="term-remove  icon-plus-sign hidden" ></span><%= term.name %></a>
+        </li>
+        <% previous = term %> 
+      <% end %>
+    </ul>
+  </div>
+</div>

@@ -1,71 +1,41 @@
-/home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/actionpack-4.0.2/lib/action_dispatch/routing/mapper.rb:229:in `default_controller_and_action': missing :controller (ArgumentError)
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/actionpack-4.0.2/lib/action_dispatch/routing/mapper.rb:116:in `normalize_options!'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/actionpack-4.0.2/lib/action_dispatch/routing/mapper.rb:64:in `initialize'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/actionpack-4.0.2/lib/action_dispatch/routing/mapper.rb:1443:in `new'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/actionpack-4.0.2/lib/action_dispatch/routing/mapper.rb:1443:in `add_route'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/actionpack-4.0.2/lib/action_dispatch/routing/mapper.rb:1422:in `decomposed_match'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/actionpack-4.0.2/lib/action_dispatch/routing/mapper.rb:1403:in `block in match'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/actionpack-4.0.2/lib/action_dispatch/routing/mapper.rb:1394:in `each'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/actionpack-4.0.2/lib/action_dispatch/routing/mapper.rb:1394:in `match'
-	from /home/alejanderl/Documents/teatro_del_barrio/config/routes.rb:25:in `block (2 levels) in <top (required)>'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/actionpack-4.0.2/lib/action_dispatch/routing/mapper.rb:723:in `scope'
-	from /home/alejanderl/Documents/teatro_del_barrio/config/routes.rb:8:in `block in <top (required)>'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/actionpack-4.0.2/lib/action_dispatch/routing/route_set.rb:341:in `instance_exec'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/actionpack-4.0.2/lib/action_dispatch/routing/route_set.rb:341:in `eval_block'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/actionpack-4.0.2/lib/action_dispatch/routing/route_set.rb:319:in `draw'
-	from /home/alejanderl/Documents/teatro_del_barrio/config/routes.rb:1:in `<top (required)>'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/zeus-0.13.3/lib/zeus/load_tracking.rb:50:in `load'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/zeus-0.13.3/lib/zeus/load_tracking.rb:50:in `load'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/zeus-0.13.3/lib/zeus/load_tracking.rb:43:in `load'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/activesupport-4.0.2/lib/active_support/dependencies.rb:223:in `block in load'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/activesupport-4.0.2/lib/active_support/dependencies.rb:214:in `load_dependency'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/activesupport-4.0.2/lib/active_support/dependencies.rb:223:in `load'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/railties-4.0.2/lib/rails/application/routes_reloader.rb:40:in `block in load_paths'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/railties-4.0.2/lib/rails/application/routes_reloader.rb:40:in `each'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/railties-4.0.2/lib/rails/application/routes_reloader.rb:40:in `load_paths'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/railties-4.0.2/lib/rails/application/routes_reloader.rb:16:in `reload!'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/railties-4.0.2/lib/rails/application/routes_reloader.rb:26:in `block in updater'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/activesupport-4.0.2/lib/active_support/file_update_checker.rb:75:in `call'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/activesupport-4.0.2/lib/active_support/file_update_checker.rb:75:in `execute'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/railties-4.0.2/lib/rails/application/routes_reloader.rb:27:in `updater'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/railties-4.0.2/lib/rails/application/routes_reloader.rb:6:in `execute_if_updated'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/railties-4.0.2/lib/rails/application/finisher.rb:69:in `block in <module:Finisher>'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/railties-4.0.2/lib/rails/initializable.rb:30:in `instance_exec'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/railties-4.0.2/lib/rails/initializable.rb:30:in `run'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/railties-4.0.2/lib/rails/initializable.rb:55:in `block in run_initializers'
-	from /home/alejanderl/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/tsort.rb:150:in `block in tsort_each'
-	from /home/alejanderl/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/tsort.rb:183:in `block (2 levels) in each_strongly_connected_component'
-	from /home/alejanderl/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/tsort.rb:219:in `each_strongly_connected_component_from'
-	from /home/alejanderl/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/tsort.rb:182:in `block in each_strongly_connected_component'
-	from /home/alejanderl/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/tsort.rb:180:in `each'
-	from /home/alejanderl/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/tsort.rb:180:in `each_strongly_connected_component'
-	from /home/alejanderl/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/tsort.rb:148:in `tsort_each'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/railties-4.0.2/lib/rails/initializable.rb:54:in `run_initializers'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/railties-4.0.2/lib/rails/application.rb:215:in `initialize!'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/railties-4.0.2/lib/rails/railtie/configurable.rb:30:in `method_missing'
-	from /home/alejanderl/Documents/teatro_del_barrio/config/environment.rb:5:in `<top (required)>'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/activesupport-4.0.2/lib/active_support/dependencies.rb:229:in `require'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/activesupport-4.0.2/lib/active_support/dependencies.rb:229:in `block in require'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/activesupport-4.0.2/lib/active_support/dependencies.rb:214:in `load_dependency'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/activesupport-4.0.2/lib/active_support/dependencies.rb:229:in `require'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/railties-4.0.2/lib/rails/application.rb:189:in `require_environment!'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/zeus-0.13.3/lib/zeus/rails.rb:103:in `development_environment'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/zeus-0.13.3/lib/zeus.rb:166:in `run_action'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/zeus-0.13.3/lib/zeus.rb:54:in `block in go'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/zeus-0.13.3/lib/zeus/load_tracking.rb:7:in `features_loaded_by'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/zeus-0.13.3/lib/zeus.rb:53:in `go'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/zeus-0.13.3/lib/zeus.rb:78:in `block (3 levels) in go'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/zeus-0.13.3/lib/zeus.rb:78:in `fork'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/zeus-0.13.3/lib/zeus.rb:78:in `block (2 levels) in go'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/zeus-0.13.3/lib/zeus.rb:73:in `each'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/zeus-0.13.3/lib/zeus.rb:73:in `block in go'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/zeus-0.13.3/lib/zeus.rb:62:in `loop'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/zeus-0.13.3/lib/zeus.rb:62:in `go'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/zeus-0.13.3/lib/zeus.rb:78:in `block (3 levels) in go'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/zeus-0.13.3/lib/zeus.rb:78:in `fork'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/zeus-0.13.3/lib/zeus.rb:78:in `block (2 levels) in go'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/zeus-0.13.3/lib/zeus.rb:73:in `each'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/zeus-0.13.3/lib/zeus.rb:73:in `block in go'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/zeus-0.13.3/lib/zeus.rb:62:in `loop'
-	from /home/alejanderl/.rvm/gems/ruby-2.0.0-p353@teatro_del_barrio/gems/zeus-0.13.3/lib/zeus.rb:62:in `go'
-	from -e:1:in `<main>'
+                  Prefix Verb     URI Pattern                                   Controller#Action
+           landing_index GET      /landing/index(.:format)                      landing#index
+                    root GET      /:locale(.:format)                            home#index {:locale=>/en|es/}
+        new_user_session GET      /:locale/users/sign_in(.:format)              devise/sessions#new {:locale=>/en|es/}
+            user_session POST     /:locale/users/sign_in(.:format)              devise/sessions#create {:locale=>/en|es/}
+    destroy_user_session DELETE   /:locale/users/sign_out(.:format)             devise/sessions#destroy {:locale=>/en|es/}
+           user_password POST     /:locale/users/password(.:format)             devise/passwords#create {:locale=>/en|es/}
+       new_user_password GET      /:locale/users/password/new(.:format)         devise/passwords#new {:locale=>/en|es/}
+      edit_user_password GET      /:locale/users/password/edit(.:format)        devise/passwords#edit {:locale=>/en|es/}
+                         PATCH    /:locale/users/password(.:format)             devise/passwords#update {:locale=>/en|es/}
+                         PUT      /:locale/users/password(.:format)             devise/passwords#update {:locale=>/en|es/}
+cancel_user_registration GET      /:locale/users/cancel(.:format)               devise/registrations#cancel {:locale=>/en|es/}
+       user_registration POST     /:locale/users(.:format)                      devise/registrations#create {:locale=>/en|es/}
+   new_user_registration GET      /:locale/users/sign_up(.:format)              devise/registrations#new {:locale=>/en|es/}
+  edit_user_registration GET      /:locale/users/edit(.:format)                 devise/registrations#edit {:locale=>/en|es/}
+                         PATCH    /:locale/users(.:format)                      devise/registrations#update {:locale=>/en|es/}
+                         PUT      /:locale/users(.:format)                      devise/registrations#update {:locale=>/en|es/}
+                         DELETE   /:locale/users(.:format)                      devise/registrations#destroy {:locale=>/en|es/}
+       user_confirmation POST     /:locale/users/confirmation(.:format)         devise/confirmations#create {:locale=>/en|es/}
+   new_user_confirmation GET      /:locale/users/confirmation/new(.:format)     devise/confirmations#new {:locale=>/en|es/}
+                         GET      /:locale/users/confirmation(.:format)         devise/confirmations#show {:locale=>/en|es/}
+             users_index GET      /:locale/users/index(.:format)                users#index {:locale=>/en|es/}
+              taxonomies POST     /:locale/taxonomies(.:format)                 taxonomies#create {:locale=>/en|es/}
+          new_taxonomies GET      /:locale/taxonomies/new(.:format)             taxonomies#new {:locale=>/en|es/}
+         edit_taxonomies GET      /:locale/taxonomies/edit(.:format)            taxonomies#edit {:locale=>/en|es/}
+                         GET      /:locale/taxonomies(.:format)                 taxonomies#show {:locale=>/en|es/}
+                         PATCH    /:locale/taxonomies(.:format)                 taxonomies#update {:locale=>/en|es/}
+                         PUT      /:locale/taxonomies(.:format)                 taxonomies#update {:locale=>/en|es/}
+                         DELETE   /:locale/taxonomies(.:format)                 taxonomies#destroy {:locale=>/en|es/}
+                   polls GET      /:locale/polls(.:format)                      polls#index {:locale=>/en|es/}
+                         POST     /:locale/polls(.:format)                      polls#create {:locale=>/en|es/}
+                new_poll GET      /:locale/polls/new(.:format)                  polls#new {:locale=>/en|es/}
+               edit_poll GET      /:locale/polls/:id/edit(.:format)             polls#edit {:locale=>/en|es/}
+                    poll GET      /:locale/polls/:id(.:format)                  polls#show {:locale=>/en|es/}
+                         PATCH    /:locale/polls/:id(.:format)                  polls#update {:locale=>/en|es/}
+                         PUT      /:locale/polls/:id(.:format)                  polls#update {:locale=>/en|es/}
+                         DELETE   /:locale/polls/:id(.:format)                  polls#destroy {:locale=>/en|es/}
+                  voting GET      /:locale/vote/:question_id/:my_vote(.:format) votes#create {:locale=>/en|es/}
+            destroy_vote GET      /:locale/unvote/:question_id(.:format)        votes#destroy {:locale=>/en|es/}
+                         GET|POST /*path(.:format)                              redirect(301, /es/%{path})
+                         GET|POST /                                             redirect(301, /es)

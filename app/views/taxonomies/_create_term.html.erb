@@ -1,0 +1,12 @@
+<p>
+  <div id="create-term-<%= @term.parent_id %>" style="">
+
+  <%= form_for(@term,:url => taxonomies_path()) do |x| %>    
+    <%= x.text_field :name, :style => "margin:0;" %>
+    <%= x.hidden_field :parent_id, :value => @term.parent_id %>
+    <%= x.submit "add term", :class => "btn btn-xs btn-primary", :method => "post" %>
+  <% end %>
+  </div>
+
+</p>
+

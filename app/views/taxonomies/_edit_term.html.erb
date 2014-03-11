@@ -1,0 +1,8 @@
+
+  <li id="edit-term-<%= t.id %>" style="">
+
+  <%= form_for(t,:url => taxonomy_path(t.id)) do |x| %>    
+    <%= x.text_field :name, :style => "margin:0;" %>    
+    <%= x.submit "update term", :class => "btn btn-medium btn-edit", :method => "post" %>
+  <% end %>
+  </li>

@@ -14,6 +14,9 @@ class Poll < ActiveRecord::Base
 
 	validate :is_editable?
 
+	has_many :taxonomizables, :as => :item, :dependent => :destroy
+  	has_many :terms, :through => :taxonomizables  
+
 
 	# Each poll has at least one question. Question matter must be present.
 	#before_validation {|_this| _this.questions.first || _this.questions.build  }

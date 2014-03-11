@@ -1,0 +1,160 @@
+// Place all the styles related to the taxonom iescontroller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.action-buttons {
+    display:inline;
+    
+    
+}
+.buttons-block {
+    display: inline;
+}
+
+.term-deleted {
+    text-decoration:line-through;
+}
+.taxonomies li span {
+    font-size:14px;
+}
+.deploy-button {
+    border-radius: 50% 50% 50% 50%;
+    margin-left: -25px;
+    position: relative;
+    z-index: 4;
+    padding: 5px;
+
+    }
+.taxonomies ul:first-child li {
+
+  
+    padding:10px 0;
+    
+    & li {
+        padding: 3px 3px 3px 8px ;
+        
+        span {
+            border-bottom: 1px dashed #666;
+            font-size: 14px;
+            padding-bottom: 3px;
+            padding-left: 10px;
+            margin-left: -5px;
+        
+            &.has_sons{
+                border: 0;
+            }
+        }
+    
+    }
+    
+}
+
+.taxonomies ul ul li{
+    border-left:1px dashed #666;
+    padding-left:10px;
+    padding-top:0;
+    margin-left:0;
+    list-style: none;
+    &:last-child {
+       border-radius:0px 5px 5px 5px;
+       
+
+    }
+  
+}
+div.taxonomy {
+    h4 {
+        
+        padding: 3px;
+        margin-left: 10px;
+        opacity: 0.8;
+        
+    }
+    
+    li {
+        list-style: none;
+        border:1px solid #ccc;
+        padding:3px;
+        margin:3px;
+        float:left;
+    }
+    
+    
+}
+
+
+@mixin large_buttons($float)  {
+  border: 1px solid #999999;
+  border-radius: 8px 8px 8px 8px;
+  float: $float;
+  line-height: 20px;
+  list-style: none outside none;
+  margin: 10px 5px;
+  margin-top:20px;
+
+  padding: 3px 33px 4px 13px;;
+      &.delete-over {
+	  background-color:rgba(255,0,0,0.5)
+      }
+      
+      &.inactive {
+	background-color:rgba(50,125,255,0.5);
+      }
+      
+      a:hover {
+	  text-decoration: none;
+	  background-color: transparent;
+	  text-shadow: none;
+      }
+  }
+ul.active-list {
+    margin-bottom:20px;
+    .hidden {
+	opacity:0;
+    }
+  li {
+    @include large_buttons(left);
+  }
+}
+.dialog .add-taxonomy-terms {
+    @include large_buttons(none);
+    &.inactive {
+	pointer-events:none
+    }
+}
+.taxonomy-terms{
+    border: 1px dashed #ccc;
+    border-radius: 10px;
+    margin: 10px 0;
+    padding: 10px 10px;
+    box-shadow: 1px 1px 13px -4px #ccc;
+}
+
+.open-dialog {
+    float:right;
+}
+
+.terms-list {
+    margin:10px 0;
+    em   {
+        display: block;
+        margin: 0;
+        text-transform: capitalize;
+    }
+    ul.terms {
+        display: block;
+        border:1px dotted #ccc;
+        border-radius:5px;
+        margin:0;
+        padding: 5px 15px;
+        
+        li {
+            float:left;
+            padding: 10px 5px;
+            list-style: none;
+            border-radius: 5px;
+            background-color:rgba(255,255,255,0.7);
+            margin:5px 3px;   
+        }
+    }
+}

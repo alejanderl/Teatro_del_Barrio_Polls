@@ -1,1 +1,4 @@
-terms_controller.rb
+class TermsController < ApplicationController
+
+
+end

@@ -9,18 +9,16 @@ TeatroDelBarrio::Application.routes.draw do
   scope ":locale", locale: /#{I18n.available_locales.join("|")}/ do
 
     
-    authenticated do
 
-    root       :to => "home#index", :as => :authenticated_root
-    
-    end
 
-    root :to => 'landing#index'
+    root :to => 'home#index'
 
 
     devise_for :users
     get "users/index"
 
+    resources :taxonomies
+    resources :terms
 
     resources :polls 
     match "vote/:question_id/:my_vote",:to =>  "votes#create" , :via => [:get], :as => :voting
