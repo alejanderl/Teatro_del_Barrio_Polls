@@ -10,6 +10,9 @@ class Term < ActiveRecord::Base
   	  belongs_to :parent ,:class_name => "Term",
                           :foreign_key => :parent_id  
 
+
+      validates :name ,:presence => true
+
       before_save :check_taxonomy
 
 
@@ -29,7 +32,7 @@ class Term < ActiveRecord::Base
 	private
 
 	def check_taxonomy
-		self.taxonomy_id = parent.taxonomy_id if self.parent_id&&!taxonomy_id 
+		self.taxonomy_id = parent.taxonomy_id if (self.parent_id != 0) && !taxonomy_id 
 		self.parent_id   = taxonomy_id        if taxonomy_id&&!self.parent_id
 	end
 
