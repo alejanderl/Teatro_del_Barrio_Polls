@@ -81,12 +81,13 @@
 <%end %>
 
 
-<% if current_user.admin?&&@poll.is_editable?  %>
-	
-	<%= link_to "global.edit".t   , edit_poll_path(@poll), :class => "btn-default btn" %>
-	<%= link_to "global.delete".t , @poll , :method => :delete, :confirm => "global.are_you_sure?".t %>
-
-
+<% if  allow?("polls","update")&&@poll.is_editable?  %>
+	<%= link_to "global.edit".t   ,
+               edit_poll_path(@poll),
+               :class => "btn-default btn" %>
+	<%= link_to "global.delete".t , @poll ,
+              :method => :delete,
+              :confirm => "global.are_you_sure?".t %>
 <% end %>
 
 

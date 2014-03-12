@@ -30,6 +30,8 @@ class Poll < ActiveRecord::Base
 		self.state == 1
 	end
 
+
+
 	def state
 		
 		
@@ -46,7 +48,7 @@ class Poll < ActiveRecord::Base
 		self.questions.each do |question|
 			return false if question.answers.count > 0
 		end
-		state
+		self.state != 0
 	end
 
 	def right_date

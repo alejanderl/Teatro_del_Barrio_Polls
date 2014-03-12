@@ -90,7 +90,7 @@ class TdB.Taxonomies_Terms
     remove_term:(_that) ->
         added_taxonomy_name = $(_that).parent().attr("data-name")
         remove_id = $(_that).parent().attr("data-id")
-        debugger
+        
         value = $("#terms-id_"+added_taxonomy_name).val().split(",")
         value = value
         value[value.indexOf(remove_id) + ""] = ""
@@ -121,7 +121,7 @@ class TdB.Taxonomies_Terms
 
               
     check_terms: (family) -> 
-        debugger
+        
         active_terms = $("#terms-id_" +  family).val().split(",")
         current_list = $(".dialog-" + family + " ul li")
         this.assign_events ->

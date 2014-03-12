@@ -38,6 +38,9 @@
 		<%= link_to "<span class='glyphicon glyphicon-plus'></span>".html_safe, "#",:id => "add_question",:title => "polls.add_question".t, :class => "btn btn-default btn-small ", :data =>{"no-turbolink" => "true"} %>
 	
 		<hr>
+
+<%= terms_field_for 1 , @poll %>
+		<hr>
 		<%= t.submit "global.save".t , :class => "btn btn-default btn-primary"  %>
 	</div>
 
@@ -76,4 +79,3 @@
 
 	</script> 
 <% end %>
-<%= terms_field_for 1 , @poll %>
