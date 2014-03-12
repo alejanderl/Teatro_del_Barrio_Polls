@@ -8,7 +8,7 @@ module PollsHelper
 			css_class = "warning"
 			status    = "close"
 		when 1 
-			css_class = "succes"
+			css_class = "success"
 			status    = "open"
 		when 2
 			css_class = "info"

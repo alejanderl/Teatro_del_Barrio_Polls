@@ -84,15 +84,14 @@ div.taxonomy {
 
 
 @mixin large_buttons($float)  {
-  border: 1px solid #999999;
-  border-radius: 8px 8px 8px 8px;
+
   float: $float;
   line-height: 20px;
   list-style: none outside none;
   margin: 10px 5px;
   margin-top:20px;
 
-  padding: 3px 33px 4px 13px;;
+  padding: 3px 13px 4px 13px;;
       &.delete-over {
 	  background-color:rgba(255,0,0,0.5)
       }
@@ -107,8 +106,9 @@ div.taxonomy {
 	  text-shadow: none;
       }
   }
-ul.active-list {
+.active-taxonomies ul.active-list {
     margin-bottom:20px;
+    padding-left:0px;
     .hidden {
 	opacity:0;
     }

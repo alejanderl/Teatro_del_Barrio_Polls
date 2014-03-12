@@ -11,6 +11,7 @@ es:
     delete: "Borrar"
     are_you_sure?: "Está seguro?"
     save: "Guardar"
+    add:   "Annadir"
   users:
     go_in:    "Entrar"
     sign_in:  "Entrar"

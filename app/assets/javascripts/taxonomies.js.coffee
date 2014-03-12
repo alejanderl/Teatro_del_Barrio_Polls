@@ -39,11 +39,11 @@ class TdB.Taxonomies_Terms
             button = $(this)
             $(this).next().next().toggle "fast", ->
                 if $(this).is(":hidden")
-                    button.addClass("icon-chevron-right")
-                    button.removeClass("icon-chevron-down")
+                    button.addClass("glyphicon-chevron-right")
+                    button.removeClass("glyphicon-chevron-down")
                 else
-                    button.removeClass("icon-chevron-right")
-                    button.addClass("icon-chevron-down")
+                    button.removeClass("glyphicon-chevron-right")
+                    button.addClass("glyphicon-chevron-down")
         this.assign_events()
                     
     assign_events: ->
@@ -110,8 +110,8 @@ class TdB.Taxonomies_Terms
             $(_that).removeClass("add-term")
             the_cloned = added.clone()                
             the_cloned.children(" a").addClass("remove-term")
-            the_cloned.children("a").children("span").addClass(" icon-minus-sign")
-            the_cloned.children("a").children("span").removeClass(" icon-plus-sign")
+            the_cloned.children("a").children("span").addClass(" glyphicon-minus-sign")
+            the_cloned.children("a").children("span").removeClass(" glyphicon-plus-sign")
             $("#terms-names-"+added_taxonomy_name+" ul div.clearfix").prepend(the_cloned)
             $(_that).removeClass("add-term")
             value = $("#terms-id_"+added_taxonomy_name).val() + "," + added_id

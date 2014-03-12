@@ -1,40 +1,47 @@
 
-<div class="taxonomy-terms taxonomy-terms-<%= taxonomy.id %>">
-  <h4><%=  taxonomy.name %></h4> <a href="javascript:void(0)" class="btn icon-plus-sign btn-edit open-dialog" data-taxonomy="<%= taxonomy.id %>"><span><%= t"misc.add" %></span></a>
-
-  
-  <div id="terms-names-<%= taxonomy.id %>" class="active-taxonomies <%= taxonomy.id %>">
-    <ul class="active-list">
-      <% @terms_ids_active ||= "," %>
-      <% object.terms.where(:taxonomy_id => taxonomy.id).each do |term| %>
-          <li class="term-<%= term.id %>" data-id="<%= term.id %>" data-name="<%= taxonomy.id %>" data-parent="<%= term.parent_id %>">
-           <a href="javascript:void(0)" class="remove-term"><span class="term-remove  icon-minus-sign hidden" ></span>&nbsp;<%= term.name %></a>
-          </li>
-        
-        <% @terms_ids_active += ",#{term.id}" %>
-      <% end %>
-          <div class= "clearfix"></div>
-    </ul>
-  </div>
-  <%= hidden_field_tag "terms-id[#{taxonomy.id}]", @terms_ids_active %>
-  <%  @terms_ids_active=""  %>
-  
-   <div class="dialog dialog-<%= taxonomy.id %>" data-taxonomy="<%= taxonomy.id %>" >
-    <% previous ||= taxonomy_terms[0] %>
-    <ul><% taxonomy_terms.each do |term| %>
-      <%  %>
-        <%=(previous.depth-term.depth).times  {  concat "</ul>".html_safe} if previous.depth > term.depth   %>
-        
-        
-        <%= "<ul>".html_safe if previous.depth < term.depth  %>
-        
-        
-        <li class="term-<%= term.id %> add-taxonomy-terms" data-id="<%= term.id %>" data-name="<%= taxonomy.id %>" data-parent="<%= term.parent_id %>">
-          <a href="javascript:void(0)" class="add-term"><span class="term-remove  icon-plus-sign hidden" ></span><%= term.name %></a>
-        </li>
-        <% previous = term %> 
-      <% end %>
-    </ul>
+<div id="<%="accordion#{taxonomy.id}" %>" class="panel-group taxonomy-terms taxonomy-terms-<%= taxonomy.id %>">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <a href="javascript:void(0)" class="pull-right btn btn-default glyphicon glyphicon-plus-sign btn-edit open-dialog" data-taxonomy="<%= taxonomy.id %>"><span></span></a>
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="<%="#accordion#{taxonomy.id}" %>" href="<%="#collapse#{taxonomy.id}" %>">
+        <h4 class =""><%=  taxonomy.name %></h4> 
+      </a>
+    </div>
+     <div id="<%="collapse#{taxonomy.id}" %>" class="panel-collapse collapse" >
+      <div id="terms-names-<%= taxonomy.id %>" class="panel-body active-taxonomies <%= taxonomy.id %>">
+        <ul class="active-list">
+          <% @terms_ids_active ||= "," %>
+          <% object.terms.where(:taxonomy_id => taxonomy.id).each do |term| %>
+              <li class="btn btn-default term-<%= term.id %> " data-id="<%= term.id %>" data-name="<%= taxonomy.id %>" data-parent="<%= term.parent_id %>">
+               <a href="javascript:void(0)" class="remove-term "><span class="term-remove  glyphicon glyphicon-minus-sign hidden" ></span>&nbsp;<%= term.name %></a>
+              </li>
+            
+            <% @terms_ids_active += ",#{term.id}" %>
+          <% end %>
+              <div class= "clearfix"></div>
+        </ul>
+      </div>
+      <%= hidden_field_tag "terms-id[#{taxonomy.id}]", @terms_ids_active %>
+      <%  @terms_ids_active=""  %>
+      
+       <div class="dialog dialog-<%= taxonomy.id %>" data-taxonomy="<%= taxonomy.id %>" >
+        <% previous ||= taxonomy_terms[0] %>
+        <ul><% taxonomy_terms.each do |term| %>
+          <%  %>
+            <%=(previous.depth-term.depth).times  {  concat "</ul>".html_safe} if previous.depth > term.depth   %>
+            
+            
+            <%= "<ul>".html_safe if previous.depth < term.depth  %>
+            
+            
+            <li class="btn btn-default term-<%= term.id %> add-taxonomy-terms" data-id="<%= term.id %>" data-name="<%= taxonomy.id %>" data-parent="<%= term.parent_id %>">
+              <a href="javascript:void(0)" class="add-term"><span class="term-remove  glyphicon glyphicon-plus-sign hidden" ></span><%= term.name %></a>
+            </li>
+            <% previous = term %> 
+          <% end %>
+        </ul>
+      </div>
+    </div>
   </div>
 </div>
 
