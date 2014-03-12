@@ -29,3 +29,13 @@
     <% end %>
   </div>
 </div>
+<%= content_for :footer_scripts do %>
+  <script >
+
+    $(document).ready(function(){
+      window.taxonomies = new TdB.Taxonomies_Terms();
+
+    })
+
+  </script> 
+<% end %>

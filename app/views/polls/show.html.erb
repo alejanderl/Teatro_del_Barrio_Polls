@@ -4,11 +4,7 @@
     <div id="badges" class=" col-md-1">
       <h4 style="margin:0;padding:0">
         
-        <% if @poll.is_open? %>
-          <span class=" label label-success"><%= "polls.open".t %></span>
-        <%else%>
-          <span class=" label label-warning"><%= "polls.close".t %></span>
-        <%end%>
+        <%= status_badge @poll %>
       </h4>
     </div>
   </div>
@@ -67,7 +63,7 @@
     <div class="col-sm-2 pull-left">
     
       
-      <% if !question.voted?(current_user)&&@poll.is_open? %>
+      <% if !question.voted?(current_user)&&@poll.is_votable? %>
         <h4><%= "questions.my_vote".t  %></h4>
         <%= link_to "<span class='glyphicon glyphicon-ok-circle'></span>".html_safe, voting_path(question, "yes"), :class => "btn btn-lg btn-success" %>&nbsp;
         <%= link_to "<span class='glyphicon glyphicon-remove-circle'></span>".html_safe, voting_path(question, "no") , :class => "btn btn-lg btn-warning "%>
@@ -75,7 +71,7 @@
 
          <h4><%= question.voted?(current_user) ? ("questions.you_voted_%s".t % "questions._#{question.answers.my_vote(current_user)}".t) : ("questions.you_didn't_vote".t) %></h4>
         
-        <%= link_to "questions.vote_again".t, destroy_vote_path(question), :class => "btn btn-xs btn-default" if @poll.is_open? %>
+        <%= link_to "questions.vote_again".t, destroy_vote_path(question), :class => "btn btn-xs btn-default" if @poll.is_votable? %>
 
       <% end %>
     </div>

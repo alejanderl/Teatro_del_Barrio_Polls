@@ -25,6 +25,7 @@ class PollsController < ApplicationController
 		
 		@poll      = Poll.new standard_attributes
 		@poll.user = current_user
+		add_term params["terms-id"], @poll
 		if @poll.save
 			redirect_to @poll
 		else 
@@ -41,9 +42,9 @@ class PollsController < ApplicationController
 	end
 
 	def update
-
+		debugger
 		@poll = Poll.find params[:id]
-		
+		add_term params["terms-id"], @poll
 		if @poll.update_attributes standard_attributes
 			redirect_to @poll
 

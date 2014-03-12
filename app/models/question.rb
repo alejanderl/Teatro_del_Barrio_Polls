@@ -14,7 +14,7 @@ class Question < ActiveRecord::Base
 
 	def vote! user, params
 
-		if self.poll.is_open?
+		if self.poll.is_votable?
 
 
 			return false unless user
@@ -32,7 +32,7 @@ class Question < ActiveRecord::Base
 	end
 	def destroy_vote! user
 		
-		if self.poll.is_open?
+		if self.poll.is_votable?
 			self.answers.delete user.id
 
 			self.save

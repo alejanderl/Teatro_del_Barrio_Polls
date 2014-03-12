@@ -4,7 +4,9 @@
   <thead>
     <tr>
       <th><%= "polls.title".t %></th>
+            <th><%= "polls.status".t %></th>
       <th><%= "polls.total_questions".t %></th>
+
       <th><%= "polls.total_answers".t %>   </th>
     </tr>
   </thead>
@@ -15,14 +17,9 @@
             <tr>
               <td>
                 <%= link_to  poll.title, poll %>
-                <div class="status pull-right">
-                  <% if poll.is_open? %>
-                    <span class=" label label-success"><%= "polls.open".t %></span>
-                  <%else%>
-                    <span class=" label label-warning"><%= "polls.close".t %></span>
-                  <%end%>
-                </div>
+
               </td>
+              <td> <%= status_badge poll %></td>
               <td><%= poll.questions.count %></td>
               <td><%= poll.questions.first.answers.count   %></td>
             </tr>

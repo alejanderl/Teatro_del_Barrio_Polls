@@ -12,18 +12,22 @@ module TaxonomiesHelper
   end
   
 # Form field for taxonomies   
-  def terms_field_for(taxonomy, object)
-    
-    taxonomy_terms = OrderedArray.new(Term.get_taxonomy_terms  taxonomy).order
-    render "taxonomies/family_names/family_names", {:taxonomy_terms => taxonomy_terms,:taxonomy_name => taxonomy, :object => object}
+  def terms_field_for(taxonomy_id, object)
+    taxonomy = Taxonomy.find taxonomy_id
+
+    taxonomy_terms = OrderedArray.new(taxonomy.terms).order
+    render "taxonomies/family_names/family_names", {:taxonomy_terms => taxonomy_terms,
+                                                    :taxonomy => taxonomy,
+                                                    :object => object}
     
   end
   
   def print_terms_for(object,*taxonomies)
     final_render ||= ""
     taxonomies.each do |taxonomy_arg|
-      terms = object.terms.where(:taxonomy_name => taxonomy_arg)
-      final_render += render("taxonomies/family_names/print_terms_for", {:terms => terms,:taxonomy => taxonomy_arg}) if terms.length > 0
+      terms = object.terms.where(:taxonomy_1 => taxonomy_arg)
+      final_render += render("taxonomies/family_names/print_terms_for",
+                      {:terms => terms,:taxonomy => taxonomy_arg}) if terms.length > 0
     end
     final_render.html_safe
   end
