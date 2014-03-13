@@ -32,6 +32,9 @@ class TdB.Taxonomies_Terms
             term = $(this).attr("data-taxonomy")
             $("div.dialog" ).dialog("close")
             $("div.dialog-"+term ).dialog("open")
+            if  !$(this).parent().next().hasClass("in")
+
+                $(this).next().click() 
         all_dialogs = $(".dialog")
         for d, i in all_dialogs
             this.check_terms($(d).attr("data-taxonomy"))
@@ -95,7 +98,8 @@ class TdB.Taxonomies_Terms
         value = value
         value[value.indexOf(remove_id) + ""] = ""
         $("#terms-id_"+added_taxonomy_name).val(value.toString())
-        $(_that).parent().hide()
+        $(_that).parent().fadeOut 500, ->
+            $(this).remove()
         this.check_terms added_taxonomy_name
             
             
