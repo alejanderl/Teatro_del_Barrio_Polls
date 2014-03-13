@@ -3,7 +3,7 @@
     
     <div class="btn-group">
    	 <button class="btn btn-small btn-primary dropdown-toggle" data-toggle="dropdown"><span class=" glyphicon glyphicon-user"></span></button>
-     <ul class="dropdown-menu">
+     <ul class="dropdown-menu pull-left">
       <% if allow? "taxonomies", "index" %>
         <li>
            <%= link_to t("taxonomies.taxonomies"), taxonomies_path %>
@@ -11,7 +11,7 @@
       <% end %>
 
       <li><%= link_to "users.my_profile".t, edit_user_registration_path %></li>
-    		<li><%= link_to "Sign out".t , destroy_user_session_path, :method => :delete %></li>
+    		<li><%= link_to "users.sign_out".t , destroy_user_session_path, :method => :delete %></li>
     		
         	
      </ul>
