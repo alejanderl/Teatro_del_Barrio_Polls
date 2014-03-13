@@ -47,7 +47,7 @@ class Poll < ActiveRecord::Base
 	end
 
 	def right_date
-		self.end_date > self.start_date
+		errors[:end_date] << "wrong date" if self.end_date < self.start_date 
 
 	end
 
