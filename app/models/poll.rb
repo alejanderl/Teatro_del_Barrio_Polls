@@ -10,7 +10,11 @@ class Poll < ActiveRecord::Base
 	has_many :taxonomizables, :as => :item, :dependent => :destroy
   	has_many :terms, :through => :taxonomizables  
 
-	validates :user_id, :start_date, :end_date, :title, :presence => :true
+	validates :user_id,
+			  :start_date,
+			  :end_date,
+			  :title,
+			  :presence => :true
 
 	validate :is_editable?
 
@@ -39,17 +43,19 @@ class Poll < ActiveRecord::Base
 	end
 
 	def is_editable?
+
 		#not editable if there's already answers
 		self.questions.each do |question|
 			return false if question.answers.count > 0
 		end
-		self.state != 0
+		self.state != 0 if self.start_date&&self.end_date
 	end
 
 	def right_date
-		errors[:end_date] << "end_date must be later than start_date" if self.end_date < self.start_date 
-		errors[:end_date] << "end_date must be in the future"         if self.end_date < (Time.now + 1.day ) 
-
+		if self.end_date&&self.start_date
+			self.errors.add(:end_date, :greater_than, :count => "activerecord.attributes.poll.start_date".t )  if self.end_date < self.start_date 
+			self.errors.add(:end_date, :must_be_in_the_future )   if self.end_date < (Time.now + 1.day ) 
+		end
 	end
 
 

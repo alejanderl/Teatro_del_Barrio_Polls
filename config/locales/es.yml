@@ -170,6 +170,14 @@ es:
         phone_number: "Número de teléfono"
         roles_mask: "Tipo de usuario"
         privacy_terms_acceptance: "Política de privacidad"
+      poll:
+        end_date: "fecha de fin"
+        start_date: "fecha de inicio"
+        title:      "título"
+        questions_matter: "Pregunta"
+        description:  "descripción"
+      question:
+        matter:  "pregunta"
 
 
 
@@ -181,6 +189,7 @@ es:
                 one: No se ha podido guardar este %{model} porque ha habido 1 error
                 other: No se ha podido guardar este %{model} porque han habido %{count} errores
         messages:
+            must_be_in_the_future: "debe ser en el futuro"
             a_role_is_needed: "Por favor, selecciona un tipo de usuario"
             inclusion: "no esta icludido en la lista"
             exclusion: "está reservado"

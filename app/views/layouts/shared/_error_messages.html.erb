@@ -2,9 +2,9 @@
  <div class="row">
     <div class="col-12-md col-12-xs">
 		<div class="msg_box is_error">
-		  <% if false %>
-		    <h2><%= pluralize(target.errors.count, "error") %> prohibited this record from being saved:</h2>
-		  <% end %>
+		 
+		    <h5><%= pluralize(target.errors.count, "error") %> prohibited this record from being saved:</h5>
+		  
 		  <ul>  
 		  <% target.errors.full_messages.each do |msg| %>  
 		    <li><%= msg %></li>  
