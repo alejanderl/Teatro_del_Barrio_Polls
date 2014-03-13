@@ -6,12 +6,15 @@
         
         <%= status_badge @poll %>
       </h4>
+
     </div>
+
   </div>
+<div class="clearfix"></div>
 
 </div>
-
-<div class="bs-callout bs-callout-info col-md-12">
+ 
+<div class="bs-callout bs-callout-info row">
 
 
      <span class=" glyphicon glyphicon-calendar "> <%= "polls.from_%s".t % (l @poll.start_date, format: :short) %><%= "polls.to_%s".t % (l @poll.end_date, format: :short)%></span>
