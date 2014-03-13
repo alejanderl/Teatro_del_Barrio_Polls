@@ -101,4 +101,22 @@ describe "Polls testing"   do
 
   end
 
+  it "polls should have right dates on saving" , :js , :focus do
+    
+    poll = create_poll
+    user_login "admin@example.com", "admin123"
+    visit edit_poll_path poll, :locale => :es
+    fill_in "poll_end_date", :with => "2013-1-12"
+    
+
+    sleep 1
+
+
+
+
+
+
+  end
+
+
 end

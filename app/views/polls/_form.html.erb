@@ -68,6 +68,7 @@
 
 </script>
 
+<% flash.now[:error] = render 'layouts/shared/error_messages', :target=>@poll if @poll.errors.any? %>
 
 <%= content_for :footer_scripts do %>
 	<script >

@@ -57,6 +57,8 @@ module TestHelpers
       create_question question
     end
     poll.save
+    # return the created object
+    poll
   end
 
   def create_question attrs = {}
@@ -68,6 +70,7 @@ module TestHelpers
     
     question = attrs2[:poll].questions.build attrs2 
     question.save
+    question
 
 
   end

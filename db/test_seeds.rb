@@ -6,4 +6,5 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Taxonomy.create :name => "taxonomy 1"
+Taxonomy.destroy_all
+Taxonomy.create :name => "taxonomy 1", :id => 1
