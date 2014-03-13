@@ -6,4 +6,4 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Taxonomy.create :name => "taxonomy 1"
+Taxonomy.create :name => "taxonomy 1 - needed"

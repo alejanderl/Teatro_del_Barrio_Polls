@@ -1,7 +1,11 @@
 class PollsController < ApplicationController
 
 	def index
-		@polls = Poll.all
+		
+		
+
+		@polls = Poll.all.order(:end_date => :desc)
+
 	end
 
 	def show

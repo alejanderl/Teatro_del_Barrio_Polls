@@ -3,11 +3,11 @@
   <br/>
   <div class="panel-group taxonomies" id="accordion2">
    <% @taxonomies.each_with_index do |taxonomy, index|%>
-   <div class="panel panel-default">
+   <div id="<%= "taxonomy_#{taxonomy.id}" %>" class="panel panel-default">
       <div class="panel-heading">
         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="<%="#collapse#{index}" %>">
             <h4><%=  taxonomy.name %></h4>
-            
+
         </a>
       </div>
       

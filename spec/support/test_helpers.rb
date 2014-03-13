@@ -72,4 +72,15 @@ module TestHelpers
 
   end
 
+  def create_term attrs = {}
+    attrs2 = attrs.dup
+    random = Random.rand(1000-12)
+    attrs2[:name]    = attrs[:name]               || "term #{random}  "
+    attrs2[:parent_id]  = attrs[:parent_id]       || Term.first.id
+    attrs2[:taxonomy_id]  = attrs[:taxonomy_id]   || Taxonomy.first.id
+
+    Term.create attrs2
+
+  end
+
 end
