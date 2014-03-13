@@ -1,12 +1,12 @@
-<div id="taxonomy-<%= taxonomy %>" class="taxonomy">
-
-  <h4><%= t"taxonomies.#{taxonomy}" %></h4>
+<div id="taxonomy-<%= taxonomy.id %>" class=" taxonomy-print ">
+ 
+  <h5><%= taxonomy.name  %></h5>
   
-  <ul id="taxonomy-<%= taxonomy %>">
+  <ul id="taxonomy-<%= taxonomy.id %>" class=" list-group">
   
     <% terms.each do |t|  %>
     
-    <li class="taxonomy-term term-<%=t.id%>">
+    <li class="taxonomy-term term-<%=t.id%>  list-group-item">
     
       <%= t.name %>
     </li>

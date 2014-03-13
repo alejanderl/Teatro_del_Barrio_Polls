@@ -71,7 +71,7 @@ class TdB.Taxonomies_Terms
             $(this).parent().removeClass("add-over")
               
          $(".remove-term").bind "mouseover",->
-            $(this).children().removeClass("hidden")
+            #$(this).children().removeClass("hidden")
             $(this).parent().addClass("delete-over")
               
          $(".remove-term").bind "mouseout",->

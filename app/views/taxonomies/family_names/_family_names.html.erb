@@ -27,7 +27,7 @@
        <div class="dialog dialog-<%= taxonomy.id %>" data-taxonomy="<%= taxonomy.id %>" >
         <% previous ||= taxonomy_terms[0] %>
         <ul><% taxonomy_terms.each do |term| %>
-          <%  %>
+          
             <%=(previous.depth-term.depth).times  {  concat "</ul>".html_safe} if previous.depth > term.depth   %>
             
             

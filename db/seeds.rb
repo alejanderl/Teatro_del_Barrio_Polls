@@ -6,14 +6,4 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-
-User.create(:email => "admin@localhost.localhost",
-			:password => "teatrodelbarrio",
-			:password_confirmation => "teatrodelbarrio",
-			:admin => true)
-
-5.times do |i|
-	User.create( :email => "usuario#{i}@manolito.gafotas",
-		:password => "usuario#{i}",
-		:password_confirmation => "usuario#{i}")
-end
+Taxonomy.create :name => "taxonomy 1"

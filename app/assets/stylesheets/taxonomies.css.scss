@@ -7,6 +7,16 @@
     
     
 }
+.taxonomy-print {
+
+    ul {
+        padding:0;
+        margin:0;
+        li.taxonomy-term {
+            padding: 5px;
+        }
+    }
+}
 .buttons-block {
     display: inline;
 }

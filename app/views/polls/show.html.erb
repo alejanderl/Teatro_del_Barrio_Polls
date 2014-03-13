@@ -11,23 +11,34 @@
 
 </div>
 
-<div class="bs-callout bs-callout-info col-md-9">
+<div class="bs-callout bs-callout-info col-md-12">
 
 
      <span class=" glyphicon glyphicon-calendar "> <%= "polls.from_%s".t % (l @poll.start_date, format: :short) %><%= "polls.to_%s".t % (l @poll.end_date, format: :short)%></span>
 
 </div>
 <br/><br/>
-<div id="content" class="col-md-9">
-  <p>
-  <%= @poll.description %>
-  </p>
+
+<div id="content" class="row">
+
+  <div class="col-md-9">
+    <p>
+     <%= @poll.description %>
+    </p>
+  </div>
+
+  <div id="content" class="col-md-3">
+      <p>
+       <%= print_terms_for(@poll,1) %>
+    </p>
+  </div>
 </div>
 
 
+
     <br/>
     <br/>
-<h3><%= "polls.questions".t %></h3>
+<h4><%= "polls.questions".t %></h4>
 
 
 
@@ -64,7 +75,7 @@
     
       
       <% if !question.voted?(current_user)&&@poll.is_votable? %>
-        <h4><%= "questions.my_vote".t  %></h4>
+        <h5><%= "questions.my_vote".t  %></h5>
         <%= link_to "<span class='glyphicon glyphicon-ok-circle'></span>".html_safe, voting_path(question, "yes"), :class => "btn btn-lg btn-success" %>&nbsp;
         <%= link_to "<span class='glyphicon glyphicon-remove-circle'></span>".html_safe, voting_path(question, "no") , :class => "btn btn-lg btn-warning "%>
       <% else %>

@@ -10,9 +10,6 @@ class Poll < ActiveRecord::Base
 	has_many :taxonomizables, :as => :item, :dependent => :destroy
   	has_many :terms, :through => :taxonomizables  
 
-	accepts_nested_attributes_for :questions, :allow_destroy => true
-
-
 	validates :user_id, :start_date, :end_date, :title, :presence => :true
 
 	validate :is_editable?
@@ -20,11 +17,12 @@ class Poll < ActiveRecord::Base
 	validate :right_date
 
 	after_initialize {|_this| @now = Time.now}
+	accepts_nested_attributes_for :questions, :allow_destroy => true
 
 
 
 	# Each poll has at least one question. Question matter must be present.
-	#before_validation {|_this| _this.questions.first || _this.questions.build  }
+	before_validation {|_this| _this.questions.first || _this.questions.build  }
 
 	def is_votable?
 		self.state == 1
@@ -33,13 +31,10 @@ class Poll < ActiveRecord::Base
 
 
 	def state
-		
-		
-		return 2 if self.start_date > @now # programmed
+
+		return 2 if self.start_date  > @now # programmed
 		return 1 if (self.start_date < @now && self.end_date > @now) # open
-		return 0 if (self.end_date < @now) # close
-		
-		
+		return 0 if (self.end_date   < @now) # close
 
 	end
 
