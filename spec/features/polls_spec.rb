@@ -10,7 +10,7 @@ describe "Polls testing"   do
   end
   
   
-  it "logged user create a poll " , :js do
+  it "logged user create a poll ", :js do
 
 
   	user_login "admin@example.com", "admin123"

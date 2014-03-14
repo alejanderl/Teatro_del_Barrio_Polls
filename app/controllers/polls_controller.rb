@@ -1,8 +1,6 @@
 class PollsController < ApplicationController
 
 	def index
-		
-		
 
 		@polls = Poll.all.order(:end_date => :desc)
 
@@ -12,6 +10,12 @@ class PollsController < ApplicationController
 
 
 		@poll = Poll.find params[:id]
+
+		respond_to do |format|
+			format.html {render "show"}
+
+		end
+
 
 		
 	end

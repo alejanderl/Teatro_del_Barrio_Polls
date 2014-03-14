@@ -4,8 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable,
          :validatable, :confirmable
-  has_many :memberships
-  has_many :roles, :through => :memberships
+  has_one :memberships
+
 
 
   def active_for_authentication?
