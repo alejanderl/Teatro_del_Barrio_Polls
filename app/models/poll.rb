@@ -3,7 +3,7 @@ class Poll < ActiveRecord::Base
 	
 
 
-	has_many   :questions, :dependent => :destroy,  :order => 'id DESC'
+	has_many   :questions, -> { order('id DESC') } , :dependent => :destroy 
 
 	belongs_to :user
 

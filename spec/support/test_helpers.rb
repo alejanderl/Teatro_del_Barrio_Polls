@@ -97,6 +97,7 @@ module TestHelpers
   end
 
   def create_term attrs = {}
+    
     attrs2 = attrs.dup
     random = Random.rand(1000-12)
     attrs2[:name]    = attrs[:name]               || "term #{random}  "

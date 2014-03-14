@@ -7,7 +7,7 @@
              <% end %>
              <span id="term-<%= f.id %>" class="<%= "has-sons " if check_sons f.id%>" ><%= f.name %>
                 <div class="action-buttons">
-                  <%= link_to (raw("")), taxonomy_path( f.id),:method => "delete", :confirm => "Deleting term \"#{f.name}\"?",:remote => true , :class => "btn btn-xs glyphicon glyphicon-minus img-circle btn-destroy" , :alt => "#{t'global.remove_term'}", :title => "#{t'global.remove_term'}"%>
+                  <%= link_to (raw("")), taxonomy_path( f.id),:method => "delete", data: {:confirm => "Deleting term \"#{f.name}\"?"},:remote => true , :class => "btn btn-xs glyphicon glyphicon-minus img-circle btn-destroy" , :alt => "#{t'global.remove_term'}", :title => "#{t'global.remove_term'}"%>
                   <%= link_to "",edit_taxonomy_path(f.id), :class => "btn btn-xs glyphicon glyphicon-edit img-circle btn-edit", :remote => true%>
                   <%= link_to "",new_taxonomy_path(:parent_id => f.id),:class => "btn btn-xs  glyphicon glyphicon-arrow-down img-circle btn-edit",:remote => true  %>
                 </div>

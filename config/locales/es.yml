@@ -12,6 +12,7 @@ es:
     are_you_sure?: "Está seguro?"
     save: "Guardar"
     add:   "Annadir"
+    actions: "Acciones"
   users:
     go_in:    "Entrar"
     sign_in:  "Entrar"
@@ -45,6 +46,10 @@ es:
     _yes:             "si"
     you_didn't_vote: "No has votado"
     total:            "Total"
+  memberships:
+    email: "email"
+    active: "activo"
+
 
 # auth forms -----------------------------------------------------------------
 

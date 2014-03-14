@@ -1,0 +1,28 @@
+
+
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+    	<th><%= "memberships.email".t %></th>
+      	<th><%= "membership.active".t %></th>
+      	<th><%= "global.actions".t %>   </th>
+    </tr>
+  </thead>
+  <tbody>
+		<% @memberships.each do |membership|%>
+            <tr>
+              <td>
+                <%=   membership.email %>
+              </td>
+              <td> <%= membership.active %></td>
+              <td><%= poll.questions.count %></td>
+              <td></td>
+            </tr>
+
+			
+		<%end %>
+	</tbody>
+</table>
+
+<%= link_to "global.create".t,new_membership_path, :class => "btn btn-lg btn-default" if allow?("memberships","create") %>
+
