@@ -31,6 +31,7 @@ class PollsController < ApplicationController
 		@poll.user = current_user
 		add_terms params["terms-id"], @poll
 		if @poll.save
+			flash[:notice] =  'Poll was successfully created.' 
 			redirect_to @poll
 		else 
 			render "new"
@@ -51,6 +52,7 @@ class PollsController < ApplicationController
 		add_terms params["terms-id"], @poll
 		if @poll.update_attributes standard_attributes
 			redirect_to @poll
+			flash[:notice] =  'Poll was successfully updated.'
 
 		else
 
@@ -66,8 +68,10 @@ class PollsController < ApplicationController
 
 		@poll = Poll.find params[:id]
 
-		@poll.destroy
-
+		if @poll.destroy
+			redirect_to polls_path
+			flash[:warning] =  'Poll was successfully destroyed.'
+		end
 		
 	end
 
