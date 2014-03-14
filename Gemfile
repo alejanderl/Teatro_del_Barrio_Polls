@@ -66,7 +66,7 @@ group :development, :test do
 
     gem 'debugger'
 end
-
+# version 2.12 has some problems with heroku
 gem 'sprockets', '2.11.0'
 
 gem 'bootstrap-sass', '~> 3.1.1'
