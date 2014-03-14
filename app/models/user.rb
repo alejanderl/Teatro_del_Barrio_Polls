@@ -5,8 +5,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable,
          :validatable, :confirmable
 
-         
-  has_one :memberships
+
+  has_one :membership, :primary_key => :email,
+                       :foreign_key => :email
 
 
 

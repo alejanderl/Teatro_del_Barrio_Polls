@@ -17,7 +17,8 @@ class Permission < Struct.new(:user)
         
     if user.member?
 
-      return true if %[polls taxonomies terms].include? controller
+      return true if %[taxonomies terms].include? controller
+      return true if %[votes].include?            controller
 
 
 
@@ -31,9 +32,6 @@ class Permission < Struct.new(:user)
 
 
 
-    if controller == "votes"
-      return true
-    end
 
            
         

@@ -70,6 +70,7 @@ describe "Polls testing"   do
     visit root_path(:locale => :es)
     have_selector(:link_or_button, 'Votaciones')
     click_link "Votaciones"
+
     page.should_not have_selector(:link_or_button, 'Nuevo')
     poll = create_poll
     visit edit_poll_path poll, :locale => :es
@@ -82,7 +83,6 @@ describe "Polls testing"   do
   it "Members can vote yes, no and change their vote"  do
     create_poll
     user_login "member@example.com", "member123"
-    
     visit poll_path(Poll.last.id, :locale => :es)
     #vote yes
     first(".btn-success").click

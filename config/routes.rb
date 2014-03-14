@@ -19,6 +19,7 @@ TeatroDelBarrio::Application.routes.draw do
 
     resources :taxonomies
     resources :terms
+    resources :memberships
 
     resources :polls 
     match "vote/:question_id/:my_vote",:to =>  "votes#create" , :via => [:get], :as => :voting

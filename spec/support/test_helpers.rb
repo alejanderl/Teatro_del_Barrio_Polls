@@ -20,16 +20,34 @@ module TestHelpers
 
   end
 
+  def create_user attrs = {}
+
+    attrs2 = attrs.dup
+    random = Random.rand(42-10)
+    attrs2[:email]  = attrs[:email] || "email#{random}@localhost.es"
+    attrs2[:password] = attrs[:password] || "password"
+    attrs2[:password_confirmation]  = attrs[:password_confirmation] || "password"
+    attrs2[:member] =  attrs[:member] || false
+    attrs2[:admin]  =  attrs[:admin] || false
+    attrs2[:confirmed_at] =  attrs[:confirmed_at] || Time.now
+
+
+    User.create attrs2
+
+
+  end
+
   def create_sample_users
 
-    user_member ||= User.create(:email => "member@example.com",
+    create_user(:email => "member@example.com",
             :password => "member123",
             :password_confirmation => "member123",
             :admin => false ,
+            :member => true,
             :confirmed_at => Time.now         
             )
 
-    user_admin ||= User.create(:email => "admin@example.com",
+    create_user(:email => "admin@example.com",
     			  :password => "admin123",
     			  :password_confirmation => "admin123",
             :admin => true,

@@ -24,9 +24,9 @@ class MembershipsController < ApplicationController
   # POST /memberships
   # POST /memberships.json
   def create
-    @role = Role.find(params[:role_id])
-    @user = User.find(params[:user_id])
-    @membership = @role.memberships.build(user: @user)
+    @membership = Membership.new standard_attributes
+
+    
 
     respond_to do |format|
       if @membership.save
