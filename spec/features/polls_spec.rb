@@ -10,15 +10,15 @@ describe "Polls testing"   do
   end
   
   
-  it "logged user create a poll " , :focus, :js do
+  it "logged user create a poll " , :js do
 
 
   	user_login "admin@example.com", "admin123"
 
     Term.where("taxonomy_id > 0").destroy_all
 
-    5.times do 
-      create_term
+    %w[general reflexiones estado].each do |name|
+      create_term :name => name
     end
 
   	click_link "Votaciones"
@@ -44,11 +44,22 @@ describe "Polls testing"   do
     end
 
     # Also testing adding terms
+    
+    within ".taxonomy-terms" do
+      first(".open-dialog").click
+    end
+    term = Term.last
+    within ".term-#{term.id}" do
+
+      first("a").click
+
+    end
 
 
     click_button "Guardar"
     page.should have_content "Título de la votación"
     page.should have_content "Pregunta 5"
+    page.should have_content term.name
 
   end
 
