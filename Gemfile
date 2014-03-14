@@ -67,6 +67,6 @@ group :development, :test do
     gem 'debugger'
 end
 
-
+gem 'sprockets', '2.11.0'
 
 gem 'bootstrap-sass', '~> 3.1.1'

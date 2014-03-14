@@ -10,11 +10,16 @@ describe "Polls testing"   do
   end
   
   
-  it "logged user create a poll " , :js do
+  it "logged user create a poll " , :focus, :js do
 
 
   	user_login "admin@example.com", "admin123"
 
+    Term.where("taxonomy_id > 0").destroy_all
+
+    5.times do 
+      create_term
+    end
 
   	click_link "Votaciones"
 
@@ -37,6 +42,9 @@ describe "Polls testing"   do
       end
 
     end
+
+    # Also testing adding terms
+
 
     click_button "Guardar"
     page.should have_content "Título de la votación"
@@ -135,5 +143,6 @@ describe "Polls testing"   do
 
   end
 
+ 
 
 end
