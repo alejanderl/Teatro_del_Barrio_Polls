@@ -27,13 +27,15 @@ module TestHelpers
     attrs2[:email]  = attrs[:email] || "email#{random}@localhost.es"
     attrs2[:password] = attrs[:password] || "password"
     attrs2[:password_confirmation]  = attrs[:password_confirmation] || "password"
-    attrs2[:member] =  attrs[:member] || false
     attrs2[:admin]  =  attrs[:admin] || false
     attrs2[:confirmed_at] =  attrs[:confirmed_at] || Time.now
+    attrs2.delete :member
+    user = User.new attrs2
+    
+    user.build_membership if attrs[:member]
 
-
-    User.create attrs2
-
+    user.save
+    user
 
   end
 

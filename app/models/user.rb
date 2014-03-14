@@ -15,4 +15,8 @@ class User < ActiveRecord::Base
     super && self.enabled
  
   end
+
+  def member?
+    self.membership.active if self.membership
+  end
 end

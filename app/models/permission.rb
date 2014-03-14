@@ -16,25 +16,15 @@ class Permission < Struct.new(:user)
         
         
     if user.member?
-
-      return true if %[taxonomies terms].include? controller
-      return true if %[votes].include?            controller
-
-
-
+      return true if %[votes].include? controller
     end
+
 
     if user.admin?
-
       return true
-
     end
-
-
-
-
-           
-        
-       false
+    
+    false
+  
   end
 end
