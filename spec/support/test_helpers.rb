@@ -56,7 +56,7 @@ module TestHelpers
     questions.each do |question|
       create_question question
     end
-    debugger
+    
     poll.save
     # return the created object
     poll

@@ -22,7 +22,7 @@ describe "Set" do
     it "Auth/Unauth to each home" do
 
         visit root_path(:locale => :es)
-        page.should have_content "Bienvenido al sistema de votacion de Teatro del Barrioor"        
+    
         user_login "member@example.com", "member123"
         visit root_path(:locale => :es)
         page.should have_content('Votacion')

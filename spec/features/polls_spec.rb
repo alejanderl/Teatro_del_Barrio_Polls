@@ -45,13 +45,17 @@ describe "Polls testing"   do
   end
 
 
-  it "Members can´t create polls", :js do
+  it "Members can´t create or edit polls" do
     
     user_login "member@example.com", "member123"
     visit root_path(:locale => :es)
     have_selector(:link_or_button, 'Votaciones')
     click_link "Votaciones"
     page.should_not have_selector(:link_or_button, 'Nuevo')
+    poll = create_poll
+    visit edit_poll_path poll, :locale => :es
+    page.should have_content "Not authorized"
+    page.should have_css     ".alert-warning"
     
       
     end
@@ -88,18 +92,31 @@ describe "Polls testing"   do
     end
   end
 
-  it "users can not vote experired polls" , :focus  do
-
-    create_poll :start_date => (Time.now - 7.days), :end_date => (Time.now - 1.day)
+  it "Members can not vote experired polls"   do
+    Delorean.time_travel_to "1 month ago"
+    create_poll :start_date => (Time.now - 7.days), :end_date => (Time.now  + 12.days)
+    Delorean.back_to_the_present   
     user_login "member@example.com", "member123"
-    debugger
+    
     visit poll_path(Poll.last.id, :locale => :es)
     page.should have_content("Cerrada")
     page.should have_content("No has votado")
 
+  end
 
+  it "Members can not vote programmed polls"   do
+
+    create_poll :start_date => (Time.now  + 7.days), :end_date => (Time.now  + 12.days)
+  
+    user_login "member@example.com", "member123"
+    
+    visit poll_path(Poll.last.id, :locale => :es)
+    page.should have_content("Programada")
+    page.should have_content("No has votado")
 
   end
+
+
 
   it "polls should have right dates on saving"   do
     
