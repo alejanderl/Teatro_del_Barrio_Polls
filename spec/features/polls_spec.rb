@@ -88,11 +88,11 @@ describe "Polls testing"   do
     end
   end
 
-  it "users can not vote experired polls"   do
+  it "users can not vote experired polls" , :focus  do
 
     create_poll :start_date => (Time.now - 7.days), :end_date => (Time.now - 1.day)
     user_login "member@example.com", "member123"
-    
+    debugger
     visit poll_path(Poll.last.id, :locale => :es)
     page.should have_content("Cerrada")
     page.should have_content("No has votado")
@@ -101,20 +101,20 @@ describe "Polls testing"   do
 
   end
 
-  it "polls should have right dates on saving" , :js , :focus do
+  it "polls should have right dates on saving"   do
     
     poll = create_poll
     user_login "admin@example.com", "admin123"
     visit edit_poll_path poll, :locale => :es
     fill_in "poll_end_date", :with => "2013-1-12"
-    
-
-    sleep 1
-
-
-
-
-
+    click_button "Guardar"
+    page.should have_content "futuro"
+    page.should have_css ".alert-danger"
+    fill_in "poll_start_date", :with => (Date.today + 4.days)
+    fill_in "poll_end_date", :with => (Date.today + 2.days)
+    click_button "Guardar"
+    page.should have_content "debe ser mayor"
+    page.should have_css ".alert-danger"
 
   end
 
