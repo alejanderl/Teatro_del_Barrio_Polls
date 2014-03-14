@@ -9,6 +9,11 @@
            <%= link_to t("taxonomies.taxonomies"), taxonomies_path %>
         </li>
       <% end %>
+        <% if allow? "memberships", "index" %>
+        <li>
+           <%= link_to t("memberships.members"), memberships_path %>
+        </li>
+      <% end %>
 
       <li><%= link_to "users.my_profile".t, edit_user_registration_path %></li>
     		<li><%= link_to "users.sign_out".t , destroy_user_session_path, :method => :delete %></li>

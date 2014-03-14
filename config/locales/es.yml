@@ -5,14 +5,16 @@ es:
 
 
   global:
-    title: "Teatro del Barrio"
-    create: "Nuevo"
-    edit:   "Editar"
-    delete: "Borrar"
+    title:    "Teatro del Barrio"
+    create:   "Nuevo"
+    edit:     "Editar"
+    delete:   "Borrar"
+    save:     "Guardar"
+    add:      "Annadir"
+    actions:  "Acciones"
+    _yes:      "si"
+    _no:       "no"
     are_you_sure?: "Está seguro?"
-    save: "Guardar"
-    add:   "Annadir"
-    actions: "Acciones"
   users:
     go_in:    "Entrar"
     sign_in:  "Entrar"
@@ -49,6 +51,8 @@ es:
   memberships:
     email: "email"
     active: "activo"
+    linked_user: "Usuario activo"
+    members: "Miembros"
 
 
 # auth forms -----------------------------------------------------------------

@@ -2,7 +2,7 @@
 	<div class="row">
 	 	
 			<% flash.each do |key, value| %>
-				<div id="<%= "flash_#{key}" %>" class=" col-12-md col-12-xs  <%= flash_class(key) %> <%= key %>">
+				<div id="<%= "flash_#{key}" %>" class="col-md-offset-1 col-9-md col-12-xs  <%= flash_class(key) %> <%= key %>">
 				   <a
 				    onclick="$('#flash-message').fadeOut('slow')"
 				    href="#"
