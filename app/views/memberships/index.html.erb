@@ -8,12 +8,13 @@
     	<th><%= "memberships.linked_user".t %></th>
     	<th><%= "memberships.email".t %></th>
       	<th><%= "memberships.active".t %></th>
+      	<th><%= "memberships.membership_code".t %></th>
       	<th><%= "global.actions".t %>   </th>
     </tr>
   </thead>
   <tbody>
 		<% @memberships.each do |membership|%>
-            <tr>
+            <tr id="member_<%= membership.id %>">
               <td>
               	  <%=  membership.user ? "global._yes".t : "global._no".t  %>
               </td>
@@ -21,6 +22,7 @@
                 <%=   membership.email %>
               </td>
               <td> <%= membership.active %></td>
+              <td> <%= membership.membership_code %></td>
               <td><%= link_to "global.delete".t, membership_path(membership) , :method => :delete, data:{confirm:"global.are_you_sure?".t} %></td>
               
             </tr>
@@ -31,23 +33,47 @@
 </table>
 <div class="row">
 	<div class= "col-12-md col-12-xs ">
-		<%= link_to "global.add".t,"#", :class => "btn btn-md btn-default",
-														   :onClick => "$(this).next().removeClass('hidden');$(this.remove())" if allow?("memberships","create") %>
+		<%= link_to "global.add".t,"#", id: "show-membership-form" ,
+										class: "btn btn-md btn-default",
+										onClick: "$(this).next().removeClass('hidden');$(this.remove())" if allow?("memberships","create") %>
 		<div class="hidden ">
 			<%= form_for @membership, html:{class:"col-md-5"} do |d| %>
-			  <div class="input-group">
+			  	
+
+
+				
 			  	<%= d.text_field :email, :class => "form-control col-3-md" ,:placeholder => "memberships.email".t%>
-		      	<span class="input-group-btn">
+			  	<%= d.text_field :membership_code, :class => "form-control col-1-md" ,:placeholder => "memberships.membership_code".t%>
+
 		      		<%= d.submit "global.create".t, :class => "btn btn-primary" %>
-		        	
-		      	</span>
-		      	
-		    	</div><!-- /input-group -->
+
 				
 
 			<% end %>
 		</div>
 	</div>
+</div>
+
+<div class="row">
+  <div class= "col-12-md col-12-xs ">
+    <%= link_to "memberships.massive_add".t,"#", id: "massive-membership-upload" ,
+                    class: "btn btn-md btn-default",
+                    onClick: "$(this).next().removeClass('hidden');$(this.remove())" if allow?("memberships","create") %>
+    <div class="hidden ">
+      <%= form_tag massive_update_memberships_path, :multipart => true, html:{class:"col-md-5"} do |d| %>
+          
+
+
+                <%= file_field_tag "the_file" %>
+
+                <%= submit_tag "global.create".t, :class => "btn btn-primary" %>
+                hola cartacola
+
+        
+
+      <% end %>
+    </div>
+  </div>
 </div>
 
 

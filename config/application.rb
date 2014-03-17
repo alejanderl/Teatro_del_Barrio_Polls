@@ -10,6 +10,8 @@ module TeatroDelBarrio
   class Application < Rails::Application
     # Make the Bootstrap glyphicons work 
     config.assets.paths << "#{Rails}/vendor/assets/fonts"
+    # config/application.rb
+    config.autoload_paths += %W(#{config.root}/app/models/validators)
 
     # config/application.rb
     config.assets.initialize_on_precompile = false

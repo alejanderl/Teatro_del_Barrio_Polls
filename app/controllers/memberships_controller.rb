@@ -30,10 +30,11 @@ class MembershipsController < ApplicationController
 
     respond_to do |format|
       if @membership.save
-        format.html { redirect_to :back , notice: 'Membership was successfully created.' }
+        format.html { redirect_to :back , notice: ("memberships.member_added_%s".t % @membership.email ) }
         format.json { render action: 'show', status: :created, location: @membership }
       else
-        format.html { redirect_to :back }
+
+        format.html { redirect_to :back , warning: @membership.errors.to_s }
         format.json { render json: @membership.errors, status: :unprocessable_entity }
       end
     end
@@ -59,10 +60,20 @@ class MembershipsController < ApplicationController
     @membership = Membership.find params[:id]
     @membership.destroy
     respond_to do |format|
-      format.html { redirect_to :back }
+      format.html { redirect_to :back , warning: ("memberships.member_deleted_%s".t % @membership.email )}
       format.json { head :no_content }
     end
   end
+
+  def massive_update
+
+    
+    @membership = Membership.new
+    @membership.parse_csv params[:the_file].read
+    redirect_to memberships_path
+
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -72,6 +83,6 @@ class MembershipsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def membership_params
-      params.require(:membership).permit(:email)
+      params.require(:membership).permit(:email, :membership_code)
     end
 end

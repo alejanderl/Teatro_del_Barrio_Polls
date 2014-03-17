@@ -53,6 +53,9 @@ es:
     active: "activo"
     linked_user: "Usuario activo"
     members: "Miembros"
+    membership_code: "Código de socio"
+    member_deleted_%s: "suscripción %s eliminada"
+    member_added_%s: "se annadio la subscripción para el usuario %s"
 
 
 # auth forms -----------------------------------------------------------------

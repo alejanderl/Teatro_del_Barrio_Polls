@@ -22,6 +22,11 @@
 
 /config/database.yml
 
+# Ignore local ENV variables
+
+
+/config/local_env.yml
+
 
 #Ignore Apple finder trash files
 .DS_Store

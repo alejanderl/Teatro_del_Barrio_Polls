@@ -39,7 +39,30 @@ module TestHelpers
 
   end
 
+  def create_membership attrs = {}
+    attrs2 = attrs.dup
+    random = Random.rand(42-10)
+    random2 = Random.rand(1000-10)
+    attrs2[:email] = attrs[:email] || "email#{random}@localhost.es"
+    attrs2[:active] = attrs[:active] || true 
+    attrs2[:membership_code] = attrs[:membership_code] || random2
+
+    Membership.create attrs2  
+
+
+
+
+  end
+
   def create_sample_users
+
+    create_user(:email => "guest@example.com",
+                :password => "guest123",
+                :password_confirmation => "guest123",
+                :admin => false ,
+                :member => false,
+                :confirmed_at => Time.now         
+                )
 
     create_user(:email => "member@example.com",
             :password => "member123",
