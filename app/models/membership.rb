@@ -4,7 +4,8 @@ class Membership < ActiveRecord::Base
 					  :primary_key => :email
 
 
-	validates :email , presence:true, uniqueness: true, email: true
+	validates :email          , presence:true, uniqueness: true, email: true
+	validates :membership_code, uniqueness: true
 
 	# Kaminari DSL
 	paginates_per 30
