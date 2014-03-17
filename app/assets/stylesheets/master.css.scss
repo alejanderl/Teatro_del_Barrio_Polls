@@ -1,4 +1,13 @@
+@mixin dotted_shadowed {
 
+
+    border: 1px dashed #ccc;
+    border-radius: 10px;
+    margin: 10px 0;
+    padding: 10px 10px;
+    box-shadow: 1px 1px 13px -4px #ccc;
+
+}
  
  @mixin gradient-grey {
 background: #f7f7f7; /* Old browsers */
@@ -221,3 +230,9 @@ body {
     }
 
 } 
+
+.dotted-shadowed {
+
+        @include dotted_shadowed 
+}
+

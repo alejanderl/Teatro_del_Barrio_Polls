@@ -69,7 +69,8 @@ class MembershipsController < ApplicationController
 
     
     @membership = Membership.new
-    @membership.parse_csv params[:the_file].read
+    debugger
+    @membership.parse_csv params[:the_file].read if params[:the_file].respond_to? read
     redirect_to memberships_path
 
   end

@@ -36,19 +36,14 @@
 		<%= link_to "global.add".t,"#", id: "show-membership-form" ,
 										class: "btn btn-md btn-default",
 										onClick: "$(this).next().removeClass('hidden');$(this.remove())" if allow?("memberships","create") %>
-		<div class="hidden ">
-			<%= form_for @membership, html:{class:"col-md-5"} do |d| %>
-			  	
+		<div class="hidden dotted-shadowed col-md-5 col-xs-12">
+			<%= form_for @membership do |d| %>
+  	  	<%= d.text_field :email, :class => "form-control col-3-md" ,:placeholder => "memberships.email".t%>
+  	  	<br/>
+        <%= d.text_field :membership_code, :class => "form-control col-3-md" ,:placeholder => "memberships.membership_code".t%>
+        <br/>
 
-
-				
-			  	<%= d.text_field :email, :class => "form-control col-3-md" ,:placeholder => "memberships.email".t%>
-			  	<%= d.text_field :membership_code, :class => "form-control col-1-md" ,:placeholder => "memberships.membership_code".t%>
-
-		      		<%= d.submit "global.create".t, :class => "btn btn-primary" %>
-
-				
-
+        <%= d.submit "global.create".t, :class => "btn btn-primary" %>
 			<% end %>
 		</div>
 	</div>
@@ -59,15 +54,18 @@
     <%= link_to "memberships.massive_add".t,"#", id: "massive-membership-upload" ,
                     class: "btn btn-md btn-default",
                     onClick: "$(this).next().removeClass('hidden');$(this.remove())" if allow?("memberships","create") %>
-    <div class="hidden ">
+    <div class="hidden dotted-shadowed col-md-5 col-xs-12">
       <%= form_tag massive_update_memberships_path, :multipart => true, html:{class:"col-md-5"} do |d| %>
           
 
+      <%= link_to "global.info".t, "#", class: "badge badge-default pull-right show-tooltip", data:{placement:"top",toggle:"tooltip", title:"memberships.massive_add_tooltip".t} %>
+      <%= file_field_tag "the_file" %>
 
-                <%= file_field_tag "the_file" %>
+      <br/>
 
-                <%= submit_tag "global.create".t, :class => "btn btn-primary" %>
-                hola cartacola
+
+      <%= submit_tag "global.send_file".t, :class => "btn btn-primary" %>
+      
 
         
 
@@ -75,5 +73,16 @@
     </div>
   </div>
 </div>
+
+
+<%= content_for :footer_scripts do %>
+
+<script>
+
+$(".show-tooltip").tooltip();
+
+</script>
+
+<% end %>
 
 

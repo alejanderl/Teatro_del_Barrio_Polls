@@ -6,15 +6,20 @@ es:
 
   global:
     title:    "Teatro del Barrio"
-    create:   "Nuevo"
+    create:   "crear"
+    new:      "Nuevo"
     edit:     "Editar"
     delete:   "Borrar"
     save:     "Guardar"
     add:      "Annadir"
+    send:     "Enviar"
     actions:  "Acciones"
     _yes:      "si"
     _no:       "no"
     are_you_sure?: "Está seguro?"
+    info: "info"
+    send_file:  "enviar archivo"
+
   users:
     go_in:    "Entrar"
     sign_in:  "Entrar"
@@ -56,6 +61,8 @@ es:
     membership_code: "Código de socio"
     member_deleted_%s: "suscripción %s eliminada"
     member_added_%s: "se annadio la subscripción para el usuario %s"
+    massive_add:     "Annadido masivo"
+    massive_add_tooltip: "El archivo deberá ser una lista de emails separados por comas (CSV)"
 
 
 # auth forms -----------------------------------------------------------------
