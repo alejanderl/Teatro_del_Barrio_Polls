@@ -81,7 +81,7 @@ es:
 # Kaminari --------------------------------
   views:
       pagination:
-        first: "&laquo; Primerta"
+        first: "&laquo; Primera"
         last: "Última &raquo;"
         previous: "&lsaquo; Anterior"
         next: "Siguiente &rsaquo;"
@@ -97,10 +97,10 @@ es:
       dot_short: "%e.%m.%y"
       long:    "%e de %B de %Y"
       edit: "%d/%m/%Y"
-    day_names: [Domingo, Lunes, Martes, Miércoles, Jueves, Viernes, Sábado]
-    abbr_day_names: [Dom, Lun, Mar, Mie, Jue, Vie, Sab]
+    day_names:        [Domingo, Lunes, Martes, Miércoles, Jueves, Viernes, Sábado]
+    abbr_day_names:   [Dom, Lun, Mar, Mie, Jue, Vie, Sab]
     # Don't forget the nil at the beginning; there's no such thing as a 0th month
-    month_names: [~, Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre]
+    month_names:      [~, Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre]
     abbr_month_names: [~, Ene, Feb, Mar, Abr, May, Jun, Jul, Ago, Sep, Oct, Nov, Dic]
     # Used in date_select and datime_select.
     order:
