@@ -22,7 +22,7 @@ describe "Polls testing"   do
     end
 
   	click_link "Votaciones"
-
+    
   	click_link "Nuevo"
     
     fill_in "poll_title", :with => "Título de la votación"

@@ -16,7 +16,7 @@ describe "Polls testing"   do
 		visit memberships_path locale: :es
 		click_link "show-membership-form"
 		fill_in "membership_email", with: user.email
-		click_button "Nuevo"
+		click_button "crear"
 		within "#member_#{user.membership.id}" do
 
 			page.should_not have_content "no"

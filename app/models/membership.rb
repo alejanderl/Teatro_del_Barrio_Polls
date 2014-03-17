@@ -7,10 +7,10 @@ class Membership < ActiveRecord::Base
 	validates :email , presence:true, uniqueness: true, email: true
 
 	# Kaminari DSL
-	paginates_per 20
+	paginates_per 30
 
 
-
+	default_scope { order('email ASC') } 
 
 	def self.csv_desctructive
 
