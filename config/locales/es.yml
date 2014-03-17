@@ -11,7 +11,7 @@ es:
     edit:     "Editar"
     delete:   "Borrar"
     save:     "Guardar"
-    add:      "Annadir"
+    add:      "Añadir"
     send:     "Enviar"
     actions:  "Acciones"
     _yes:      "si"
@@ -32,7 +32,7 @@ es:
     total_questions: "Preguntas"
     total_answers:   "Han respondido"
     questions:       "Preguntas"
-    add_question:    "Annadir pregunta"
+    add_question:    "Añadir pregunta"
     active:          "Activa"
     close:           "Cerrada"
     open:            "Abierta"
@@ -60,8 +60,8 @@ es:
     members: "Miembros"
     membership_code: "Código de socio"
     member_deleted_%s: "suscripción %s eliminada"
-    member_added_%s: "se annadio la subscripción para el usuario %s"
-    massive_add:     "Annadido masivo"
+    member_added_%s: "se añadio la subscripción para el usuario %s"
+    massive_add:     "Añadido masivo"
     massive_add_tooltip: "El archivo deberá ser una lista de emails separados por comas (CSV)"
 
 
