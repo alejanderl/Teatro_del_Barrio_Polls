@@ -78,7 +78,14 @@ es:
   # Landing
   landing:
     welcome: "Bienvenido al sistema de votacion de Teatro del Barrio."
-
+# Kaminari --------------------------------
+  views:
+      pagination:
+        first: "&laquo; Primerta"
+        last: "Última &raquo;"
+        previous: "&lsaquo; Anterior"
+        next: "Siguiente &rsaquo;"
+        truncate: "..."
 
   # active support overrides ---------------------------------------------------
   date:

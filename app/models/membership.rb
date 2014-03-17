@@ -6,6 +6,8 @@ class Membership < ActiveRecord::Base
 
 	validates :email , presence:true, uniqueness: true, email: true
 
+	# Kaminari DSL
+	paginates_per 20
 
 
 
