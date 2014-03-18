@@ -10,8 +10,6 @@ class AdminsController < ApplicationController
 
 	def create
 
-		
-
 		@user = User.find_by_email params[:user][:email] 
 
 
@@ -28,8 +26,6 @@ class AdminsController < ApplicationController
 
 	def change_superadmin
 
-		
-
 		@user = User.find params[:user_id] 
 
 
@@ -39,8 +35,6 @@ class AdminsController < ApplicationController
 		else
 			redirect_to admins_path, :error =>   "can't update the user"
 		end
-
-
 
 	end
 

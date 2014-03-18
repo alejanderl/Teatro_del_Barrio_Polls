@@ -96,42 +96,59 @@ body {
 	height: 0;
 }
 
+.centered h1:first-child {
+
+    &.background-title {
+        color: rgba(0, 0, 0, 0.1);
+        position: fixed;
+        font-weight: 900;
+        font-size: 100px;
+          font-family: uBUNTU, georgia;
+
+    }
+          font-weight: 900;
+        font-size: 60px;
+        margin:0;
+        padding:0;
+
+  z-index: 0;
+  font-family:  georgia;
+}
 
 
 
 
 
- 
  
  .box_container {
     
     min-height:100px;
-    width:150px;
+
     float:left;
     border:1px solid #ddd;
-    border-bottom: 1px solid #BBB;
-    border-radius: 5px;
+   // border-bottom: 1px solid #BBB;
+   // border-radius: 5px;
     
     margin: 15px;
      //@include gradient-grey();
        
-    border-radius:10px;
+    //border-radius:10px;
     background-color:rgba(255,255,255,0.6);
     padding:15px;
-    border: 3px solid rgba(155,155,155,0.5);
-    box-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    border-left: 3px solid rgba(155,155,155,0.5);
+    box-shadow: 2px 2px 4px rgba(155,155,151,0.1);
     
     .name {
 	
         font-family: Cabin;
-	font-weight: 500;
-	line-height: 80%;
+    	font-weight: 500;
+    	line-height: 80%;
         font-size:21px;
         font-shadow: 0px 0px 1px 0px #0ff;
         margin-bottom:10px;
 	
         & a {
-            color:#555;
+            //color:#555;
             text-decoration: none;
             &:hover {
                 background-color:transparent;

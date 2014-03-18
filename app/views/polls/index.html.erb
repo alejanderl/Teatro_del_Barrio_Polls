@@ -1,33 +1,45 @@
 
-
-<table class="table table-striped table-bordered table-hover">
-  <thead>
-    <tr>
-      <th><%= "polls.title".t %></th>
-            <th><%= "polls.status".t %></th>
-      <th><%= "polls.total_questions".t %></th>
-
-      <th><%= "polls.total_answers".t %>   </th>
-    </tr>
-  </thead>
-  <tbody>
-		<% @polls.each do |poll|%>
+<h1 class="background-title"> <%= "polls.polls_list".t %></h1>
 
 
-            <tr>
-              <td>
-                <%= link_to  poll.title, poll %>
+<%= link_to "global.new".t, new_poll_path, :class => "btn btn-lg btn-default pull-right" if allow?("polls","create") %>
 
-              </td>
-              <td> <%= status_badge poll %></td>
-              <td><%= poll.questions.count %></td>
-              <td><%= poll.questions.first.answers.count   %></td>
-            </tr>
 
-			
-		<%end %>
-	</tbody>
-</table>
+<div class="row">
+  <% @polls.each do |poll|%>
 
-<%= link_to "global.new".t, new_poll_path, :class => "btn btn-lg btn-default" if allow?("polls","create") %>
+    <div class="box_container  col-md-10 col-xs-10 ">
+            <div class="favourites pull-right">
+        <%= status_badge poll %>
+        <%#= link_to "add to favourites",add_favourite_path(t.class,t.id), :remote => true %>
+        <%#= favourite_button(t) if current_user.present? %>
+      </div>
+      <div class="name">
+       <h2> <%= link_to poll.title,poll %></h2>
+      </div>
 
+      
+        <div class="start-end-date">
+          <span class=" glyphicon glyphicon-calendar " style="color:#999"></span>
+         <em><%= t"global.date" %>: </em><%=  (l poll.start_date, format: :short)%> / <%=  (l poll.end_date, format: :short) if poll.end_date.present? %>
+        </div>
+        <br/>
+
+
+
+        <div class="row">
+      <div class="description col-md-9 " style="padding-left:30px;">
+        <%= poll.description  %>
+      </div>
+      <div class= "col-md-3 pull-right">
+        <%= "polls.total_questions".t %>: <b><%= poll.questions.count %></b>
+        <br/>
+        <%= "polls.total_answers".t %>: <b><%= poll.questions.first.answers.count   %></b>
+      </div>
+      </div>
+      
+      <%= terms_list(poll) %>
+    </div>
+
+  <% end %>
+</div>

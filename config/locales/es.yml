@@ -46,6 +46,7 @@ es:
     from_%s:         "Desde %s "
     to_%s:           "hasta %s"
     status:          "estado"
+    polls_list:      "Lista de votaciones"
   questions:
     my_vote:         "Mi voto"
     votes_yes:       "Síes"
