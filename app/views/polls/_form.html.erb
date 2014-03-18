@@ -8,12 +8,12 @@
 		<%= t.text_area :description  , :class => "form-control"  %>
 
 		<%= t.label  	:start_date %>
-		<%= t.datetime_local_field :start_date,  :class => "form-control"  %>
+		<%= t.date_field :start_date,  :class => "form-control"  %>
 
 		<%= t.label  	:end_date %>
 		<%= t.date_field :end_date,  :class => "form-control"  %>
 
-		<%= t.time_select :end_date, :ignore_date => true %>
+		
 		<%= t.label  	:time %>
 		<hr>
 		<p><%= "polls.questions".t %></p>
