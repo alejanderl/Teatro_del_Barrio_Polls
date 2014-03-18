@@ -26,6 +26,8 @@ TeatroDelBarrio::Application.routes.draw do
     match "vote/:question_id/:my_vote",:to =>  "votes#create" , :via => [:get], :as => :voting
     match "unvote/:question_id"       ,:to =>  "votes#destroy", :via => [:get], :as => :destroy_vote
 
+    resources :admins
+      match "admins/change_superadmin/:user_id",:to =>  "admins#change_superadmin" , :via => [:get], :as => :change_superadmin
     
 
   end
