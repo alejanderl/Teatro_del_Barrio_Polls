@@ -1,8 +1,8 @@
-
+<%= link_to "global.new".t, new_poll_path, :class => "btn btn-lg btn-primary pull-right" , style: "position:relative;z-index:1;" if allow?("polls","create") %>
 <h1 class="background-title"> <%= "polls.polls_list".t %></h1>
 
 
-<%= link_to "global.new".t, new_poll_path, :class => "btn btn-lg btn-default pull-right" if allow?("polls","create") %>
+
 
 
 <div class="row">

@@ -96,23 +96,23 @@ body {
 	height: 0;
 }
 
-.centered h1:first-child {
+.centered h1 {
 
     &.background-title {
         color: rgba(0, 0, 0, 0.1);
         position: fixed;
         font-weight: 900;
         font-size: 100px;
-          font-family: uBUNTU, georgia;
+        font-family: ubuntu, georgia;
+        z-index: 0;
 
     }
-          font-weight: 900;
-        font-size: 45px;
-        margin:0;
-        padding:0;  
+    font-weight: 900;
+    font-size: 45px;
+    margin:0;
+    padding:0;  
 
-  z-index: 0;
-  font-family:  georgia;
+    font-family:  georgia;
 }
 
 
