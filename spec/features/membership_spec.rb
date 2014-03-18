@@ -25,14 +25,55 @@ describe "Polls testing"   do
 		end
 	end
 
-	it " user register and membership already exists " do
+	it " user register and membership already exists "  do
 
 	membership = create_membership
 
-	create_user :email => membership.email
+	user = create_user :email => membership.email
+	user_login membership.email, user.password
+	create_poll
+	visit poll_path Poll.last, locale: :es 
+	page.should have_content "Mi voto" 
+
 
 
 	end
 
+	it "load a CSV"  do
+		csv_array = []
+		100.times do |number|
+			csv_array << "email_correcto#{number}@correcto.eu" 
+		end
+	
+		Dir.mkdir("#{Rails.root}/tmp/test") unless File.directory? "#{Rails.root}/tmp/test"
+		File.delete "#{Rails.root}/tmp/test/test_csv.csv" if File.exist? "#{Rails.root}/tmp/test/test_csv.csv"
+		
+
+		file =  File.open("#{Rails.root}/tmp/test/test_csv.csv","w")
+
+		file.puts csv_array.join ","
+		file.close
+
+
+        user_login "admin@example.com", "admin123"
+        visit memberships_path
+
+
+        click_link "Añadido masivo"
+        
+        id_input_file =  find("input[type='file']")['id']
+
+        attach_file(id_input_file,"#{Rails.root}/tmp/test/test_csv.csv")
+        
+
+        click_button "enviar archivo"
+
+
+        page.should have_content "email_correcto1@correcto.eu"
+        
+
+        File.delete "#{Rails.root}/tmp/test/test_csv.csv"
+
+	end
 
 end

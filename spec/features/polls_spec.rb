@@ -21,8 +21,7 @@ describe "Polls testing"   do
       create_term :name => name
     end
 
-  	click_link "Votaciones"
-    
+    visit polls_path
   	click_link "Nuevo"
     
     fill_in "poll_title", :with => "Título de la votación"

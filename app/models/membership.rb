@@ -5,7 +5,7 @@ class Membership < ActiveRecord::Base
 
 
 	validates :email          , presence:true, uniqueness: true, email: true
-	validates :membership_code, uniqueness: true
+	 validates_uniqueness_of  :membership_code, allow_blank: true, allow_nil: true
 
 	# Kaminari DSL
 	paginates_per 30
@@ -36,7 +36,7 @@ class Membership < ActiveRecord::Base
 
 		end
 		
-
+		
 		updatable_emails.each do |email|
 			Membership.create email: email rescue self.errors.add(:massive_update, "#{email} ha fallado")
 		end 

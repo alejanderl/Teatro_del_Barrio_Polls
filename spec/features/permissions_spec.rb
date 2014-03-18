@@ -15,8 +15,8 @@ describe "Polls testing"   do
     
     user_login "member@example.com", "member123"
     visit root_path(:locale => :es)
-    have_selector(:link_or_button, 'Votaciones')
-    click_link "Votaciones"
+    
+    
 
     page.should_not have_selector(:link_or_button, 'Nuevo')
     poll = create_poll
