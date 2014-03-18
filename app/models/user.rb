@@ -35,6 +35,7 @@ class User < ActiveRecord::Base
       end
 
     end
+    new_user.superadmin?
 
   end
 
