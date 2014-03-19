@@ -9,6 +9,17 @@ module TestHelpers
 
   end
 
+  def user_logout
+    within "#user_nav" do 
+
+      first("i").click
+
+    end
+
+    click_link "Salir"
+
+  end
+ 
   def user_login (email, password)
 
     visit new_user_session_path
@@ -55,6 +66,15 @@ module TestHelpers
   end
 
   def create_sample_users
+
+    superadmin = create_user(:email => "superadmin1@example.com",
+              :password => "superadmin123",
+              :password_confirmation => "superadmin123",
+        :admin => true,
+        :confirmed_at => Time.now      
+              )
+
+    superadmin.update_attributes superadmin: true
 
     create_user(:email => "guest@example.com",
                 :password => "guest123",

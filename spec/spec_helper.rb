@@ -3,6 +3,8 @@ ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'capybara/rspec'
+include Warden::Test::Helpers
+Warden.test_mode!
 
 # require 'rspec/autorun' (causes Zeus to run specs twice)
 
@@ -23,6 +25,7 @@ RSpec.configure do |config|
   # config.mock_with :flexmock
   # config.mock_with :rr
   config.mock_with :rspec
+
 
   # #TODO Trick to include factories.rb in the test scope. Idealy , removing factory_girls_rails from GemFile and including
   #config.include FactoryGirl::Syntax::Methods

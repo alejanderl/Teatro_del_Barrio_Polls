@@ -8,7 +8,7 @@
 <div class="row">
   <% @polls.each do |poll|%>
 
-    <div class="box_container  col-md-10 col-xs-10 ">
+    <div class="col-md-offset-1 col-md-10   col-xs-10 box_container ">
             <div class="favourites pull-right">
         <%= status_badge poll %>
         <%#= link_to "add to favourites",add_favourite_path(t.class,t.id), :remote => true %>
@@ -19,24 +19,29 @@
       </div>
 
       
-        <div class="start-end-date">
-          <span class=" glyphicon glyphicon-calendar " style="color:#999"></span>
-         <em><%= t"global.date" %>: </em><%=  (l poll.start_date, format: :short)%> / <%=  (l poll.end_date, format: :short) if poll.end_date.present? %>
+      <div class="start-end-date">
+        <span class=" glyphicon glyphicon-calendar " style="color:#999"></span>
+       <em><%= t"global.date" %>: </em><%=  (l poll.start_date, format: :short)%> / <%=  (l poll.end_date, format: :short) if poll.end_date.present? %>
+      </div>
+      <br/>
+
+
+
+      <div class="row">
+        <div class="description col-md-9 " style="padding-left:30px;">
+          <%= poll.description  %>
         </div>
-        <br/>
 
+          <div class= "col-md-3 pull-right">
+            <%= "polls.total_questions".t %>: <b><%= poll.questions.count %></b>
+            <br/>
+            <% unless poll.state == 2%>
+              <%= "polls.total_answers".t %>: <b><%= poll.questions.first.answers.count   %></b>
+            <% end %>
+          </div>
+        
+      </div>
 
-
-        <div class="row">
-      <div class="description col-md-9 " style="padding-left:30px;">
-        <%= poll.description  %>
-      </div>
-      <div class= "col-md-3 pull-right">
-        <%= "polls.total_questions".t %>: <b><%= poll.questions.count %></b>
-        <br/>
-        <%= "polls.total_answers".t %>: <b><%= poll.questions.first.answers.count   %></b>
-      </div>
-      </div>
       
       <%= terms_list(poll) %>
     </div>

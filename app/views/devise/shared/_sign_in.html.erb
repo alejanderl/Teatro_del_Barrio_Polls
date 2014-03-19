@@ -2,7 +2,7 @@
   <% if user_signed_in? %>
     
     <div class="btn-group">
-   	 <button class="btn btn-default  btn-black dropdown-toggle" data-toggle="dropdown"><i class=" glyphicon glyphicon-user"></i></button>
+   	 <a class="btn btn-default  btn-black dropdown-toggle" data-toggle="dropdown"><i class=" glyphicon glyphicon-user"></i></a>
      <ul class="dropdown-menu pull-left">
       <% if allow? "taxonomies", "index" %>
         <li>

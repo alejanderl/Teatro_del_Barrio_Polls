@@ -1,7 +1,7 @@
 #encoding: utf-8
 require 'spec_helper'
 
-describe "Polls testing"   do
+describe "Permissions testing"   do
   
   before :each do
     create_sample_users
