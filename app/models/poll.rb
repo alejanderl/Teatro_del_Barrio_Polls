@@ -42,6 +42,20 @@ class Poll < ActiveRecord::Base
 
 	end
 
+	def status
+
+		case self.state
+		when 2 
+			"programmed"
+		when 1
+			"open"
+		when 0
+			"close"
+			
+		end
+
+	end
+
 	def is_editable?
 
 		#not editable if there's already answers

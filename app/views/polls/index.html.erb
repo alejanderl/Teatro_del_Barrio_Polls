@@ -9,14 +9,21 @@
   <% @polls.each do |poll|%>
 
     <div class="col-md-offset-1 col-md-10   col-xs-10 box_container ">
-            <div class="favourites pull-right">
-        <%= status_badge poll %>
-        <%#= link_to "add to favourites",add_favourite_path(t.class,t.id), :remote => true %>
-        <%#= favourite_button(t) if current_user.present? %>
+      <div class="status-md pull-right hidden-xs">
+         <%= status_badge poll %>
+
       </div>
+          <div class= "hidden-md hidden-lg status-xs pull-right">
+        <a href="#" class="show-tooltip label label-<%= status_class poll %>" data-placement="left" data-toggle="tooltip" data-title="<%= "polls.#{poll.status}".t %>">&nbsp;&nbsp;</a>
+       
+      </div>
+
+
       <div class="name">
        <h2> <%= link_to poll.title,poll %></h2>
       </div>
+
+
 
       
       <div class="start-end-date">
@@ -48,3 +55,13 @@
 
   <% end %>
 </div>
+
+<%= content_for :footer_scripts do %>
+
+<script>
+
+$(".show-tooltip").tooltip();
+
+</script>
+
+<% end %>
