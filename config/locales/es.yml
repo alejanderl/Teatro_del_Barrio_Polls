@@ -33,6 +33,7 @@ es:
     change_superadmin: "Ceder Superadmin"
     are_you_sure_no_more_superadmin: "Estas seguro de que quieres ceder los privilegio de SuperAdmin a otro usuario?"
   polls:
+    poll:            "votación"
     polls:           "Votaciones"
     title:           "Título"
     total_questions: "Preguntas"
