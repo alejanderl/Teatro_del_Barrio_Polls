@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140319142337) do
+ActiveRecord::Schema.define(version: 20140320173424) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,7 +41,9 @@ ActiveRecord::Schema.define(version: 20140319142337) do
     t.string   "matter"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "answers"
+    t.text     "answers_member"
+    t.text     "answers_public"
+    t.text     "answers_guest"
   end
 
   create_table "taxonomizables", force: true do |t|

@@ -48,6 +48,15 @@ es:
     to_%s:           "hasta %s"
     status:          "estado"
     polls_list:      "Lista de votaciones"
+    public_access:   "público"
+    guest_access:   "usuarios registrados"
+    member_access:  "solo para miembros"
+    user_access:      "Acceso a la votación"
+    user_access_tooltip: "Los permisos son incluyentes."
+    public_access_voting: "Acceso público"
+    guest_access_voting:  "Usuario registrados"
+    member_acces_voting:  "Socios"
+
   questions:
     my_vote:         "Mi voto"
     votes_yes:       "Síes"

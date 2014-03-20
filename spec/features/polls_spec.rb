@@ -63,11 +63,13 @@ describe "Polls testing"   do
   end
 
 
-  it "Members can vote yes, no and change their vote"  do
+  it "Members can vote yes, no and change their vote"   do
     create_poll
     user_login "member@example.com", "member123"
     visit poll_path(Poll.last.id, :locale => :es)
+    
     #vote yes
+    
     first(".btn-success").click
     page.should have_content "Has votado si"
     within ".vote-results" do
@@ -102,6 +104,7 @@ describe "Polls testing"   do
     
     visit poll_path(Poll.last.id, :locale => :es)
     page.should have_content("Cerrada")
+    
     page.should have_content("No has votado")
 
   end

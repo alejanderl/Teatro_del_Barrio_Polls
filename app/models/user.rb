@@ -20,7 +20,8 @@ class User < ActiveRecord::Base
   end
 
   def member?
-    self.membership.active if self.membership
+    (self.membership.active if self.membership)||self.admin?
+
   end
 
   def self.set_superadmin old_user, new_user

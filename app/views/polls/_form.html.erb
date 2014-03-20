@@ -16,13 +16,16 @@
 		
 		<%= t.label  	:time %>
 		<hr>
+
+
+
 		<p><%= "polls.questions".t %></p>
 		<ul id="questions">
 			<%= t.fields_for :questions do |f| %>
 
 				<li class="old_question">
 
-				  <%= f.label :matter, "Question" %><br />
+				  <%= f.label :matter,  "questions.matter".t  %><br />
 				  <div class="input-group">
 					  	<%= f.text_field :matter,:class => "form-control" %><br />
 						<%= f.hidden_field :_destroy , :class => "destroy"%>
@@ -43,6 +46,27 @@
 		<%= link_to "<span class='glyphicon glyphicon-plus'></span>".html_safe, "#",:id => "add_question",:title => "polls.add_question".t, :class => "btn btn-default btn-small ", :data =>{"no-turbolink" => "true"} %>
 	
 		<hr>
+		<div id="user_access">
+			<b><%= "polls.user_access".t %></b>
+			<%= link_to "global.info".t, "#", class:"show-tooltip pull-right badge badge-default", data:{placement:"top",toggle:"tooltip", title:"polls.user_access_tooltip".t}  %>
+
+			<br/><br/>
+			<div class="btn-group" data-toggle="buttons">
+				<% Poll::VOTING_ACCESS.each do |access_role|%>
+
+					 <label class="btn btn-default">
+				  		<%= radio_button_tag "vote_access[]", access_role , @poll.vote_access.include?(access_role) %>
+				  	 	<%= "polls.#{access_role}_access".t  %>
+				  </label>
+
+				<% end %>
+
+
+
+			</div>
+		</div>
+
+		<hr/>
 
 <%= terms_field_for 1 , @poll %>
 		<hr>
@@ -80,6 +104,22 @@
 
 		$(document).ready(function(){
 			window.Questionnaire = new TdB.PollBuilder();
+			$(".show-tooltip").tooltip();
+
+			$("#user_access label.btn").on("click",function(){
+				var _this = this
+				setTimeout(function(){
+
+					console.log(_this);
+				$(_this).next().addClass("active");
+				$(_this).next().next().addClass("active");
+			},10);
+				
+			})
+
+			var _the_button = $(':input:checked')
+			_the_button.parent('.btn').click();
+
 
 		})
 

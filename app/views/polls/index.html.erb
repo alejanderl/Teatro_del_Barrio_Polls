@@ -43,7 +43,7 @@
             <%= "polls.total_questions".t %>: <b><%= poll.questions.count %></b>
             <br/>
             <% unless poll.state == 2%>
-              <%= "polls.total_answers".t %>: <b><%= poll.questions.first.answers.count   %></b>
+              <%= "polls.total_answers".t %>: <b><%= poll.questions.first.answers_count   %></b>
             <% end %>
           </div>
         

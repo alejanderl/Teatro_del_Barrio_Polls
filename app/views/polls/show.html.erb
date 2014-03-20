@@ -62,14 +62,14 @@
       <ul class="list-group vote-results" style="max-width:100px">
 
         <li class="list-group-item list-group-item-success">
-         <%= "questions.votes_yes".t %><span class="badge pull-right"><%= question.answers.count_yeses %></span>
+         <%= "questions.votes_yes".t %><span class="badge pull-right"><%= question.answers_count_yeses %></span>
        </li>
        <li class="list-group-item list-group-item-warning ">
-         <%= "questions.votes_no".t %><span class="badge pull-right"><%= question.answers.count_noes %></span>
+         <%= "questions.votes_no".t %><span class="badge pull-right"><%= question.answers_count_noes %></span>
        </li>
        <li class="list-group-item list-group-item-info">
           
-          <%= "questions.total".t %><span class="badge pull-right"><%= question.answers.count %></span></span>
+          <%= "questions.total".t %><span class="badge pull-right"><%= question.answers_count %></span></span>
         </li>
      </ul>
    </div>
@@ -79,15 +79,17 @@
     <div class="col-sm-2 pull-left">
     
       
-      <% if !question.voted?(current_user)&&@poll.is_votable? %>
+      <% if !question.voted?(current_user)&&@poll.can_vote?(current_user) %>
         <h5><%= "questions.my_vote".t  %></h5>
+
         <%= link_to "<span class='glyphicon glyphicon-ok-circle'></span>".html_safe, voting_path(question, "yes"), :class => "btn btn-lg btn-success" %>&nbsp;
         <%= link_to "<span class='glyphicon glyphicon-remove-circle'></span>".html_safe, voting_path(question, "no") , :class => "btn btn-lg btn-warning "%>
+
       <% else %>
 
-         <h4><%= question.voted?(current_user) ? ("questions.you_voted_%s".t % "questions._#{question.answers.my_vote(current_user)}".t) : ("questions.you_didn't_vote".t) %></h4>
+         <h4><%= question.voted?(current_user) ? ("questions.you_voted_%s".t % "questions._#{question.answers_my_vote(current_user)}".t) : ("questions.you_didn't_vote".t) %></h4>
         
-        <%= link_to "questions.vote_again".t, destroy_vote_path(question), :class => "btn btn-xs btn-default" if @poll.is_votable? %>
+        <%= link_to "questions.vote_again".t, destroy_vote_path(question), :class => "btn btn-xs btn-default" if @poll.can_vote?(current_user) %>
 
       <% end %>
     </div>

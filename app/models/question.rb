@@ -1,29 +1,46 @@
+
 class Question < ActiveRecord::Base
 
 
 	belongs_to :poll
-	after_initialize {|_this| _this.answers ||= {}}
-	serialize :answers
+
+	serialize :answers_public
+	serialize :answers_guest
+	serialize :answers_member
 
 
 	validates :matter , :presence => true
 
+	
+
+	after_initialize -> {setup_answers }
 
 
 
 
 	def vote! user, params
 
-		if self.poll.is_votable?
+		if self.poll.can_vote? user
 
-
-			return false unless user
-			
 			the_vote = (params == "yes") ? 1 : 0
-			
-			self.answers[user.id] = the_vote
-			
-			self.save
+
+			if user.email?
+				
+				
+
+				answers = user.member? ? self.answers_member : self.answers_guest
+				
+				answers[user.id] = the_vote
+				
+				self.save
+
+			else
+
+
+
+
+
+			end
 		else
 			errors[:poll] << "activerecord.errors.messages.the_poll_is_closed".t
 			return false
@@ -32,8 +49,9 @@ class Question < ActiveRecord::Base
 	end
 	def destroy_vote! user
 		
-		if self.poll.is_votable?
-			self.answers.delete user.id
+		if self.poll.open?
+			self.answers_member.delete user.id if user.member?
+			self.answers_guest.delete  user.id unless user.member?
 
 			self.save
 		else
@@ -47,46 +65,65 @@ class Question < ActiveRecord::Base
 
 
 	def voted? user
-		
-		
-		return true if self.answers.has_key?(user.id)
+		user ||= User.new
+		return false unless user.email?
+		return true  if (self.answers_guest.merge(self.answers_member)).has_key?(user.id)
 		false
 
 	end
 	
 
-		# singleton methods for answers
-		def answers
-			
-			answers = super 
-
-			def answers.count_yeses
-				self.yeses.count			
-			end
-
-			def answers.count_noes
-				self.noes.count
-			end
-
-			def answers.yeses
-				@yeses ||= self.select { |key, value| value == 1 }
-			end
-
-			def answers.noes
-				@noes ||= self.select { |key, value| value == 0 }
-			end 
-
-			def answers.my_vote user
-
-				self[user.id] == 1 ? "yes" : "no"
+	# singleton methods for answers
+	def answers_count
 
 
-			end
+		self.answers_count_yeses + self.answers_count_noes
 
 
-			answers
+	end
 
+	def answers_count_yeses
+		self.answers_yeses.count + answers_public[:yes].to_i
+	end
+
+	def answers_count_noes
+
+		self.answers_noes.count + answers_public[:no].to_i
+
+	end
+
+	def answers_yeses
+		
+		answers = answers_guest.merge answers_member
+		@yeses ||= answers.select { |key, value| value == 1 }
+	end
+
+
+	def answers_noes
+		answers = answers_guest.merge answers_member
+		@noes ||= answers.select { |key, value| value == 0 }
+	end 
+
+	def answers_my_vote user
+		user ||= User.new
+		if user.email?
+			answers = answers_guest.merge answers_member
+			answers[user.id] == 1 ? "yes" : "no" if user
+		else
+			"unknown"
 		end
+	end
+
+
+	private
+
+	def setup_answers
+
+		self.answers_member ||= {}
+		self.answers_guest  ||= {}
+		self.answers_public ||= {yes:0, no:0}
+
+	end
 
 
 

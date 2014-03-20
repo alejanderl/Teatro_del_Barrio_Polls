@@ -25,16 +25,13 @@ class Poll < ActiveRecord::Base
 
 	VOTING_ACCESS = %w[public guest member]
 
-
+	after_initialize {|_this| _this.voting_access_mask ||= 4 }
 
 	# Each poll has at least one question. Question matter must be present.
 	before_validation {|_this| _this.questions.first || _this.questions.build  }
 
 
 
-	def is_votable?
-		self.state == 1
-	end
 
 
 
@@ -43,6 +40,12 @@ class Poll < ActiveRecord::Base
 		return 2 if self.start_date  > @now # programmed
 		return 1 if (self.start_date < @now && self.end_date > @now) # open
 		return 0 if (self.end_date   < @now) # close
+
+	end
+
+	def open?
+
+		state==1
 
 	end
 
@@ -64,7 +67,7 @@ class Poll < ActiveRecord::Base
 
 		#not editable if there's already answers
 		self.questions.each do |question|
-			return false if question.answers.count > 0
+			return false if question.answers_count > 0
 		end
 		self.state != 0 if self.start_date&&self.end_date
 	end
@@ -77,8 +80,11 @@ class Poll < ActiveRecord::Base
 	end
 
 
+
+
   def vote_access=(roles)
-    self. voting_access_mask = (roles & VOTING_ACCESS).map { |r| 2**VOTING_ACCESS.index(r) }.sum
+
+  	self. voting_access_mask = (roles & VOTING_ACCESS).map { |r| 2**VOTING_ACCESS.index(r) }.sum if ((roles&VOTING_ACCESS).count > 0)
   end
   
   def vote_access
@@ -86,16 +92,30 @@ class Poll < ActiveRecord::Base
   end
 
 
-  def can_vote?( user = User.new )
+  def can_vote?( user = nil )
   		
-  		return true if     self.vote_access.include?                      "public"
-  		return true if     user.email?   && (self.vote_access.include?    "guest")
-  		return true if     user.member?  && (self.vote_access.includes?   "member")
-  		#TODO Admins can vote or should they be members aswell?
-  		return true if     user.admin?
-  		false
+  		return false unless status=="open"
+  		(user_permissions_translation(user) & vote_access).count > 0
+  		
+
   end
 
+
+
+  def user_permissions_translation(user)
+
+  	user_permissions = []
+
+  	user_permissions << "member" if user.member?
+  	user_permissions << "guest"  if user.email?&&!user.member?
+  	user_permissions << "public" if user.nil?
+
+  	user_permissions 
+
+
+
+
+  end
 
 
 	
