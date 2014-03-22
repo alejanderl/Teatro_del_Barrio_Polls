@@ -14,8 +14,10 @@
          <%= status_badge poll %>
 
       </div>
-      <div class= "hidden-md hidden-lg status-xs pull-right">
-        <a href="#" class="show-tooltip label label-<%= status_class poll %>" data-placement="left" data-toggle="tooltip" data-title="<%= "polls.#{poll.status}".t %>:<%=  (l poll.start_date, format: :short)%> / <%=  (l poll.end_date, format: :short) %>">&nbsp;<i class=" glyphicon glyphicon-calendar " style="">&nbsp;</i></a>
+
+      <div class= "hidden-md hidden-lg status-xs pull-right" >
+       <h4> <span href="#" class="show-tooltip label label-<%= status_class poll %>" data-placement="top" data-toggle="tooltip" data-title="<%= "polls.#{poll.status}".t %> - <%=  (l poll.start_date, format: :short)%> / <%=  (l poll.end_date, format: :short) %>"><i class=" glyphicon glyphicon-calendar " style=""></i></span>
+       </h4>
        
       </div>
 
