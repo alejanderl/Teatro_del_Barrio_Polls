@@ -34,9 +34,10 @@
 
   <div class="col-md-8 col-xs-11">
     <p>
-           <em style="font-size:0.8em"><%= "polls.from_%s".t % (l @poll.start_date, format: :short) %></span> <span  style="white-space: nowrap;"><%= "polls.to_%s".t % (l @poll.end_date, format: :short)%></em><br/>
-      <%= @poll.description %>
 
+      <%= @poll.description %>
+      <br/>
+      <em style="font-size:0.8em"><%= "polls.from_%s".t % (l @poll.start_date, format: :short) %></span> <span  style="white-space: nowrap;"><%= "polls.to_%s".t % (l @poll.end_date, format: :short)%></em>
     </p>
   </div>
 
