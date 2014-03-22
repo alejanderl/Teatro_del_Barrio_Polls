@@ -105,6 +105,7 @@
 		$(document).ready(function(){
 			window.Questionnaire = new TdB.PollBuilder();
 			$(".show-tooltip").tooltip();
+			
 
 			$("#user_access label.btn").on("click",function(){
 				var _this = this;
@@ -113,9 +114,10 @@
 				$(_this).next().next().addClass("active");
 			},10);
 				
-			}
-			
+			});
 			$('#vote_<%= @poll.vote_access.first %>').click();
+			
+			
 			
 		})
 
