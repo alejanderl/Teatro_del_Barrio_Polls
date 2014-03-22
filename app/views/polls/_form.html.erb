@@ -107,13 +107,14 @@
 			$(".show-tooltip").tooltip();
 
 			$("#user_access label.btn").on("click",function(){
-				var _this = this
+				var _this = this;
 				setTimeout(function(){
 				$(_this).next().addClass("active");
 				$(_this).next().next().addClass("active");
 			},10);
 				
 			}
+			
 			$('#vote_<%= @poll.vote_access.first %>').click();
 			
 		})

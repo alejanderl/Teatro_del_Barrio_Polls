@@ -12,6 +12,14 @@ module ApplicationHelper
     end
   end
 
+  def no_turbolinks
+  	if %w[edit new update create].include? params[:action]	
+  		"data-no-turbolink=''".html_safe
+
+  	end
+  end
+
+
 
 
 
