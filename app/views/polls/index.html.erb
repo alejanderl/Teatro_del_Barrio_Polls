@@ -1,4 +1,4 @@
-<%= link_to "global.new".t, new_poll_path, :class => "btn btn-lg btn-primary pull-right" , style: "position:relative;z-index:1;" if allow?("polls","create") %>
+<%= link_to "<span class='glyphicon glyphicon-plus'></span>".html_safe, new_poll_path, :class => "btn btn-lg btn-primary pull-right" ,title: "global.new".t ,style: "position:relative;z-index:1;" if allow?("polls","create") %>
 <h1 class="background-title"> <%= "polls.polls_list".t %></h1>
 
 
@@ -6,6 +6,7 @@
 
 
 <div class="row">
+
   <% @polls.each do |poll|%>
 
     <div class="col-md-offset-1 col-md-10   col-xs-offset-1 col-xs-10 box_container ">
@@ -54,6 +55,9 @@
     </div>
 
   <% end %>
+  <div class="row">
+   <%= paginate @polls, :window => 2, html: {:class => "pull-right"} %>
+ </div>
 </div>
 
 <%= content_for :footer_scripts do %>

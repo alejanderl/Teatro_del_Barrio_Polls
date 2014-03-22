@@ -14,7 +14,7 @@
 		<%= t.date_field :end_date,  :class => "form-control"  %>
 
 		
-		<%= t.label  	:time %>
+
 		<hr>
 
 
@@ -54,8 +54,8 @@
 			<div class="btn-group" data-toggle="buttons">
 				<% Poll::VOTING_ACCESS.each do |access_role|%>
 
-					 <label class="btn btn-default">
-				  		<%= radio_button_tag "vote_access[]", access_role , @poll.vote_access.include?(access_role) %>
+					 <label id="vote_<%= access_role %>" class="btn btn-default">
+				  		<%= radio_button_tag "vote_access[]", access_role  %>
 				  	 	<%= "polls.#{access_role}_access".t  %>
 				  </label>
 
@@ -70,7 +70,7 @@
 
 <%= terms_field_for 1 , @poll %>
 		<hr>
-		<%= t.submit "global.save".t , :class => "btn btn-default btn-primary"  %>
+		<%= t.submit "global.save".t , :class => "btn btn-lg btn-default btn-primary"  %>
 	</div>
 
 
@@ -117,8 +117,10 @@
 				
 			})
 
-			var _the_button = $(':input:checked')
-			_the_button.parent('.btn').click();
+			var _the_button = $('#vote_<%= @poll.vote_access.first %>')
+			
+
+			_the_button.click();
 
 
 		})

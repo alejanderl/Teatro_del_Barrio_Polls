@@ -24,23 +24,15 @@ class Question < ActiveRecord::Base
 
 			the_vote = (params == "yes") ? 1 : 0
 
-			if user.email?
-				
-				
-
-				answers = user.member? ? self.answers_member : self.answers_guest
-				
+			if user
+				answers = user.member? ? self.answers_member : self.answers_guest				
 				answers[user.id] = the_vote
-				
-				self.save
-
 			else
-
-
-
-
-
+				answers_public[params.to_sym] += 1
 			end
+
+			self.save
+
 		else
 			errors[:poll] << "activerecord.errors.messages.the_poll_is_closed".t
 			return false
@@ -105,7 +97,7 @@ class Question < ActiveRecord::Base
 	end 
 
 	def answers_my_vote user
-		user ||= User.new
+		
 		if user.email?
 			answers = answers_guest.merge answers_member
 			answers[user.id] == 1 ? "yes" : "no" if user

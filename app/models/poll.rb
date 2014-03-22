@@ -30,6 +30,8 @@ class Poll < ActiveRecord::Base
 	# Each poll has at least one question. Question matter must be present.
 	before_validation {|_this| _this.questions.first || _this.questions.build  }
 
+	paginates_per 10
+
 
 
 
@@ -83,6 +85,9 @@ class Poll < ActiveRecord::Base
 
 
   def vote_access=(roles)
+  	roles << "guest"  if roles.include? "public"
+  	roles << "member" if roles.include? "guest"
+
 
   	self. voting_access_mask = (roles & VOTING_ACCESS).map { |r| 2**VOTING_ACCESS.index(r) }.sum if ((roles&VOTING_ACCESS).count > 0)
   end
@@ -93,7 +98,8 @@ class Poll < ActiveRecord::Base
 
 
   def can_vote?( user = nil )
-  		
+
+
   		return false unless status=="open"
   		(user_permissions_translation(user) & vote_access).count > 0
   		
@@ -105,16 +111,15 @@ class Poll < ActiveRecord::Base
   def user_permissions_translation(user)
 
   	user_permissions = []
-
-  	user_permissions << "member" if user.member?
-  	user_permissions << "guest"  if user.email?&&!user.member?
-  	user_permissions << "public" if user.nil?
-
-  	user_permissions 
-
-
-
-
+  	case 
+  		when user.nil?
+  			return user_permissions << "public"
+  		when user.member?||user.admin?
+  			return user_permissions << "member"
+  		when user.email?
+  			return user_permissions << "member"
+		 		
+		end
   end
 
 

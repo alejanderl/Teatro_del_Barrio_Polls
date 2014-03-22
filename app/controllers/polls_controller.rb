@@ -2,7 +2,7 @@ class PollsController < ApplicationController
 
 	def index
 
-		@polls = Poll.all.order(:end_date => :desc)
+		@polls = Poll.all.order(:end_date => :desc).page params[:page]
 
 	end
 
@@ -34,7 +34,7 @@ class PollsController < ApplicationController
 		@poll      = Poll.new standard_attributes
 		@poll.user = current_user
 		add_terms params["terms-id"], @poll
-		set_public_access
+		@poll.vote_access = params[:vote_access]
 		if @poll.save
 			flash[:notice] =  'Poll was successfully created.' 
 			redirect_to @poll
@@ -55,7 +55,7 @@ class PollsController < ApplicationController
 
 		@poll = Poll.find params[:id]
 		add_terms params["terms-id"], @poll
-		set_public_access
+		@poll.vote_access = params[:vote_access]
 		if @poll.update_attributes standard_attributes
 			redirect_to @poll
 			flash[:notice] =  'Poll was successfully updated.'
@@ -94,11 +94,8 @@ class PollsController < ApplicationController
 
 	end
 
-	def set_public_access
-		
-		@poll.vote_access = params[:vote_access]
 
-	end
+
 
 
 end

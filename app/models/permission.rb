@@ -13,10 +13,11 @@ class Permission < Struct.new(:user)
         return true if controller == "landing" 
         return true if controller == "home"
         return true if controller == "polls"&&( %w[show index].include? action)
+        return true if %[votes].include? controller
         
         
     if user.member?
-      return true if %[votes].include? controller
+     
     end
 
 

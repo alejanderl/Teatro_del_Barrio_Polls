@@ -9,6 +9,8 @@ class ApplicationController < ActionController::Base
   delegate :allow?, to: :current_permission
   helper_method :allow?
 
+  
+
   private
 
   def set_locale

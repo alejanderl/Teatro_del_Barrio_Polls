@@ -11,8 +11,15 @@
 
   </div>
 
-<div class="clearfix"></div>
+  <div class="clearfix"></div>
+  <div class= "col-md-3 pull-right">  
+    <%= "polls.user_access".t %>
+    <% @poll.vote_access.each do |access| %>
 
+        <span class="badge badge-info coll-md-2 "><%= "polls.#{access}_access_voting".t %></span>
+        <br/>
+    <% end %>
+  </div>
 </div>
 <br/>
  <hr/>
@@ -75,25 +82,26 @@
    </div>
 
 
-  <% if user_signed_in? %>
+ 
     <div class="col-sm-2 pull-left">
     
-      
-      <% if !question.voted?(current_user)&&@poll.can_vote?(current_user) %>
-        <h5><%= "questions.my_vote".t  %></h5>
+      <% if  @poll.can_vote?(current_user) %>
+        <% if !question.voted?(current_user) %>
+          <h5><%= "questions.my_vote".t  %></h5>
 
-        <%= link_to "<span class='glyphicon glyphicon-ok-circle'></span>".html_safe, voting_path(question, "yes"), :class => "btn btn-lg btn-success" %>&nbsp;
-        <%= link_to "<span class='glyphicon glyphicon-remove-circle'></span>".html_safe, voting_path(question, "no") , :class => "btn btn-lg btn-warning "%>
+          <%= link_to "<span class='glyphicon glyphicon-ok-circle'></span>".html_safe, voting_path(question, "yes"), :class => "btn btn-lg btn-success" %>&nbsp;
+          <%= link_to "<span class='glyphicon glyphicon-remove-circle'></span>".html_safe, voting_path(question, "no") , :class => "btn btn-lg btn-warning "%>
 
-      <% else %>
+        <% else %>
 
-         <h4><%= question.voted?(current_user) ? ("questions.you_voted_%s".t % "questions._#{question.answers_my_vote(current_user)}".t) : ("questions.you_didn't_vote".t) %></h4>
-        
-        <%= link_to "questions.vote_again".t, destroy_vote_path(question), :class => "btn btn-xs btn-default" if @poll.can_vote?(current_user) %>
+           <h4><%= question.voted?(current_user) ? ("questions.you_voted_%s".t % "questions._#{question.answers_my_vote(current_user)}".t) : ("questions.you_didn't_vote".t) %></h4>
+          
+          <%= link_to "questions.vote_again".t, destroy_vote_path(question), :class => "btn btn-xs btn-default"  %>
 
+        <% end %>
       <% end %>
     </div>
-  <% end %>
+  
   </div>
   <hr/>			
 <%end %>
