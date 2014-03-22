@@ -19,7 +19,7 @@ es:
     are_you_sure?: "Está seguro?"
     info: "info"
     send_file:  "enviar archivo"
-
+    date:     "fecha"
   users:
     go_in:    "Entrar"
     sign_in:  "Entrar"

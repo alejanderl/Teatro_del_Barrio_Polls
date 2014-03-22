@@ -1,1 +1,4 @@
- <span class=" label label-<%= css_class %>"><%= "polls.#{status}".t %></span>
+ <span class="show-tooltip label label-<%= css_class %>" data-placement="left" data-toggle="tooltip" data-title="<%=  (l poll.start_date, format: :short)%> / <%=  (l poll.end_date, format: :short) %>" >
+ 	<i class=" glyphicon glyphicon-calendar " ></i>
+
+ 	<%= "polls.#{status}".t %></span>

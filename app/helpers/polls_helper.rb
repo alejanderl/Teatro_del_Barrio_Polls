@@ -15,7 +15,7 @@ module PollsHelper
 			status    = "programmed"
 		end
 
-		render "polls/status_badge", :css_class => css_class, :status => status
+		render "polls/status_badge", :css_class => css_class, :status => status, poll: poll
 
 
 	end

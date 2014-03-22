@@ -15,7 +15,7 @@
 
       </div>
           <div class= "hidden-md hidden-lg status-xs pull-right">
-        <a href="#" class="show-tooltip label label-<%= status_class poll %>" data-placement="left" data-toggle="tooltip" data-title="<%= "polls.#{poll.status}".t %>">&nbsp;&nbsp;</a>
+        <a href="#" class="show-tooltip label label-<%= status_class poll %>" data-placement="left" data-toggle="tooltip" data-title="<%= "polls.#{poll.status}".t %>:<%=  (l poll.start_date, format: :short)%> / <%=  (l poll.end_date, format: :short) %>">&nbsp;&nbsp;</a>
        
       </div>
 
@@ -26,11 +26,7 @@
 
 
 
-      
-      <div class="start-end-date">
-        <span class=" glyphicon glyphicon-calendar " style="color:#999"></span>
-       <em><%= t"global.date" %>: </em><%=  (l poll.start_date, format: :short)%> / <%=  (l poll.end_date, format: :short) if poll.end_date.present? %>
-      </div>
+
       <br/>
 
 
@@ -62,10 +58,10 @@
 
 <%= content_for :footer_scripts do %>
 
-<script>
+  <script>
 
-$(".show-tooltip").tooltip();
+   $(".show-tooltip").tooltip();
 
-</script>
+  </script>
 
 <% end %>
