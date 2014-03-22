@@ -109,20 +109,13 @@
 			$("#user_access label.btn").on("click",function(){
 				var _this = this
 				setTimeout(function(){
-
-					console.log(_this);
 				$(_this).next().addClass("active");
 				$(_this).next().next().addClass("active");
 			},10);
 				
-			})
-
-			var _the_button = $('#vote_<%= @poll.vote_access.first %>')
+			}
+			$('#vote_<%= @poll.vote_access.first %>').click();
 			
-
-			_the_button.click();
-
-
 		})
 
 	</script> 

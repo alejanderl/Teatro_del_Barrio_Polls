@@ -1,32 +1,38 @@
 <div class="row">
-  <h1 class="title col-md-10" ><%= @poll.title   %></h1>
-  <div id="status pull-right">
-    <div id="badges" class=" col-md-1">
-      <h4 style="margin:0;padding:0">
+  
+  <div id="status row ">
+
+    <div id="badges" class="  pull-right">
+      
         
         <%= status_badge @poll %>
-      </h4>
+
+       <% @poll.vote_access.each do |access| %>
+
+          <span class="label label-default show-tooltip" data-toggle="tooltip" data-title="<%= "polls.#{access}_access_voting_tooltip".t %>" data-placement="auto"><%= "polls.#{access}_access_voting".t %></span>
+
+      <% end %>
+     
 
     </div>
 
+
   </div>
+
+  <hr>
+  <h1 class="title col-md-10" ><%= @poll.title   %></h1>
 
   <div class="clearfix"></div>
-  <div class= "col-md-3 col-xs-4 pull-right">  
-    <%= "polls.user_access".t %>
-    <% @poll.vote_access.each do |access| %>
 
-        <span class="badge badge-info coll-md-2 "><%= "polls.#{access}_access_voting".t %></span>
-        <br/>
-    <% end %>
-  </div>
 </div>
 <br/>
- <hr/>
+ 
 <div class="bs-callout bs-callout-info row">
 
-
+    <div class= "col-md-6 col-xs-6 ">  
      <span class=" glyphicon glyphicon-calendar "> <%= "polls.from_%s".t % (l @poll.start_date, format: :short) %><%= "polls.to_%s".t % (l @poll.end_date, format: :short)%></span>
+   </div>
+
 
 </div>
 <br/><br/>
@@ -118,3 +124,12 @@
 
 
 
+<%= content_for :footer_scripts do %>
+  <script >
+
+    $(document).ready(function(){
+     $(".show-tooltip").tooltip();
+    })
+
+  </script> 
+<% end %>
