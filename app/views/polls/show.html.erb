@@ -7,11 +7,10 @@
         
         <%= status_badge @poll %>
 
-       <% @poll.vote_access.each do |access| %>
+       <% access = @poll.vote_access.first %>
 
           <span class="label label-default show-tooltip" data-toggle="tooltip" data-title="<%= "polls.#{access}_access_voting_tooltip".t %>" data-placement="auto"><%= "polls.#{access}_access_voting".t %></span>
 
-      <% end %>
      
 
     </div>

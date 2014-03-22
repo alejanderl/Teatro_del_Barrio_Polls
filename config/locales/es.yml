@@ -56,9 +56,9 @@ es:
     public_access_voting: "Acceso público"
     guest_access_voting:  "Usuario registrados"
     member_access_voting:  "Socios"
-    public_access_voting_tooltip: "Votaciones abiertas a usuarios sin registrar"
-    guest_access_voting_tooltip:  "Los usuarios registrados pueden votar"
-    member_access_voting_tooltip:  "Los miembros pueden votar"
+    public_access_voting_tooltip: "Votaciones abiertas a usuarios sin registrar. Las votaciones sin registrar son anónimas"
+    guest_access_voting_tooltip:  "Los usuarios registrados pueden votar. Los socios son usuarios registrados"
+    member_access_voting_tooltip:  "Solo los socios pueden votar"
     editing_poll: "Editando encuesta"
 
   questions:
