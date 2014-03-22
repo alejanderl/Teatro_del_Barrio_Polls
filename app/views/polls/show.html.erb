@@ -85,7 +85,15 @@
 
  
     <div class="col-sm-2 pull-left">
-    
+
+           <% if  @poll.allowed_voting?(current_user) %>
+
+      
+           <h4><%= question.voted?(current_user) ? ("questions.you_voted_%s".t % "questions._#{question.answers_my_vote(current_user)}".t) : ("questions.you_didn't_vote".t) %></h4>
+
+           <%end%>
+   
+
       <% if  @poll.can_vote?(current_user) %>
         <% if !question.voted?(current_user) %>
           <h5><%= "questions.my_vote".t  %></h5>
@@ -95,7 +103,7 @@
 
         <% else %>
 
-           <h4><%= question.voted?(current_user) ? ("questions.you_voted_%s".t % "questions._#{question.answers_my_vote(current_user)}".t) : ("questions.you_didn't_vote".t) %></h4>
+
           
           <%= link_to "questions.vote_again".t, destroy_vote_path(question), :class => "btn btn-xs btn-default"  %>
 

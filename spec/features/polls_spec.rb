@@ -96,7 +96,7 @@ describe "Polls testing"   do
     end
   end
 
-  it "Members can not vote experired polls"   do
+  it "Members can not vote expired polls" , :focus  do
     Delorean.time_travel_to "1 month ago"
     create_poll :start_date => (Time.now - 7.days), :end_date => (Time.now  + 12.days)
     Delorean.back_to_the_present   
@@ -105,7 +105,7 @@ describe "Polls testing"   do
     visit poll_path(Poll.last.id, :locale => :es)
     page.should have_content("Cerrada")
     
-    page.should have_content("No has votado")
+    page.should_not have_content("No has votado")
 
   end
 
@@ -117,6 +117,7 @@ describe "Polls testing"   do
     
     visit poll_path(Poll.last.id, :locale => :es)
     page.should have_content("Programada")
+    
     page.should have_content("No has votado")
 
   end

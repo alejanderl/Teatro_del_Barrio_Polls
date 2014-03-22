@@ -113,7 +113,10 @@ module TestHelpers
     attrs2[:start_date]  = attrs[:start_date] || (Time.now - 1.hour)
     attrs2[:end_date]    = attrs[:end_date]   || (Time.now + 2.days)
     attrs2[:user_id]     = attrs[:user_id]    || User.where(:admin => "1").first.id
+    attrs2[:vote_access] = attrs[:vote_access]|| ["member"] 
+
     poll = Poll.new attrs2
+    poll.vote_access = attrs2[:vote_access]
     questions   = attrs[:questions]  || [{:poll => poll}]
 
     questions.each do |question|

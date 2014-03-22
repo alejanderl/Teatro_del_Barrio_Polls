@@ -98,11 +98,12 @@ class Poll < ActiveRecord::Base
 
 
   def can_vote?( user = nil )
-
-
-  		return false unless status=="open"
+  		return false unless status=="open"  		
   		(user_permissions_translation(user) & vote_access).count > 0
-  		
+  end
+
+  def allowed_voting? user
+  	(user_permissions_translation(user) & vote_access).count > 0
 
   end
 
@@ -117,7 +118,7 @@ class Poll < ActiveRecord::Base
   		when user.member?||user.admin?
   			return user_permissions << "member"
   		when user.email?
-  			return user_permissions << "member"
+  			return user_permissions << "guest"
 		 		
 		end
   end
