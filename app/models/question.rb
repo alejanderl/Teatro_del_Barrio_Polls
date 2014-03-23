@@ -28,6 +28,8 @@ class Question < ActiveRecord::Base
 				answers = user.member? ? self.answers_member : self.answers_guest				
 				answers[user.id] = the_vote
 			else
+				# check if public user has already voted
+				
 				answers_public[params.to_sym] += 1
 			end
 

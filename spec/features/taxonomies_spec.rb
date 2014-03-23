@@ -14,7 +14,7 @@ describe "Taxonomies testing"   do
 	  	user_login "admin@example.com", "admin123"
 
 	  	visit taxonomies_path(:locale => :es)
-
+	  	
 	  	within "#taxonomy_1" do
 
 	  		first(".panel-body a.create-term").click
