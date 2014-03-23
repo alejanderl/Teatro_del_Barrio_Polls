@@ -1,14 +1,14 @@
 <div id="taxonomy-<%= taxonomy.id %>" class=" taxonomy-print ">
  
-  <h5><%= taxonomy.name  %></h5>
+  <em style="font-size:0.8em"><%= taxonomy.name  %></em>
   
-  <ul id="taxonomy-<%= taxonomy.id %>" class=" list-group">
+  <ul id="taxonomy-<%= taxonomy.id %>" style=" list-style:none">
   
     <% terms.each do |t|  %>
     
-    <li class="taxonomy-term term-<%=t.id%>  list-group-item">
+    <li class="taxonomy-term term-<%=t.id%>  ">
     
-      <%= t.name %>
+      <span class="label label-default"><%= t.name %></span>
     </li>
     
     

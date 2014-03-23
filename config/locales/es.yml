@@ -74,6 +74,9 @@ es:
     _yes:             "si"
     you_didn't_vote: "No has votado"
     total:            "Total"
+    answers: "respuestas"
+    vote_yes: "votar si"
+    vote_no: "votar no"
   memberships:
     email: "email"
     active: "activo"

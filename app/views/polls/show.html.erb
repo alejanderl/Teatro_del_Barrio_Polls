@@ -38,11 +38,13 @@
       <br/>
       <em style="font-size:0.8em"><%= "polls.from_%s".t % (l @poll.start_date, format: :short) %></span> <span  style="white-space: nowrap;"><%= "polls.to_%s".t % (l @poll.end_date, format: :short)%></em>
     </p>
+
+    <%= terms_list(@poll) %>
   </div>
 
   <div  class="col-md-4 col-xs-6 ">
       <p>
-       <%= print_terms_for(@poll,1) %>
+     
     </p>
   </div>
 </div>
@@ -51,7 +53,7 @@
 
     <br/>
     <br/>
-<h4><%= "polls.questions".t %></h4>
+<em><%= "polls.questions".t %></em>
 
 
 
@@ -66,16 +68,17 @@
           
 
     <div class="col-sm-2 pull-right">
-      <%= "questions.total".t %>
-      <ul class="list-group vote-results" style="max-width:100px">
+      <em><%=  %></em>
+                
+      <ul class="list-group vote-results" style="max-width:100px" class="show-tooltip" data-toggle="tooltip" data-title="<%= "questions.answers".t %>" data-placement="left">
 
-        <li class="list-group-item list-group-item-success">
+        <li class="list-group-item ">
          <%= "questions.votes_yes".t %><span class="badge pull-right"><%= question.answers_count_yeses %></span>
        </li>
-       <li class="list-group-item list-group-item-warning ">
+       <li class="list-group-item ">
          <%= "questions.votes_no".t %><span class="badge pull-right"><%= question.answers_count_noes %></span>
        </li>
-       <li class="list-group-item list-group-item-info">
+       <li class="list-group-item ">
           
           <%= "questions.total".t %><span class="badge pull-right"><%= question.answers_count %></span></span>
         </li>
@@ -86,29 +89,8 @@
  
     <div class="col-sm-2 pull-left">
 
-           <% if  @poll.allowed_voting?(current_user) %>
+      <%= voting_buttons question %>
 
-      
-           <h4><%= question.voted?(current_user) ? ("questions.you_voted_%s".t % "questions._#{question.answers_my_vote(current_user)}".t) : ("questions.you_didn't_vote".t) %></h4>
-
-           <%end%>
-   
-
-      <% if  @poll.can_vote?(current_user) %>
-        <% if !question.voted?(current_user) %>
-          <h5><%= "questions.my_vote".t  %></h5>
-
-          <%= link_to "<span class='glyphicon glyphicon-ok-circle'></span>".html_safe, voting_path(question, "yes"), :class => "btn btn-lg btn-success" %>&nbsp;
-          <%= link_to "<span class='glyphicon glyphicon-remove-circle'></span>".html_safe, voting_path(question, "no") , :class => "btn btn-lg btn-warning "%>
-
-        <% else %>
-
-
-          
-          <%= link_to "questions.vote_again".t, destroy_vote_path(question), :class => "btn btn-xs btn-default"  %>
-
-        <% end %>
-      <% end %>
     </div>
   
   </div>
