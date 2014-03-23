@@ -42,7 +42,7 @@ class VotesController < ApplicationController
 			questions_voted = cookies[:questions_voted] ? Marshal.load(cookies[:questions_voted]) : []
 			
 			 if questions_voted.include? params[:question_id]
-			 	flash[:error] = "You can not vote anymore".t 			 	
+			 	flash[:error] = "You can not vote twice this question".t 			 	
 				redirect_to :back
 				return false
 			else
