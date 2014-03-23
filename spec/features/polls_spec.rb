@@ -1,7 +1,7 @@
 #encoding: utf-8
 require 'spec_helper'
 
-describe "Polls testing" ,:focus  do
+describe "Polls testing"   do
   
   before :each do
     create_sample_users
@@ -64,39 +64,41 @@ describe "Polls testing" ,:focus  do
 
 
   it "Members can vote yes, no and change their vote"   do
-    create_poll
+    poll = create_poll
     user_login "member@example.com", "member123"
-    visit poll_path(Poll.last.id, :locale => :es)
+    visit poll_path(poll.id, :locale => :es)
     
-    #vote yes
+   
     
-    first(".btn-success").click
+     #vote yes
+    find(:xpath, "//a[@href='#{voting_path(poll.questions.first, 'yes', locale: :es)}']").click
     page.should have_content "Has votado si"
     within ".vote-results" do
-      within ".list-group-item-success" do
+      within ".votes-yes" do
         page.should have_content "1"
       end
-
     end
-    click_link "Cambiar mi voto"
 
+    #change_vote
+    click_link "Cambiar mi voto"
     page.should_not have_content "Has votado si"
     within ".vote-results" do
-      within ".list-group-item-success" do
+      within ".votes-yes" do
         page.should have_content "0"
       end
     end
-    first(".btn-warning").click
 
+    #vote_no
+    find(:xpath, "//a[@href='#{voting_path(poll.questions.first, 'no', locale: :es)}']").click
     page.should have_content "Has votado no"
     within ".vote-results" do
-      within ".list-group-item-warning" do
+      within ".votes-no" do
         page.should have_content "1"
       end
     end
   end
 
-  it "Members can not vote expired polls" , :focus  do
+  it "Members can not vote expired polls"   do
     Delorean.time_travel_to "1 month ago"
     create_poll :start_date => (Time.now - 7.days), :end_date => (Time.now  + 12.days)
     Delorean.back_to_the_present   
@@ -105,7 +107,7 @@ describe "Polls testing" ,:focus  do
     visit poll_path(Poll.last.id, :locale => :es)
     page.should have_content("Cerrada")
     
-    page.should_not have_content("No has votado")
+    page.should have_content("No has votado")
 
   end
 
@@ -124,12 +126,13 @@ describe "Polls testing" ,:focus  do
 
 
 
-  it "polls should have right dates on saving"   do
+  it "polls should have right dates on saving"  , :js do
     
     poll = create_poll
     user_login "admin@example.com", "admin123"
     visit edit_poll_path poll, :locale => :es
     fill_in "poll_end_date", :with => "2013-1-12"
+
     click_button "Guardar"
     page.should have_content "futuro"
     page.should have_css ".alert-danger"

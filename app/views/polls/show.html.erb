@@ -72,13 +72,13 @@
                 
       <ul class="list-group vote-results" style="max-width:100px" class="show-tooltip" data-toggle="tooltip" data-title="<%= "questions.answers".t %>" data-placement="left">
 
-        <li class="list-group-item ">
+        <li class="list-group-item votes-yes">
          <%= "questions.votes_yes".t %><span class="badge pull-right"><%= question.answers_count_yeses %></span>
        </li>
-       <li class="list-group-item ">
+       <li class="list-group-item votes-no">
          <%= "questions.votes_no".t %><span class="badge pull-right"><%= question.answers_count_noes %></span>
        </li>
-       <li class="list-group-item ">
+       <li class="list-group-item votes-total">
           
           <%= "questions.total".t %><span class="badge pull-right"><%= question.answers_count %></span></span>
         </li>

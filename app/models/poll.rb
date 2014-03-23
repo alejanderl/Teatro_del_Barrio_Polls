@@ -85,10 +85,10 @@ class Poll < ActiveRecord::Base
 
 
   def vote_access=(roles)
-  	roles << "guest"  if roles.include? "public"
-  	roles << "member" if roles.include? "guest"
-
-
+  	unless roles.nil?
+	  	roles << "guest"  if roles.include? "public"
+	  	roles << "member" if roles.include? "guest"
+	end
   	self. voting_access_mask = (roles & VOTING_ACCESS).map { |r| 2**VOTING_ACCESS.index(r) }.sum if ((roles&VOTING_ACCESS).count > 0)
   end
   

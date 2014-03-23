@@ -13,9 +13,9 @@ describe "Voting access testing"   do
 
 		poll = create_poll vote_access: ["public"]
 		visit poll_path(poll,locale: :es)
-		first(".btn-success").click
+    find(:xpath, "//a[@href='#{voting_path(poll.questions.first, 'yes', locale: :es)}']").click
     	within ".vote-results" do
-      		within ".list-group-item-success" do
+      		within ".votes-yes" do
       	  page.should have_content "1"
      	 end
 
@@ -23,10 +23,10 @@ describe "Voting access testing"   do
    		user_login "guest@example.com", "guest123"
    		visit poll_path(poll,locale: :es)
 		
-		first(".btn-success").click
+    find(:xpath, "//a[@href='#{voting_path(poll.questions.first, 'yes', locale: :es)}']").click
 		page.should have_content "Has votado si"
     	within ".vote-results" do
-    		within ".list-group-item-success" do
+    		within ".votes-yes" do
       		  page.should have_content "2"
      		 end
 
@@ -36,10 +36,10 @@ describe "Voting access testing"   do
    		user_login "member@example.com", "member123"
    		visit poll_path(poll,locale: :es)
 		
-		first(".btn-success").click
+		find(:xpath, "//a[@href='#{voting_path(poll.questions.first, 'yes', locale: :es)}']").click
 		page.should have_content "Has votado si"
     	within ".vote-results" do
-    		within ".list-group-item-success" do
+    		within ".votes-yes" do
       		  page.should have_content "3"
      		 end
 
@@ -55,10 +55,10 @@ describe "Voting access testing"   do
 
 		
 		
-		first(".btn-success").click
-		page.should have_content "Has votado si"
-    	within ".vote-results" do
-    		within ".list-group-item-success" do
+    find(:xpath, "//a[@href='#{voting_path(poll.questions.first, 'yes', locale: :es)}']").click
+    page.should have_content "Has votado si"
+      within ".vote-results" do
+        within ".votes-yes" do
       		  page.should have_content "1"
      		 end
 
@@ -68,10 +68,10 @@ describe "Voting access testing"   do
    		user_login "member@example.com", "member123"
    		visit poll_path(poll,locale: :es)
 		
-		first(".btn-success").click
-		page.should have_content "Has votado si"
-    	within ".vote-results" do
-    		within ".list-group-item-success" do
+    find(:xpath, "//a[@href='#{voting_path(poll.questions.first, 'yes', locale: :es)}']").click
+    page.should have_content "Has votado si"
+      within ".vote-results" do
+        within ".votes-yes" do
       		  page.should have_content "2"
      		 end
 
@@ -84,11 +84,11 @@ describe "Voting access testing"   do
 		poll = create_poll 
 		user_login "member@example.com", "member123"
    		visit poll_path(poll,locale: :es)
-		
-		first(".btn-success").click
-		page.should have_content "Has votado si"
-    	within ".vote-results" do
-    		within ".list-group-item-success" do
+		page.should have_xpath("//a[contains(@href,'/vote/')]")
+    find(:xpath, "//a[@href='#{voting_path(poll.questions.first, 'yes', locale: :es)}']").click
+    page.should have_content "Has votado si"
+      within ".vote-results" do
+        within ".votes-yes" do
       		  page.should have_content "1"
      		 end
 
@@ -100,15 +100,15 @@ describe "Voting access testing"   do
 
 		poll_member = create_poll 
 		
-   		visit poll_path(poll_member,locale: :es)
+   	visit poll_path(poll_member,locale: :es)
 		
-		page.should_not have_css ".btn-success"
+    page.should_not have_xpath("//a[contains(@href,'/vote/')]")
 		visit voting_path(poll_member.questions.first, "yes", locale: :es )
 		
 		visit poll_path(poll_member,locale: :es)
 
     	within ".vote-results" do
-    		within ".list-group-item-success" do
+    		within ".votes-yes" do
       		  page.should have_content "0"
      		 end
 
@@ -117,13 +117,13 @@ describe "Voting access testing"   do
    		poll_guest = create_poll :vote_access => ["guest"]
    		visit poll_path(poll_guest,locale: :es)
 		
-		page.should_not have_css ".btn-success"
+		page.should_not have_xpath("//a[contains(@href,'/vote/')]")
 		visit voting_path(poll_guest.questions.first, "yes", locale: :es )
 		
 		visit poll_path(poll_guest,locale: :es)
 
     	within ".vote-results" do
-    		within ".list-group-item-success" do
+    		within ".votes-yes" do
       		  page.should have_content "0"
      		end
      	end
@@ -131,20 +131,20 @@ describe "Voting access testing"   do
 
 	end
 
-	it "guest user can't vote in members polls"  do
+	it "guest user can't vote in members polls"   do
 
 		poll_member = create_poll 
 		user_login "guest@example.com", "guest123"		
    		visit poll_path(poll_member,locale: :es)
    		
    		
-		page.should_not have_css ".btn-success"
+		page.should_not have_xpath("//a[contains(@href,'/vote/')]")
 		visit voting_path(poll_member.questions.first, "yes", locale: :es )
 		
 		visit poll_path(poll_member,locale: :es)
 
     	within ".vote-results" do
-    		within ".list-group-item-success" do
+    		within ".votes-yes" do
       		  page.should have_content "0"
      		 end
 
