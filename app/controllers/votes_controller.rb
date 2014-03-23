@@ -1,6 +1,7 @@
 class VotesController < ApplicationController
 
 	before_filter :check_if_user_has_vote , only:[:create]
+	helper_method :check_if_user_has_vote
 
 	def create
 
@@ -28,8 +29,8 @@ class VotesController < ApplicationController
 
 	end
 
+	
 	private
-
 	def check_if_user_has_vote
 
 		unless current_user
@@ -38,7 +39,7 @@ class VotesController < ApplicationController
 			
 			 if questions_voted.include? params[:question_id]
 			 	flash[:error] = "You can not vote twice this question".t 			 	
-				redirect_to :back
+				redirect_to root_path
 				return false
 			else
 				questions_voted << params[:question_id]				

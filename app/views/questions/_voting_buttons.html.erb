@@ -2,11 +2,11 @@
   <h4>
     <%= ("questions.you_voted_%s".t % "questions._#{question.answers_my_vote(current_user)}".t) if question.voted?(current_user) %>
     <%= ("questions.you_didn't_vote".t) unless question.voted?(current_user)||question.poll.open?  %>
+    <%= ("questions.you_already_voted".t) if current_user.nil?&&public_user_has_vote?(question) %>
   </h4>
 <%end%>
 
-
-<% if question.poll.can_vote?(current_user) %>
+<% if can_vote? question %>
   <% if !question.voted?(current_user) %>
     <h5><%= "questions.my_vote".t  %></h5>
     <%= link_to "<span class='glyphicon glyphicon-ok-circle' style='color:green;'></span>".html_safe, voting_path(question, "yes"), :class => "btn btn-lg btn-default", title: "questions.vote_yes".t %>&nbsp;

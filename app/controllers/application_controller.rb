@@ -7,7 +7,25 @@ class ApplicationController < ActionController::Base
   before_filter :set_locale
   before_filter :authorize
   delegate :allow?, to: :current_permission
-  helper_method :allow?
+  helper_method :allow?#
+  helper_method :check_if_user_has_vote
+  
+
+  def check_if_user_has_vote question_id = params[question_id]
+    unless current_user
+      questions_voted = cookies[:questions_voted] ? Marshal.load(cookies[:questions_voted]) : []
+       if questions_voted.include? params[:question_id]
+        flash[:error] = "You can not vote twice this question".t        
+        redirect_to root_path
+        return false
+      else
+        questions_voted << params[:question_id]       
+        cookies[:questions_voted] = Marshal.dump questions_voted
+      end   
+    end
+  end
+
+
 
   
 

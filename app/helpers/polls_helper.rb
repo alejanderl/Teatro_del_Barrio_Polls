@@ -31,8 +31,24 @@ module PollsHelper
 	end
 
 	def voting_buttons question
-	 
+
 		render "questions/voting_buttons", question: question
 	end
+
+	def can_vote? question
+		
+		question.poll.can_vote?(current_user)&&!public_user_has_vote?(question)
+	end
+
+
+	def public_user_has_vote? question
+
+		
+		questions_voted = []	
+		questions_voted =  Marshal.load(cookies[:questions_voted]) if current_user.nil?&&!cookies[:questions_voted].nil?
+		(questions_voted.include? question.id.to_s)
+	
+	end
+
 end
 

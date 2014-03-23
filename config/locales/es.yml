@@ -54,7 +54,7 @@ es:
     user_access:      "Acceso a la votación"
     user_access_tooltip: "Los permisos son incluyentes."
     public_access_voting: "Acceso público"
-    guest_access_voting:  "Usuario registrados"
+    guest_access_voting:  "Usuarios registrados"
     member_access_voting:  "Socios"
     public_access_voting_tooltip: "Votaciones abiertas a usuarios sin registrar. Los usuarios sin registrar votan de forma anónima."
     guest_access_voting_tooltip:  "Los usuarios registrados pueden votar. Los socios son usuarios registrados"
@@ -77,6 +77,7 @@ es:
     answers: "respuestas"
     vote_yes: "votar si"
     vote_no: "votar no"
+    you_already_voted: "Ya has votado"
   memberships:
     email: "email"
     active: "activo"
