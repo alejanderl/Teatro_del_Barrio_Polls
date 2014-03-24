@@ -52,7 +52,7 @@
 			<%= link_to "global.info".t, "#", class:"show-tooltip pull-right badge badge-default", data:{placement:"top",toggle:"tooltip", title:"polls.user_access_tooltip".t}  %>
 
 			<br/><br/>
-			<div class="btn-group" data-toggle="buttons">
+			<div id="voting_access" class="btn-group" data-toggle="buttons">
 				<% Poll::VOTING_ACCESS.each do |access_role|%>
 
 					 <label id="vote_<%= access_role %>" class="btn btn-default">
@@ -71,7 +71,23 @@
 
 <%= terms_field_for 1 , @poll %>
 		<hr>
-		<%= t.submit "global.save".t , :class => "btn btn-lg btn-default btn-primary"  %>
+		<div class="row">
+			<%= t.submit "global.save".t , :class => "btn btn-lg btn-default btn-primary pull-left "  %>
+			<div id="published" class="btn-group pull-right" data-toggle="buttons">
+
+			 <label id="published_true" class="btn btn-md btn-default">
+			  		<%= t.radio_button :published, true  %>
+			  		<%= "polls.published".t %>
+			  		
+			  	 	
+		 	 </label>
+		 	 <label id="published_false" class="btn btn-md btn-default">
+
+		 	 	<%= t.radio_button :published, false  %>
+		 	 	<%= "polls.draft".t %>
+		 	 </label>
+		</div>
+		</div>
 	</div>
 
 
@@ -117,9 +133,7 @@
 				
 			});
 			$('#vote_<%= @poll.vote_access.first %>').click();
-			
-			
-			
+			$('#published_<%= @poll.published %>').click();		
 		})
 
 	</script> 

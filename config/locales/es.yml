@@ -60,6 +60,8 @@ es:
     guest_access_voting_tooltip:  "Los usuarios registrados pueden votar. Los socios son usuarios registrados"
     member_access_voting_tooltip:  "Solo los socios pueden votar"
     editing_poll: "Editando encuesta"
+    published: "Publicar"
+    draft: "Borrador"
 
   questions:
     my_vote:         "Mi voto"

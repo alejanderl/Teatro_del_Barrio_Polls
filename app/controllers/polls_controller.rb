@@ -1,18 +1,30 @@
 class PollsController < ApplicationController
+	before_filter :where_is_current_user , only: :show
 
 	def index
-
 		@polls = Poll.all.order(:end_date => :desc).page params[:page]
 
 	end
 
 	def show
-
-
+		
+		
 		@poll = Poll.find params[:id]
+		
+		@current_user ||= User.new
 
-		respond_to do |format|
-			format.html {render "show"}
+		if @poll.published||@current_user.admin?
+
+			respond_to do |format|
+				format.html {render "show"}
+
+			end
+				
+			
+		else
+
+			redirect_to root_path
+			flash[:error] =  'Not published.' 
 
 		end
 
@@ -85,11 +97,18 @@ class PollsController < ApplicationController
 
 	private
 
+	def where_is_current_user
+		# current_user fails and return nil in the show action- this is a patch
+		@current_user = current_user
+		
+	end
+
 	def standard_attributes
 
 		
 		params.require(:poll).permit(:title,:description, 
 									 :start_date, :end_date,
+									 :published,
 									 :questions_attributes => [:matter, :id, :_destroy])
 
 	end

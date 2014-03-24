@@ -35,7 +35,7 @@ class VotesController < ApplicationController
 
 		unless current_user
 
-			questions_voted = cookies[:questions_voted] ? Marshal.load(cookies[:questions_voted]) : []
+			questions_voted = session[:questions_voted] ? Marshal.load(session[:questions_voted]) : []
 			
 			 if questions_voted.include? params[:question_id]
 			 	flash[:error] = "You can not vote twice this question".t 			 	
@@ -43,7 +43,7 @@ class VotesController < ApplicationController
 				return false
 			else
 				questions_voted << params[:question_id]				
-				cookies[:questions_voted] = Marshal.dump questions_voted
+				session[:questions_voted] = Marshal.dump questions_voted
 			end		
 		end
 

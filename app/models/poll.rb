@@ -21,11 +21,13 @@ class Poll < ActiveRecord::Base
 	validate :right_date
 
 	after_initialize {|_this| @now = Time.now}
+
 	accepts_nested_attributes_for :questions, :allow_destroy => true
 
 	VOTING_ACCESS = %w[public guest member]
 
 	after_initialize {|_this| _this.voting_access_mask ||= 4 }
+	
 
 	# Each poll has at least one question. Question matter must be present.
 	before_validation {|_this| _this.questions.first || _this.questions.build  }

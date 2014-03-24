@@ -1,7 +1,6 @@
 module ApplicationHelper
 
 
- delegate :current_user2, to: :current_user
 
   def flash_class(level)
     case level

@@ -3,7 +3,11 @@
   <div id="status row ">
 
     <div id="badges" class="  pull-right">
-      
+        
+        <% unless @poll.published %>
+          <span class="label label-warning show-tooltip" data-toggle="tooltip" ><%= "polls.draft".t %></span>
+        <% end %>
+
         
         <%= status_badge @poll %>
 
@@ -86,7 +90,7 @@
    </div>
 
 
- 
+
     <div class="col-sm-2 pull-left">
 
       <%= voting_buttons question %>

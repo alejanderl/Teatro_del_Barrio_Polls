@@ -28,8 +28,11 @@ class ApplicationController < ActionController::Base
 
 
   def current_permission
+
     user = current_user || User.new
+    
     @current_permission ||= Permission.new(user)
+
   end
 
   def authorize
