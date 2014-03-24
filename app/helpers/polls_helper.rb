@@ -31,7 +31,6 @@ module PollsHelper
 	end
 
 	def voting_buttons question
-
 		render "questions/voting_buttons", question: question
 	end
 

@@ -1,3 +1,4 @@
+
 <% if  question.poll.allowed_voting?(current_user) %>
   <h4>
     <%= ("questions.you_voted_%s".t % "questions._#{question.answers_my_vote(current_user)}".t) if question.voted?(current_user) %>

@@ -2,7 +2,13 @@ class PollsController < ApplicationController
 	before_filter :where_is_current_user , only: :show
 
 	def index
-		@polls = Poll.all.order(:end_date => :desc).page params[:page]
+		 if !current_user||!current_user.admin?
+			@polls = Poll.all.order(:end_date => :desc).where(published: true).page params[:page]
+		else
+			@polls = Poll.all.order(:end_date => :desc).page params[:page]
+			
+		end
+
 
 	end
 
@@ -11,13 +17,12 @@ class PollsController < ApplicationController
 		
 		@poll = Poll.find params[:id]
 		
-		@current_user ||= User.new
+		@current_user2 = @current_user || User.new
 
-		if @poll.published||@current_user.admin?
+		if @poll.published||@current_user2.admin?
 
 			respond_to do |format|
 				format.html {render "show"}
-
 			end
 				
 			

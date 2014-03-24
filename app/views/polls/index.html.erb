@@ -23,10 +23,16 @@
 
 
       <div class="name">
+
        <h2> <%= link_to poll.title,poll %></h2>
+
       </div>
 
-
+      <% unless poll.published %>
+        <hr>
+         <h4><span class="label label-warning show-tooltip" data-toggle="tooltip" ><%= "polls.draft".t %></h4></span>
+        <hr>
+      <% end %>
 
 
       <br/>

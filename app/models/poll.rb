@@ -105,6 +105,7 @@ class Poll < ActiveRecord::Base
   end
 
   def allowed_voting? user
+  	
   	(user_permissions_translation(user) & vote_access).count > 0
 
   end
