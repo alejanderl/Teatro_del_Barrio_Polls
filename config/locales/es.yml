@@ -80,6 +80,7 @@ es:
     vote_yes: "votar si"
     vote_no: "votar no"
     you_already_voted: "Ya has votado"
+    write_your_question: "Escribe una pregunta"
   memberships:
     email: "email"
     active: "activo"

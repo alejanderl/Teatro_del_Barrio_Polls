@@ -21,14 +21,14 @@
 
 
 		<p><%= "polls.questions".t %></p>
-		<ul id="questions">
+		<ul id="questions" >
 			<%= t.fields_for :questions do |f| %>
 
-				<li class="old_question">
+				<li class="old_question" >
 
-				  <%= f.label :matter,  "questions.matter".t  %><br />
+				  
 				  <div class="input-group">
-					  	<%= f.text_field :matter,:class => "form-control" %><br />
+					  	<%= f.text_field :matter,:class => "form-control" , placeholder: "questions.write_your_question".t %><br />
 						<%= f.hidden_field :_destroy , :class => "destroy"%>
 						<div class="input-group-btn">
 							 <%= link_to "<span class='glyphicon glyphicon-remove'></span>".html_safe, "#", :class => "remove_old_question  btn btn-warning " , :title => "questions.remove_question".t %>
@@ -100,11 +100,11 @@
 
 
   		<li class="new_question">
-  		  <label for="poll_questions_attributes_{{random}}_matter"><%= "questions.matter".t %></label><br />
+  		  
 	  		<div class="input-group">
 
 			  			
-				  <input id="poll_questions_attributes_{{random}}_matter" name="poll[questions_attributes][{{random}}][matter]"  type="text" class="form-control"  />
+				  <input id="poll_questions_attributes_{{random}}_matter" name="poll[questions_attributes][{{random}}][matter]" placeholder="<%= "questions.write_your_question".t %>"  type="text" class="form-control"  />
 				 <div class="input-group-btn">
 			    	<%= link_to "<span class='glyphicon glyphicon-remove'></span>".html_safe, "#", :class => "remove_new_question  btn btn-warning " , :title => "questions.remove_question".t %>
 			  	</div>
