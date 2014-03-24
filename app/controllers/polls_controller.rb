@@ -3,6 +3,7 @@ class PollsController < ApplicationController
 
 	def index
 		 if !current_user||!current_user.admin?
+		 	
 			@polls = Poll.all.order(:end_date => :desc).where(published: true).page params[:page]
 		else
 			@polls = Poll.all.order(:end_date => :desc).page params[:page]
