@@ -16,4 +16,5 @@
 //= require turbolinks
 //= require bootstrap
 //= require mustache
+//= require bootstrap-switch
 //= require_tree .
