@@ -126,12 +126,11 @@ describe "Polls testing"   do
 
 
 
-  it "polls should have right dates on saving" ,:focus  , :js do
+  it "polls should have right dates on saving"   , :js do
     
     poll = create_poll
     user_login "admin@example.com", "admin123"
     visit edit_poll_path poll, :locale => :es
-    debugger
     fill_in "poll_end_date", :with => "2013-1-12"
 
     click_button "Guardar"
@@ -145,6 +144,77 @@ describe "Polls testing"   do
 
   end
 
+  it "public user/ guest user can access to draft polls"  do
+  
+    poll = create_poll title: "Borrador", published: false
+
+    user_login "guest@example.com", "guest123"
+    visit poll_path poll, locale: :es
+    page.should have_content "Not published"
+    page.should_not have_content "Borrador"
+    
+    user_logout
+    visit poll_path poll, locale: :es
+    page.should have_content "Not published"
+    page.should_not have_content "Borrador"
+  end
+  it "draft polls are not listed to public or guests" do
+  
+    6.times do |number|
+      create_poll title: "Publicada #{number}"
+    end
+    poll = create_poll title: "Borrador", published: false
+    
+    visit root_path locale: :es
+    page.should have_content "Publicada 0"
+    page.should have_content "Publicada 5"
+    page.should_not have_content "Borrador"
+    
+    user_login "guest@example.com", "guest123"
+    visit root_path locale: :es
+    page.should have_content "Publicada 0"
+    page.should have_content "Publicada 5"
+    page.should_not have_content "Borrador"
+    
+
+  end
+  it "admin can edit draft polls" , :js do
+    poll = create_poll title: "Borrador", published: false
+    user_login "admin@example.com", "admin123"
+    
+    visit poll_path poll, locale: :es
+    page.should have_content "Borrador"
+    click_link "Editar"
+    fill_in :poll_title , with: "Borrador editado" 
+    click_button "Guardar"
+    page.should have_content "Borrador"
+    page.should have_content "Borrador editado"
+
+    click_link "Editar"
+    fill_in :poll_title , with: "Encuesta editada"
+    fill_in :poll_description, with: "Descripcion editada"
+    first("#published_true").click    
+    click_button "Guardar"
+    
+    page.should have_content "Encuesta editada"     
+    page.should_not have_content "Borrador"
+    
+
+
+  end
+
+  it "admin cannot vote draft polls"  do
+
+    poll = create_poll title: "Borrador", published: false
+    user_login "admin@example.com", "admin123"
+    visit poll_path poll , locale: :es
+
+    
+    page.should_not have_xpath "//a[@href='#{voting_path(poll.questions.first, 'no', locale: :es)}']"
+    page.should_not have_content "No has votado"
+
+
+  end
  
 
 end

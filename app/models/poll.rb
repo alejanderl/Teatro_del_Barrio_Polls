@@ -100,12 +100,13 @@ class Poll < ActiveRecord::Base
 
 
   def can_vote?( user = nil )
+  		return false unless self.published
   		return false unless status=="open"  		
   		(user_permissions_translation(user) & vote_access).count > 0
   end
 
   def allowed_voting? user
-  	
+  	return false unless self.published  	
   	(user_permissions_translation(user) & vote_access).count > 0
 
   end
