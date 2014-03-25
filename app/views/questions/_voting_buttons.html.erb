@@ -3,7 +3,7 @@
   <h4>
     <%= ("questions.you_voted_%s".t % "questions._#{question.answers_my_vote(current_user)}".t) if question.voted?(current_user) %>
     <%= ("questions.you_didn't_vote".t) unless question.voted?(current_user)||question.poll.open?  %>
-    <%= ("questions.you_already_voted".t) if current_user.nil?&&public_user_has_vote?(question) %>
+    <%= ("questions.you_voted_%s".t % "questions._#{public_user_has_vote?(question)}".t)  if current_user.nil?&&public_user_has_vote?(question) %>
   </h4>
 <%end%>
 

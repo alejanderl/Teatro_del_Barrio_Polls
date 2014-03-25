@@ -33,21 +33,23 @@ class VotesController < ApplicationController
 	private
 	def check_if_user_has_vote
 
+
 		unless current_user
 
-			questions_voted = session[:questions_voted] ? Marshal.load(session[:questions_voted]) : []
+			questions_voted = session[:questions_voted] ? Marshal.load(session[:questions_voted]) : {}
 			
-			 if questions_voted.include? params[:question_id]
+			 if questions_voted.has_key? params[:question_id]
 			 	flash[:error] = "You can not vote twice this question".t 			 	
 				redirect_to root_path
 				return false
 			else
-				questions_voted << params[:question_id]				
+				questions_voted[params[:question_id]] = params[:my_vote]			
 				session[:questions_voted] = Marshal.dump questions_voted
 			end		
 		end
-
 	end
+
+
 
 
 

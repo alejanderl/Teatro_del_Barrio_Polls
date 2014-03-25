@@ -43,9 +43,10 @@ module PollsHelper
 	def public_user_has_vote? question
 
 		
-		questions_voted = []	
+		questions_voted = {}	
 		questions_voted =  Marshal.load(session[:questions_voted]) if current_user.nil?&&!session[:questions_voted].nil?
-		(questions_voted.include? question.id.to_s)
+		
+		(questions_voted.has_key? question.id.to_s) ?  questions_voted[question.id.to_s] : false
 	
 	end
 
