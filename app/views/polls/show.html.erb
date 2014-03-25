@@ -65,7 +65,7 @@
 <% @poll.questions.each do |question|%>
 
 
- <div class="row">
+ <div id="question-<%= question.id %>" class="row">
 
     <h3 class="col-md-9"><%= question.matter %></h3>
     <br/>

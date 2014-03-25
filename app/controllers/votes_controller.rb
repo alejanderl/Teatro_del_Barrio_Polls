@@ -8,10 +8,10 @@ class VotesController < ApplicationController
 		question = Question.find params[:question_id]		
 		if question.vote! current_user, params[:my_vote]
 			flash[:notice] = "Thanks for voting".t 
-			redirect_to question.poll
+			redirect_to poll_path(question.poll , anchor: "question-#{question.id}")
 		else
 			flash[:error] = "There_was_an_error".t 
-			redirect_to question.poll			
+			redirect_to poll_path(question.poll	, anchor: "question-#{question.id}")		
 		end
 
 	end
@@ -25,7 +25,7 @@ class VotesController < ApplicationController
 			flash[:error] = "There_was_an_error".t 	
 		end
 
-		redirect_to question.poll
+		redirect_to poll_path(question.poll	, anchor: "question-#{question.id}")
 
 	end
 
