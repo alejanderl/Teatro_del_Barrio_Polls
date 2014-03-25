@@ -14,7 +14,8 @@ describe "Voting access testing"   do
 		poll = create_poll vote_access: ["public"]
 		visit poll_path(poll,locale: :es)
     find(:xpath, "//a[@href='#{voting_path(poll.questions.first, 'yes', locale: :es)}']").click
-    	within ".vote-results" do
+    page.should have_content "Has votado si"
+      within ".vote-results" do
       		within ".votes-yes" do
       	  page.should have_content "1"
      	 end
