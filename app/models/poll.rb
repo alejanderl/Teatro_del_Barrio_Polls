@@ -79,7 +79,7 @@ class Poll < ActiveRecord::Base
 	def right_date
 		if self.end_date&&self.start_date
 			self.errors.add(:end_date, :greater_than, :count => "activerecord.attributes.poll.start_date".t )  if self.end_date < self.start_date 
-			self.errors.add(:end_date, :must_be_in_the_future )   if self.end_date < (Time.now + 1.day ) 
+			self.errors.add(:end_date, :must_be_in_the_future )   if self.end_date < (Time.now  ) 
 		end
 	end
 
