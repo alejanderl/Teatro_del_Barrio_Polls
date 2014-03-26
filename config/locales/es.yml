@@ -231,6 +231,7 @@ es:
         title:      "título"
         questions_matter: "Pregunta"
         description:  "descripción"
+        enforceable: "Vinculante"
 
       question:
         matter:  "pregunta"
