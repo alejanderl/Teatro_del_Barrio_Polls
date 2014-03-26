@@ -193,7 +193,7 @@ describe "Polls testing"   do
     click_link "Editar"
     fill_in :poll_title , with: "Encuesta editada"
     fill_in :poll_description, with: "Descripcion editada"
-    first("#published_true").click    
+    first("[for='poll_published']").click    
     click_button "Guardar"
     
     page.should have_content "Encuesta editada"     
