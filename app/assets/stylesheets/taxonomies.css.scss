@@ -92,6 +92,13 @@ div.taxonomy {
     
 }
 
+@mixin dotted-box(){
+    border: 1px dashed #ccc;
+    border-radius: 10px;
+    margin: 10px 0;
+    padding: 10px 10px;
+    box-shadow: 1px 1px 13px -4px #ccc;
+}
 
 @mixin large_buttons($float)  {
 
@@ -134,11 +141,7 @@ div.taxonomy {
     }
 }
 .taxonomy-terms{
-    border: 1px dashed #ccc;
-    border-radius: 10px;
-    margin: 10px 0;
-    padding: 10px 10px;
-    box-shadow: 1px 1px 13px -4px #ccc;
+    @include dotted-box();
 }
 
 .open-dialog {
@@ -168,4 +171,8 @@ div.taxonomy {
             margin:5px 3px;   
         }
     }
+}
+
+.dotted-box {
+    @include dotted-box();
 }

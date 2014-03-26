@@ -114,7 +114,7 @@ class PollsController < ApplicationController
 		
 		params.require(:poll).permit(:title,:description, 
 									 :start_date, :end_date,
-									 :published,
+									 :published, :enforceable,
 									 :questions_attributes => [:matter, :id, :_destroy])
 
 	end

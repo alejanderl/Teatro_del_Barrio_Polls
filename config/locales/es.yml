@@ -232,6 +232,7 @@ es:
         questions_matter: "Pregunta"
         description:  "descripción"
         enforceable: "Vinculante"
+        published: "Públicada"
 
       question:
         matter:  "pregunta"
