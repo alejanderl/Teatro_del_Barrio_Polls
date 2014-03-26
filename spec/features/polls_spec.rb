@@ -215,6 +215,20 @@ describe "Polls testing"   do
 
 
   end
+
+  it "set poll as enforceable", :js do
+
+    poll = create_poll 
+
+    user_login "admin@example.com", "admin123"
+    visit edit_poll_path poll, locale: :es
+    first("[for='poll_enforceable']").click
+    click_button "Guardar"
+    page.should have_css ".glyphicon-bookmark"
+    visit polls_path
+    page.should have_content "Vinculante" 
+
+  end
  
 
 end

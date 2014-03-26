@@ -29,7 +29,11 @@ module PollsHelper
 		end
 		css_class
 	end
+	def enforceable_poll poll
 
+		render "polls/enforceable" if poll.enforceable
+
+	end
 	def voting_buttons question
 		render "questions/voting_buttons", question: question
 	end

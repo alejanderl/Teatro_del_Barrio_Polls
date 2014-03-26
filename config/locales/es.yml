@@ -63,6 +63,8 @@ es:
     editing_poll: "Editando encuesta"
     published: "Pública"
     draft: "Borrador"
+    enforceable: "Vinculante"
+    enforceable_tooltip: "Esta votación es vinculante"
 
   questions:
     my_vote:         "Mi voto"
@@ -232,7 +234,7 @@ es:
         questions_matter: "Pregunta"
         description:  "descripción"
         enforceable: "Vinculante"
-        published: "Públicada"
+        published: "Publicada"
 
       question:
         matter:  "pregunta"
