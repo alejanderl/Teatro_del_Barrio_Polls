@@ -39,7 +39,7 @@
 					  	<%= f.text_field :matter,:class => "form-control" , placeholder: "questions.write_your_question".t %><br />
 						<%= f.hidden_field :_destroy , :class => "destroy"%>
 						<div class="input-group-btn">
-							 <%= link_to "<span class='glyphicon glyphicon-remove'></span>".html_safe, "#", :class => "remove_old_question  btn btn-warning " , :title => "questions.remove_question".t %>
+							 <%= link_to "<span class='glyphicon inverse glyphicon-remove-sign'></span>".html_safe, "#", :class => "remove_old_question  btn btn-default " , :title => "questions.remove_question".t, :style => "color:#666;" %>
 						</div>
 					</div>
 
@@ -126,7 +126,7 @@
 			  			
 				  <input id="poll_questions_attributes_{{random}}_matter" name="poll[questions_attributes][{{random}}][matter]" placeholder="<%= "questions.write_your_question".t %>"  type="text" class="form-control"  />
 				 <div class="input-group-btn">
-			    	<%= link_to "<span class='glyphicon glyphicon-remove'></span>".html_safe, "#", :class => "remove_new_question  btn btn-warning " , :title => "questions.remove_question".t %>
+			    	<%= link_to "<span class='glyphicon glyphicon-remove-sign'></span>".html_safe, "#", :class => "remove_new_question  btn btn-default " , :title => "questions.remove_question".t %>
 			  	</div>
 		</div>
 
