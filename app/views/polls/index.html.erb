@@ -15,12 +15,12 @@
       <div class="status-md pull-right ">
          <%= priority_poll poll %>
         <%= enforceable_poll poll %>
-       
+
          <%= status_badge poll %>
 
           <% access = poll.vote_access.first %>
 
-          <span class="label label-default show-tooltip" data-toggle="tooltip" data-title="<%= "polls.#{access}_access_voting_tooltip".t %>" data-placement="auto"><i class=" glyphicon  glyphicon-envelope " ></i> <%= "polls.#{access}_access_voting".t %></span>
+          <span class="label label-default show-tooltip" data-toggle="tooltip" data-title="<%= "polls.#{access}_access_voting_tooltip".t %>" data-placement="auto"> <%= "polls.#{access}_access_voting".t %></span>
 
       </div>
 
