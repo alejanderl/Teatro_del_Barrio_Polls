@@ -23,7 +23,7 @@
   <br/>&nbsp;<br/>
   <div id="content" class=" col-md-10 col-xs-11 col-md-offset-1">
     <p>
-<br/>
+    <br/>
       <%= @poll.description %>
       <br/>
       <em style="font-size:0.8em"><%= "polls.from_%s".t % (l @poll.start_date, format: :short) %></span> <span  style="white-space: nowrap;"><%= "polls.to_%s".t % (l @poll.end_date, format: :short)%></em>
@@ -44,36 +44,35 @@
     <em><%= "polls.questions".t %></em>
      <hr/>    
     <% @poll.questions.each do |question|%>
-    <div id="question-<%= question.id %>" class="row">
+      <div id="question-<%= question.id %>" class="row">
 
-      <h3 class="col-md-9"><%= question.matter %></h3>
-      <br/>
-      <div class="col-sm-2 pull-right">
-        <em><%=  %></em>
-                  
-        <ul class="list-group vote-results" style="max-width:100px" class="show-tooltip" data-toggle="tooltip" data-title="<%= "questions.answers".t %>" data-placement="left">
-          <li class="list-group-item votes-yes">
-            <%= "questions.votes_yes".t %><span class="badge pull-right"><%= question.answers_count_yeses %></span>
-          </li>
-          <li class="list-group-item votes-no">
-            <%= "questions.votes_no".t %><span class="badge pull-right"><%= question.answers_count_noes %></span>
-          </li>
-          <li class="list-group-item votes-total">
-            
-            <%= "questions.total".t %><span class="badge pull-right"><%= question.answers_count %></span></span>
-          </li>
-        </ul>
+        <h3 class="col-md-9"><%= question.matter %></h3>
+        <br/>
+        <div class="col-sm-2 pull-right">
+          <em><%=  %></em>
+                    
+          <ul class="list-group vote-results" style="max-width:100px" class="show-tooltip" data-toggle="tooltip" data-title="<%= "questions.answers".t %>" data-placement="left">
+            <li class="list-group-item votes-yes">
+              <%= "questions.votes_yes".t %><span class="badge pull-right"><%= question.answers_count_yeses %></span>
+            </li>
+            <li class="list-group-item votes-no">
+              <%= "questions.votes_no".t %><span class="badge pull-right"><%= question.answers_count_noes %></span>
+            </li>
+            <li class="list-group-item votes-total">
+              
+              <%= "questions.total".t %><span class="badge pull-right"><%= question.answers_count %></span></span>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-5 col-sm-2 pull-left">
+
+          <%= voting_buttons question %>
+        </div>
       </div>
-      <div class="col-md-5 col-sm-2 pull-left">
-
-        <%= voting_buttons question %>
-
-      </div>
-    </div>
-    <hr/>			
-  <%end %>
+      <hr/>			
+    <%end %>
   </div>
-  <div class="col-md-10">
+  <div class="col-md-10 col-xs-12">
     <% if  allow?("polls","update")&&@poll.is_editable?  %>
     	<%= link_to "global.edit".t   ,
                    edit_poll_path(@poll),
@@ -83,7 +82,7 @@
                   data:({confirm: "global.are_you_sure?".t}) %>
      <% end %>
   </div>
-  </div>
+</div>
 
 
 <%= content_for :footer_scripts do %>

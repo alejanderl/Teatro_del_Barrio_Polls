@@ -70,7 +70,7 @@ class PollsController < ApplicationController
 	end
 
 	def update
-
+		debugger
 		@poll = Poll.find params[:id]
 		add_terms params["terms-id"], @poll
 		@poll.vote_access = params[:vote_access]

@@ -87,16 +87,26 @@
 		<hr>
 		<%= t.label :enforceable , class:"pull-left" %>
 		<div class="pull-right">
-		<%= t.check_box :enforceable, class:"switch-checkbox pull-right" ,data:{"on-text"=>"global._yes".t.upcase, "off-text"=>"global._no".t.upcase, "on-color"=>"info"} %>
+		<%= t.check_box :enforceable, class:"switch-checkbox pull-right" ,data:{"on-text"=>"global._yes".t.upcase, "off-text"=>"global._no".t, "on-color"=>"info"} %>
 	</div>
 	
 	<div class="clearfix"></div>
 	<hr>
 			<%= t.label :published , class:"pull-left" %>
 		<div class="pull-right">
-		<%= t.check_box :published, class:"switch-checkbox pull-right" ,data:{"on-text"=>"global._yes".t.upcase, "off-text"=>"global._no".t.upcase, "on-color"=>"info"} %>
+		<%= t.check_box :published, class:"switch-checkbox pull-right" ,data:{"on-text"=>"global._yes".t.upcase, "off-text"=>"global._no".t, "on-color"=>"info"} %>
 		
 	</div>
+
+	<div class="clearfix"></div>
+	<hr>
+		<%= t.label :priority , class:"pull-left" %>
+		<div class="pull-right">
+			<%= check_box_tag "priority-switcher","1",true,class:" pull-right" ,data:{"on-text"=>"polls.high".t.upcase, "off-text"=>"polls.normal".t, "on-color"=>"info"} %>
+		
+
+
+		</div>
 	<div class="clearfix"></div>
 	<hr>
 	</div>
@@ -142,7 +152,9 @@
 			window.Questionnaire = new TdB.PollBuilder();
 			$(".show-tooltip").tooltip();
 			$(".switch-checkbox").bootstrapSwitch();
-			
+			$("#priority-switcher").bootstrapSwitch();
+		
+						
 
 			$("#user_access label.btn").on("click",function(){
 				var _this = this;
@@ -153,7 +165,13 @@
 				
 			});
 			$('#vote_<%= @poll.vote_access.first %>').click();
-			$('#published_<%= @poll.published %>').click();		
+				
+				$('#priority-switcher').change( function (e, data) {
+			  var $element = $(data.el),
+			      value = data.value;
+
+			  console.log(e, $element, value);
+			});
 		})
 
 	</script> 

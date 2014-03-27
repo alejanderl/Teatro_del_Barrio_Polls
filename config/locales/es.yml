@@ -35,6 +35,8 @@ es:
   polls:
     new_poll:        "Nueva votación"
     poll:            "votación"
+    high:            "Alta"
+    normal:          "Normal"
     polls:           "Votaciones"
     title:           "Título"
     total_questions: "Preguntas"
@@ -228,13 +230,14 @@ es:
         roles_mask: "Tipo de usuario"
         privacy_terms_acceptance: "Política de privacidad"
       poll:
-        end_date: "fecha de fin"
-        start_date: "fecha de inicio"
-        title:      "título"
+        end_date:         "fecha de fin"
+        start_date:       "fecha de inicio"
+        title:            "título"
         questions_matter: "Pregunta"
-        description:  "descripción"
-        enforceable: "Vinculante"
-        published: "Publicada"
+        description:      "descripción"
+        enforceable:      "Vinculante"
+        published:        "Publicada"
+        priority:         "Prioridad"
 
       question:
         matter:  "pregunta"
