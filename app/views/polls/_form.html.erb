@@ -89,7 +89,15 @@
 		<div class="pull-right">
 		<%= t.check_box :enforceable, class:"switch-checkbox pull-right" ,data:{"on-text"=>"global._yes".t.upcase, "off-text"=>"global._no".t, "on-color"=>"info"} %>
 	</div>
-	
+	<div class="clearfix"></div>
+	<hr>
+	<%= t.label :priority , class:"pull-left" %>
+	<div class="pull-right">
+			<%= t.check_box :priority , class:"switch-checkbox pull-right" ,data:{"on-text"=>"polls.high".t.upcase, "off-text"=>"polls.normal".t, "on-color"=>"info"} %>
+		
+			
+
+	</div>
 	<div class="clearfix"></div>
 	<hr>
 			<%= t.label :published , class:"pull-left" %>
@@ -98,15 +106,7 @@
 		
 	</div>
 
-	<div class="clearfix"></div>
-	<hr>
-		<%= t.label :priority , class:"pull-left" %>
-		<div class="pull-right">
-			<%= t.check_box :priority , class:"switch-checkbox pull-right" ,data:{"on-text"=>"polls.high".t.upcase, "off-text"=>"polls.normal".t, "on-color"=>"info"} %>
-		
-			
 
-		</div>
 	<div class="clearfix"></div>
 	<hr>
 	</div>
