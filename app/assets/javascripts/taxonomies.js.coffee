@@ -1,14 +1,3 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
-
-
-jQuery ->
-    #remove buttons. 
-    $(".action-buttons").toggle()
-
-
-
 class TdB.Taxonomies_Terms
 
     constructor: (@taxonomy) ->
@@ -17,7 +6,7 @@ class TdB.Taxonomies_Terms
         
 
     initialize_events: ->
-
+        $(".action-buttons").toggle()
         $(".deploy-button").hide()
         $("li.parent-0 ul").hide()
         $("li.parent-0 ul ul").show()

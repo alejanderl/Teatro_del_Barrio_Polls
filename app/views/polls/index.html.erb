@@ -1,4 +1,6 @@
-<%= link_to "<span class='glyphicon glyphicon-plus'></span>".html_safe, new_poll_path, :class => "btn btn-lg btn-primary pull-right" ,title: "global.new".t ,style: "position:relative;z-index:1;" if allow?("polls","create") %>
+<%= link_to "<span class='glyphicon glyphicon-plus'></span>".html_safe, new_poll_path, :class => "btn btn-md hidden-xs btn-primary pull-right" ,title: "polls.new_poll".t ,style: "position:relative;z-index:1;" if allow?("polls","create") %>
+
+<%= link_to "<span class='glyphicon glyphicon-plus'></span>".html_safe, new_poll_path, :class => "btn visible-xs btn-xs btn-primary pull-right" ,title: "polls.new_poll".t ,style: "position:relative;z-index:1;" if allow?("polls","create") %>
 <h1 class="background-title"> <%= "polls.polls_list".t %></h1>
 
 
@@ -60,11 +62,11 @@
     </div>
 
   <% end %>
-  <div class="row">
-   <%= paginate @polls, :window => 2, html: {:class => "pull-right"} %>
- </div>
-</div>
 
+</div>
+<div class="row">
+ <%= paginate @polls, :window => 2, html: {:class => "pull-right"} %>
+</div>
 <%= content_for :footer_scripts do %>
 
   <script>
