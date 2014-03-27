@@ -3,22 +3,22 @@
 <div class="col-md-11 col-xs-12 dotted-box">
 <%= form_for @poll do |t| %>
   	<div class="form-group col-md-10 col-md-offset-1 col-xs-12 ">
-		<%= t.label :title %>
+		<%= t.label :title, class: "back-field" %>
 		
-		<%= t.text_field	 :title , :class => "form-control" , placeholder: :title %>
+		<%= t.text_field	 :title , :class => "form-control input-lg" , placeholder: :title %>
 	</div>
 	<div class="form-group col-md-10 col-xs-12 col-md-offset-1">
 
-		<%= t.label :description  %>
+		<%= t.label :description, class: "back-field"   %>
 		<%= t.text_area :description  , :class => "form-control" , :rows => 5 %>
 	</div>
 	<div class="form-group col-md-5 col-xs-12 col-md-offset-1">
-		<%= t.label  	:start_date %>
+		<%= t.label  	:start_date , class: "back-field" %>
 		<%= t.date_field :start_date,  :class => "form-control"  %>
 	</div>
 	<div class="form-group col-md-5 col-xs-12">
 
-		<%= t.label  	:end_date %>
+		<%= t.label  	:end_date , class: "back-field" %>
 		<%= t.date_field :end_date,  :class => "form-control"  %>
 	</div>
 
@@ -58,7 +58,7 @@
 
 		<hr>
 	<div id="user_access" class="col-md-8 col-xs-12 col-md-offset-1" >
-		<em><%= "polls.user_access".t %></em>
+		<em><%= "polls.who_is_allowed_to_vote".t %></em>
 		<%= link_to "global.info".t, "#", class:"show-tooltip pull-right badge badge-default", data:{placement:"top",toggle:"tooltip", title:"polls.user_access_tooltip".t}  %>
 
 		<br/><br/>
@@ -102,9 +102,9 @@
 	<hr>
 		<%= t.label :priority , class:"pull-left" %>
 		<div class="pull-right">
-			<%= check_box_tag "priority-switcher","1",true,class:" pull-right" ,data:{"on-text"=>"polls.high".t.upcase, "off-text"=>"polls.normal".t, "on-color"=>"info"} %>
+			<%= t.check_box :priority , class:"switch-checkbox pull-right" ,data:{"on-text"=>"polls.high".t.upcase, "off-text"=>"polls.normal".t, "on-color"=>"info"} %>
 		
-
+			
 
 		</div>
 	<div class="clearfix"></div>
@@ -152,7 +152,7 @@
 			window.Questionnaire = new TdB.PollBuilder();
 			$(".show-tooltip").tooltip();
 			$(".switch-checkbox").bootstrapSwitch();
-			$("#priority-switcher").bootstrapSwitch();
+			
 		
 						
 
@@ -161,18 +161,13 @@
 				setTimeout(function(){
 				$(_this).next().addClass("active");
 				$(_this).next().next().addClass("active");
-			},10);
+					},10);
 				
 			});
 			$('#vote_<%= @poll.vote_access.first %>').click();
-				
-				$('#priority-switcher').change( function (e, data) {
-			  var $element = $(data.el),
-			      value = data.value;
+		});
 
-			  console.log(e, $element, value);
-			});
-		})
+
 
 	</script> 
 <% end %>

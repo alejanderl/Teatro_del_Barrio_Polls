@@ -70,7 +70,7 @@ class PollsController < ApplicationController
 	end
 
 	def update
-		debugger
+		
 		@poll = Poll.find params[:id]
 		add_terms params["terms-id"], @poll
 		@poll.vote_access = params[:vote_access]
@@ -115,6 +115,7 @@ class PollsController < ApplicationController
 		params.require(:poll).permit(:title,:description, 
 									 :start_date, :end_date,
 									 :published, :enforceable,
+									 :priority,
 									 :questions_attributes => [:matter, :id, :_destroy])
 
 	end

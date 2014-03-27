@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20140326145149) do
     t.integer  "voting_access_mask"
     t.boolean  "published",          default: true
     t.boolean  "enforceable",        default: false
-    t.integer  "priority"
+    t.boolean  "priority",           default: false
   end
 
   create_table "questions", force: true do |t|

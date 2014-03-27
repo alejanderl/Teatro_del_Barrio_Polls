@@ -67,6 +67,9 @@ es:
     draft: "Borrador"
     enforceable: "Vinculante"
     enforceable_tooltip: "Esta votación es vinculante"
+    who_is_allowed_to_vote: "Quién puede votar"
+    priority_high: "Prioritaria"
+    priority_tooltip: "Es urgente que respondas a esta votación!"
 
   questions:
     my_vote:         "Mi voto"

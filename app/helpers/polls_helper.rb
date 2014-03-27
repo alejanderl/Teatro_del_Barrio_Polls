@@ -12,7 +12,7 @@ module PollsHelper
 			css_class = "info"
 			status    = "programmed"
 		end
-		render "polls/status_badge", :css_class => css_class, :status => status, poll: poll
+		render "polls/labels/status_badge", :css_class => css_class, :status => status, poll: poll
 	end
 
 	def status_class poll	
@@ -31,9 +31,15 @@ module PollsHelper
 	end
 	def enforceable_poll poll
 
-		render "polls/enforceable" if poll.enforceable
+		render "polls/labels/enforceable" if poll.enforceable
 
 	end
+
+	def priority_poll poll
+		
+		render "polls/labels/priority" if poll.priority&&poll.open?
+	end
+
 	def voting_buttons question
 		render "questions/voting_buttons", question: question
 	end

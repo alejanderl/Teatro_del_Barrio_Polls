@@ -257,3 +257,17 @@ h2 {
         @include dotted_shadowed 
 }
 
+label  {
+
+    &.back-field {
+        color:#ccc;
+        text-transform:uppercase;
+    }
+}
+
+.input-lg {
+ 
+  height: 44px !important;
+  font-size: 1.3em !important;
+
+}

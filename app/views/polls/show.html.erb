@@ -6,6 +6,7 @@
       <% unless @poll.published %>
         <span class="label label-warning show-tooltip" data-toggle="tooltip" ><%= "polls.draft".t %></span>
       <% end %>
+      <%= priority_poll @poll %>
       <%= status_badge @poll %>
 
      <% access = @poll.vote_access.first %>
