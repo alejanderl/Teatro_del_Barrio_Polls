@@ -17,11 +17,7 @@ class TdB.Taxonomies_Terms
         
 
     initialize_events: ->
-        $("div.dialog" ).dialog
-            autoOpen: false
-            show: 
-             effect: "fade"
-             duration: 1000
+
         $(".deploy-button").hide()
         $("li.parent-0 ul").hide()
         $("li.parent-0 ul ul").show()
@@ -30,8 +26,10 @@ class TdB.Taxonomies_Terms
             height: "80%"
         $( ".open-dialog" ).click ->          
             term = $(this).attr("data-taxonomy")
-            $("div.dialog" ).dialog("close")
-            $("div.dialog-"+term ).dialog("open")
+            
+            #$("div.dialog" ).dialog("close")
+            $('#modal-'+term).modal()
+            #$("div.dialog-"+term ).dialog("open")
             if  !$(this).parent().next().hasClass("in")
 
                 $(this).next().click() 

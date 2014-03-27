@@ -1,0 +1,45 @@
+
+
+
+<div id="modal-<%= taxonomy.id %>" class="modal fade ">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title"><%= "taxonomies.check_terms_for_%s".t % taxonomy.name %></h4>
+      </div>
+      <div class="modal-body">
+        
+
+
+      <div class="dialog dialog-<%= taxonomy.id %>" data-taxonomy="<%= taxonomy.id %>" >
+        <% previous ||= taxonomy_terms[0] %>
+        <ul><% taxonomy_terms.each do |term| %>
+          
+            <% (previous.depth-term.depth).times  {  concat "</ul>".html_safe} if previous.depth > term.depth   %>
+            
+            
+            <%= "<ul>".html_safe if previous.depth < term.depth  %>
+            
+            
+            <li class=" term-<%= term.id %> add-taxonomy-terms" data-id="<%= term.id %>" data-name="<%= taxonomy.id %>" data-parent="<%= term.parent_id %>">
+              <a href="javascript:void(0)" class="add-term btn btn-default"><span class="term-remove  glyphicon glyphicon-plus-sign hidden" ></span><%= term.name %></a>
+            </li>
+            <% previous = term %> 
+          <% end %>
+        </ul>
+      </div>
+
+
+
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

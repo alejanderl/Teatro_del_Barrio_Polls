@@ -134,10 +134,19 @@ div.taxonomy {
   }
 }
 .dialog .add-taxonomy-terms {
-    @include large_buttons(none);
+    
     min-width: 100px;
+    display:block;
+        a {
+            margin:3px;
+        }
     &.inactive {
-	pointer-events:none
+	pointer-events:none;
+         a {
+            pointer-events:none;
+
+            background-color:#ddd;
+         }
     }
 }
 .taxonomy-terms{

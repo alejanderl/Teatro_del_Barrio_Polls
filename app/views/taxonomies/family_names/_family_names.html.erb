@@ -24,23 +24,7 @@
       <%= hidden_field_tag "terms-id[#{taxonomy.id}]", @terms_ids_active %>
       <%  @terms_ids_active=""  %>
       
-       <div class="dialog dialog-<%= taxonomy.id %>" data-taxonomy="<%= taxonomy.id %>" >
-        <% previous ||= taxonomy_terms[0] %>
-        <ul><% taxonomy_terms.each do |term| %>
-          
-            <%=(previous.depth-term.depth).times  {  concat "</ul>".html_safe} if previous.depth > term.depth   %>
-            
-            
-            <%= "<ul>".html_safe if previous.depth < term.depth  %>
-            
-            
-            <li class="btn btn-default term-<%= term.id %> add-taxonomy-terms" data-id="<%= term.id %>" data-name="<%= taxonomy.id %>" data-parent="<%= term.parent_id %>">
-              <a href="javascript:void(0)" class="add-term"><span class="term-remove  glyphicon glyphicon-plus-sign hidden" ></span><%= term.name %></a>
-            </li>
-            <% previous = term %> 
-          <% end %>
-        </ul>
-      </div>
+       <%= render "taxonomies/family_names/terms_modal", taxonomy_terms: taxonomy_terms, taxonomy: taxonomy %>
     </div>
   </div>
 </div>
