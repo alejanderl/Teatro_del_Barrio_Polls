@@ -45,6 +45,7 @@ es:
     add_question:    "Añadir pregunta"
     active:          "Activa"
     close:           "Cerrada"
+    closed:           "Cerrada"
     open:            "Abierta"
     programmed:      "Programada"
     from_%s:         "Desde %s "

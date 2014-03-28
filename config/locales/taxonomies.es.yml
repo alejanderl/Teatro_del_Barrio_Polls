@@ -1,7 +1,10 @@
 es:
   taxonomies:
+    edit: "Editar"
+    remove_term: "Borrar"   
     taxonomies: "Taxonomías"
     add_term:   "Añadir término"
+    add_child_term: "Añadir un término hijo"
     terms: "Términos"
     check_terms_for_%s: "Haz click sobre los términos que quieras añadir"
     marked_terms_are_already_selected: "Los terminos en gris ya están añadidos"
