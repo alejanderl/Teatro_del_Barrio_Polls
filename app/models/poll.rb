@@ -142,8 +142,8 @@ class Poll < ActiveRecord::Base
   		when "programmed"
   			polls = polls.where("start_date > ?",Date.today)
   	end
-  	
-  	polls = polls.where(enforceable: true) if query[:enforceable] = true
+
+  	polls = polls.where(enforceable: true) if query[:enforceable] 
 
 
 
