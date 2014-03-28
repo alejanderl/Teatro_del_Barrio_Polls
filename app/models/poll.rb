@@ -128,5 +128,33 @@ class Poll < ActiveRecord::Base
   end
 
 
+  def self.find_polls query = {}
+
+  	polls = Poll.all
+
+  	polls = polls.where(published: true) if query[:published]
+  	
+  	case query[:status]
+  		when "open"
+  			polls = polls.where("start_date < ?", Date.today).where("end_date > ?",Date.today)
+  		when "closed"
+  			polls = polls.where("end_date < ?",Date.today)
+  		when "programmed"
+  			polls = polls.where("start_date > ?",Date.today)
+  	end
+  	
+  	polls = polls.where(enforceable: true) if query[:enforceable] = true
+
+
+
+
+  	polls
+
+  		
+
+
+
+  end
+
 	
 end

@@ -2,13 +2,12 @@ class PollsController < ApplicationController
 	before_filter :where_is_current_user , only: :show
 
 	def index
-		 if !current_user||!current_user.admin?
-		 	
-			@polls = Poll.all.order(:end_date => :desc).where(published: true).page params[:page]
-		else
-			@polls = Poll.all.order(:end_date => :desc).page params[:page]
-			
-		end
+
+		@query = {}
+		
+		@query[:published] = true if !current_user||!current_user.admin?
+		@query[:status] = params[:status]
+		@polls = Poll.find_polls(@query).page(params[:page]).per(params[:per])
 
 
 	end
