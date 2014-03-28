@@ -70,6 +70,7 @@ es:
     who_is_allowed_to_vote: "Quién puede votar"
     priority_high: "Prioritaria"
     priority_tooltip: "Es urgente que respondas a esta votación!"
+    all: "todas"
 
   questions:
     my_vote:         "Mi voto"
