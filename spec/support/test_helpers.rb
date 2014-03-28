@@ -115,6 +115,7 @@ module TestHelpers
     attrs2[:user_id]     = attrs[:user_id]    || User.where(:admin => "1").first.id
     attrs2[:vote_access] = attrs[:vote_access]|| ["member"] 
     attrs2[:published]   = attrs[:published].nil? ?  true : attrs[:published]
+    attrs2[:priority]    = attrs[:priority].nil? ? false : attrs[:priority]
     
     poll = Poll.new attrs2
     poll.vote_access = attrs2[:vote_access]

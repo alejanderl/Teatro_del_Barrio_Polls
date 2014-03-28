@@ -229,6 +229,33 @@ describe "Polls testing"   do
     page.should have_content "Vinculante" 
 
   end
+
+
+  it "set poll as priority and show to user only in cases take case", :js do
+    Delorean.time_travel_to "1 month ago"
+    poll = create_poll 
+
+    user_login "admin@example.com", "admin123"
+    visit edit_poll_path poll, locale: :es
+    first("[for='poll_priority']").click
+    click_button "Guardar"
+    page.should have_css ".glyphicon-send"
+    page.should have_content "Prioritaria" 
+
+    #Programmed polls should not show priority
+    Delorean.time_travel_to "6 month ago"   
+    visit poll_path poll, locale: :es
+    page.should_not have_css ".glyphicon-send"
+    page.should_not have_content "Prioritaria" 
+
+    #Closed polls should not show priority
+    Delorean.back_to_the_present   
+    visit poll_path poll, locale: :es
+    page.should_not have_css ".glyphicon-send"
+    page.should_not have_content "Prioritaria" 
+
+
+  end
  
 
 end

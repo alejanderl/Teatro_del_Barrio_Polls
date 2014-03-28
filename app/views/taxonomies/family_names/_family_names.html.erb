@@ -13,7 +13,7 @@
           <% @terms_ids_active ||= "," %>
           <% object.terms.where(:taxonomy_id => taxonomy.id).each do |term| %>
               <li class="btn btn-default term-<%= term.id %> " data-id="<%= term.id %>" data-name="<%= taxonomy.id %>" data-parent="<%= term.parent_id %>">
-               <a href="javascript:void(0)" class="remove-term "><span class="term-remove  glyphicon glyphicon-minus-sign hidden" ></span>&nbsp;<%= term.name %></a>
+               <a href="javascript:void(0)" class="remove-term " ><span class="term-remove  glyphicon glyphicon-minus-sign hidden" ></span>&nbsp;<%= term.name %></a>
               </li>
             
             <% @terms_ids_active += ",#{term.id}" %>
