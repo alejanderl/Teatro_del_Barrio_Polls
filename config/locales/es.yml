@@ -23,10 +23,12 @@ es:
   users:
     go_in:    "Entrar"
     sign_in:  "Entrar"
-    sign_up:  "Registrarse"
+    sign_up:  "Regístrate"
     sign_out: "Salir"
     my_profile:  "Mi perfil"
     email: "email"
+    forgot_your_password?: "Olvidaste tu contraseńa?"
+    didn't_receive_confirmation_instructions?: "No has recibido instrucciones para confirmar tu cuenta?"
   admins:
     admins_list: "lista de administradores"
     email_should_belongs_to_user: "El email debe pertenecer a un usuario ya registrado"
