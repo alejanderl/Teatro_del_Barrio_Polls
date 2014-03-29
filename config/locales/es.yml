@@ -9,6 +9,7 @@ es:
     create:   "crear"
     new:      "Nuevo"
     edit:     "Editar"
+    cancel:   "Cancelar"
     delete:   "Borrar"
     save:     "Guardar"
     add:      "Añadir"

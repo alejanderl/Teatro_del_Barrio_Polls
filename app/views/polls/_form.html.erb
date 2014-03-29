@@ -5,7 +5,7 @@
   	<div class="form-group col-md-10 col-md-offset-1 col-xs-12 ">
 		<%= t.label :title, class: "back-field" %>
 		
-		<%= t.text_field	 :title , :class => "form-control input-lg" , placeholder: :title %>
+		<%= t.text_field	 :title , :class => "form-control input-lg"  %>
 	</div>
 	<div class="form-group col-md-10 col-xs-12 col-md-offset-1">
 
@@ -28,7 +28,7 @@
 
 	<div class="form-group col-md-10 col-xs-12 col-md-offset-1">
 	<hr>
-		<p><%= "polls.questions".t %></p>
+		<label class="back-field"><%= "polls.questions".t %></label>
 		<ul id="questions" >
 			<%= t.fields_for :questions do |f| %>
 
@@ -58,7 +58,7 @@
 
 		<hr>
 	<div id="user_access" class="col-md-8 col-xs-12 col-md-offset-1" >
-		<em><%= "polls.who_is_allowed_to_vote".t %></em>
+		<label class="back-field"><%= "polls.who_is_allowed_to_vote".t %></label>
 		<%= link_to "global.info".t, "#", class:"show-tooltip pull-right badge badge-default", data:{placement:"top",toggle:"tooltip", title:"polls.user_access_tooltip".t}  %>
 
 		<br/><br/>
@@ -108,13 +108,19 @@
 
 
 	<div class="clearfix"></div>
-	<hr>
+
 	</div>
+
+</div>	
+
+	<div class="row">
 		
-	<div class="col-md-10 col-xs-12">
-		
-		
-		<%= t.submit "global.save".t , :class => "btn btn-lg btn-default btn-primary pull-left "  %>
+		<div class="col-md-2 col-xs-6">
+			<%= t.submit "global.save".t , :class => "btn  btn-default btn-primary pull-left "  %>
+		</div>
+		<div class="col-md-1 col-xs-6  btn">
+			<%= link_to "global.cancel".t, %w[new create].include?(params[:action]) ? root_path : @poll %>
+		</div>
 		
 	</div>
 
@@ -124,7 +130,6 @@
 
 <% end %>
 
-</div>
 
   <script type="text/html" id="poll_question">
 
