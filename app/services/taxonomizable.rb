@@ -1,7 +1,7 @@
 module Taxonomizable
 
-	class ActiveRecord::Base
-		 
-	end
+  class ActiveRecord::Base
+
+  end
 
 end

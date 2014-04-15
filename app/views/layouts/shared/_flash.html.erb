@@ -1,21 +1,21 @@
 <div id="flash-message" class="centered container">
-	<div class="row">
-	 	
-			<% flash.each do |key, value| %>
-				<div id="<%= "flash_#{key}" %>" class="col-md-offset-1 col-9-md col-12-xs  <%= flash_class(key) %> <%= key %>">
-				   <a
-				    onclick="$('#flash-message').fadeOut('slow')"
-				    href="#"
-				    title="<%= 'global.close'.t %>"
-				    class="close"
-				    >
-				  &times;</a>
-				  <%= value %>
+  <div class="row">
+
+      <% flash.each do |key, value| %>
+        <div id="<%= "flash_#{key}" %>" class="col-md-offset-1 col-9-md col-12-xs  <%= flash_class(key) %> <%= key %>">
+           <a
+            onclick="$('#flash-message').fadeOut('slow')"
+            href="#"
+            title="<%= 'global.close'.t %>"
+            class="close"
+            >
+          &times;</a>
+          <%= value %>
 
 
 
-				
-			<% end %>
-		</div>
-	</div>
+
+      <% end %>
+    </div>
+  </div>
 </div>

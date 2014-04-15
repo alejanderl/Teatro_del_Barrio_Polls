@@ -4,8 +4,8 @@
 
 .action-buttons {
     display:inline;
-    
-    
+
+
 }
 .taxonomy-print {
 
@@ -37,26 +37,26 @@
     }
 .taxonomies ul:first-child li {
 
-  
+
     padding:10px 0;
-    
+
     & li {
         padding: 3px 3px 3px 8px ;
-        
+
         span {
             border-bottom: 1px dashed #666;
             font-size: 14px;
             padding-bottom: 3px;
             padding-left: 10px;
             margin-left: -5px;
-        
+
             &.has_sons{
                 border: 0;
             }
         }
-    
+
     }
-    
+
 }
 
 .taxonomies ul ul li{
@@ -67,20 +67,20 @@
     list-style: none;
     &:last-child {
        border-radius:0px 5px 5px 5px;
-       
+
 
     }
-  
+
 }
 div.taxonomy {
     h4 {
-        
+
         padding: 3px;
         margin-left: 10px;
         opacity: 0.8;
-        
+
     }
-    
+
     li {
         list-style: none;
         border:1px solid #ccc;
@@ -88,8 +88,8 @@ div.taxonomy {
         margin:3px;
         float:left;
     }
-    
-    
+
+
 }
 
 @mixin dotted-box(){
@@ -110,38 +110,38 @@ div.taxonomy {
 
   padding: 3px 13px 4px 13px;;
       &.delete-over {
-	  background-color:rgba(255,0,0,0.5)
+    background-color:rgba(255,0,0,0.5)
       }
-      
+
       &.inactive {
-	background-color:rgba(50,125,255,0.5);
+  background-color:rgba(50,125,255,0.5);
       }
-      
+
       a:hover {
-	  text-decoration: none;
-	  background-color: transparent;
-	  text-shadow: none;
+    text-decoration: none;
+    background-color: transparent;
+    text-shadow: none;
       }
   }
 .active-taxonomies ul.active-list {
     margin-bottom:20px;
     padding-left:0px;
     .hidden {
-	opacity:0;
+  opacity:0;
     }
   li {
     @include large_buttons(left);
   }
 }
 .dialog .add-taxonomy-terms {
-    
+
     min-width: 100px;
     display:block;
         a {
             margin:3px;
         }
     &.inactive {
-	pointer-events:none;
+  pointer-events:none;
          a {
             pointer-events:none;
 
@@ -170,14 +170,14 @@ div.taxonomy {
 
         margin:0;
         padding: 5px 15px;
-        
+
         li {
             float:left;
             padding: 10px 5px;
             list-style: none;
             border-radius: 5px;
             background-color:rgba(255,255,255,0.7);
-            margin:5px 3px;   
+            margin:5px 3px;
         }
     }
 }

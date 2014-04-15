@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
 
- before_filter do 
+ before_filter do
     redirect_to new_user_session_path unless current_user && current_user.admin?
-  end  
+  end
 
   def index
 
-  	@users=User.all
+    @users=User.all
   end
 end

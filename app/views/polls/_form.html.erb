@@ -2,127 +2,127 @@
 
 <div class="col-md-11 col-xs-12 dotted-box">
 <%= form_for @poll do |t| %>
-  	<div class="form-group col-md-10 col-md-offset-1 col-xs-12 ">
-		<%= t.label :title, class: "back-field" %>
-		
-		<%= t.text_field	 :title , :class => "form-control input-lg"  %>
-	</div>
-	<div class="form-group col-md-10 col-xs-12 col-md-offset-1">
+    <div class="form-group col-md-10 col-md-offset-1 col-xs-12 ">
+    <%= t.label :title, class: "back-field" %>
 
-		<%= t.label :description, class: "back-field"   %>
-		<%= t.text_area :description  , :class => "form-control" , :rows => 5 %>
-	</div>
-	<div class="form-group col-md-5 col-xs-12 col-md-offset-1">
-		<%= t.label  	:start_date , class: "back-field" %>
-		<%= t.date_field :start_date,  :class => "form-control"  %>
-	</div>
-	<div class="form-group col-md-5 col-xs-12">
+    <%= t.text_field   :title , :class => "form-control input-lg"  %>
+  </div>
+  <div class="form-group col-md-10 col-xs-12 col-md-offset-1">
 
-		<%= t.label  	:end_date , class: "back-field" %>
-		<%= t.date_field :end_date,  :class => "form-control"  %>
-	</div>
+    <%= t.label :description, class: "back-field"   %>
+    <%= t.text_area :description  , :class => "form-control" , :rows => 5 %>
+  </div>
+  <div class="form-group col-md-5 col-xs-12 col-md-offset-1">
+    <%= t.label    :start_date , class: "back-field" %>
+    <%= t.date_field :start_date,  :class => "form-control"  %>
+  </div>
+  <div class="form-group col-md-5 col-xs-12">
 
-		
-
-		
-
-	<div class="form-group col-md-10 col-xs-12 col-md-offset-1">
-	<hr>
-		<label class="back-field"><%= "polls.questions".t %></label>
-		<ul id="questions" >
-			<%= t.fields_for :questions do |f| %>
-
-				<li class="old_question" >
-
-				  
-				  <div class="input-group">
-					  	<%= f.text_field :matter,:class => "form-control" , placeholder: "questions.write_your_question".t %><br />
-						<%= f.hidden_field :_destroy , :class => "destroy"%>
-						<div class="input-group-btn">
-							 <%= link_to "<span class='glyphicon inverse glyphicon-remove-sign'></span>".html_safe, "#", :class => "remove_old_question  btn btn-default " , :title => "questions.remove_question".t, :style => "color:#666;" %>
-						</div>
-					</div>
-
-				  
-
-				</li>
-
-			<% end %>
-			
-		</ul>
-
-	
-		<%= link_to "<span class='glyphicon glyphicon-plus'></span>".html_safe, "#",:id => "add_question",:title => "polls.add_question".t, :class => "btn btn-default btn-small ", :data =>{"no-turbolink" => "true"} %>
-		<hr>
-	</div>
-
-		<hr>
-	<div id="user_access" class="col-md-8 col-xs-12 col-md-offset-1" >
-		<label class="back-field"><%= "polls.who_is_allowed_to_vote".t %></label>
-		<%= link_to "global.info".t, "#", class:"show-tooltip pull-right badge badge-default", data:{placement:"top",toggle:"tooltip", title:"polls.user_access_tooltip".t}  %>
-
-		<br/><br/>
-		<div id="voting_access" class="btn-group" data-toggle="buttons">
-			<% Poll::VOTING_ACCESS.each do |access_role|%>
-
-				 <label id="vote_<%= access_role %>" class="btn btn-default">
-			  		<%= radio_button_tag "vote_access[]", access_role  %>
-			  	 	<%= "polls.#{access_role}_access".t  %>
-			  </label>
-
-			<% end %>
+    <%= t.label    :end_date , class: "back-field" %>
+    <%= t.date_field :end_date,  :class => "form-control"  %>
+  </div>
 
 
 
-		</div>
-		
-	</div>
 
-		
-	<div class="col-md-10 col-xs-12 col-md-offset-1">
+
+  <div class="form-group col-md-10 col-xs-12 col-md-offset-1">
+  <hr>
+    <label class="back-field"><%= "polls.questions".t %></label>
+    <ul id="questions" >
+      <%= t.fields_for :questions do |f| %>
+
+        <li class="old_question" >
+
+
+          <div class="input-group">
+              <%= f.text_field :matter,:class => "form-control" , placeholder: "questions.write_your_question".t %><br />
+            <%= f.hidden_field :_destroy , :class => "destroy"%>
+            <div class="input-group-btn">
+               <%= link_to "<span class='glyphicon inverse glyphicon-remove-sign'></span>".html_safe, "#", :class => "remove_old_question  btn btn-default " , :title => "questions.remove_question".t, :style => "color:#666;" %>
+            </div>
+          </div>
+
+
+
+        </li>
+
+      <% end %>
+
+    </ul>
+
+
+    <%= link_to "<span class='glyphicon glyphicon-plus'></span>".html_safe, "#",:id => "add_question",:title => "polls.add_question".t, :class => "btn btn-default btn-small ", :data =>{"no-turbolink" => "true"} %>
+    <hr>
+  </div>
+
+    <hr>
+  <div id="user_access" class="col-md-8 col-xs-12 col-md-offset-1" >
+    <label class="back-field"><%= "polls.who_is_allowed_to_vote".t %></label>
+    <%= link_to "global.info".t, "#", class:"show-tooltip pull-right badge badge-default", data:{placement:"top",toggle:"tooltip", title:"polls.user_access_tooltip".t}  %>
+
+    <br/><br/>
+    <div id="voting_access" class="btn-group" data-toggle="buttons">
+      <% Poll::VOTING_ACCESS.each do |access_role|%>
+
+         <label id="vote_<%= access_role %>" class="btn btn-default">
+            <%= radio_button_tag "vote_access[]", access_role  %>
+             <%= "polls.#{access_role}_access".t  %>
+        </label>
+
+      <% end %>
+
+
+
+    </div>
+
+  </div>
+
+
+  <div class="col-md-10 col-xs-12 col-md-offset-1">
 <hr/>
-		<%= terms_field_for 1 , @poll %>
-	</div>
-	<div class="col-md-10 col-xs-12 col-md-offset-1">
-		<hr>
-		<%= t.label :enforceable , class:"pull-left" %>
-		<div class="pull-right">
-		<%= t.check_box :enforceable, class:"switch-checkbox pull-right" ,data:{"on-text"=>"global._yes".t.upcase, "off-text"=>"global._no".t, "on-color"=>"info"} %>
-	</div>
-	<div class="clearfix"></div>
-	<hr>
-	<%= t.label :priority , class:"pull-left" %>
-	<div class="pull-right">
-			<%= t.check_box :priority , class:"switch-checkbox pull-right" ,data:{"on-text"=>"polls.high".t.upcase, "off-text"=>"polls.normal".t, "on-color"=>"info"} %>
-		
-			
-
-	</div>
-	<div class="clearfix"></div>
-	<hr>
-			<%= t.label :published , class:"pull-left" %>
-		<div class="pull-right">
-		<%= t.check_box :published, class:"switch-checkbox pull-right" ,data:{"on-text"=>"global._yes".t.upcase, "off-text"=>"global._no".t, "on-color"=>"info"} %>
-		
-	</div>
+    <%= terms_field_for 1 , @poll %>
+  </div>
+  <div class="col-md-10 col-xs-12 col-md-offset-1">
+    <hr>
+    <%= t.label :enforceable , class:"pull-left" %>
+    <div class="pull-right">
+    <%= t.check_box :enforceable, class:"switch-checkbox pull-right" ,data:{"on-text"=>"global._yes".t.upcase, "off-text"=>"global._no".t, "on-color"=>"info"} %>
+  </div>
+  <div class="clearfix"></div>
+  <hr>
+  <%= t.label :priority , class:"pull-left" %>
+  <div class="pull-right">
+      <%= t.check_box :priority , class:"switch-checkbox pull-right" ,data:{"on-text"=>"polls.high".t.upcase, "off-text"=>"polls.normal".t, "on-color"=>"info"} %>
 
 
-	<div class="clearfix"></div>
 
-	</div>
+  </div>
+  <div class="clearfix"></div>
+  <hr>
+      <%= t.label :published , class:"pull-left" %>
+    <div class="pull-right">
+    <%= t.check_box :published, class:"switch-checkbox pull-right" ,data:{"on-text"=>"global._yes".t.upcase, "off-text"=>"global._no".t, "on-color"=>"info"} %>
 
-</div>	
+  </div>
 
-	<div class="row">
-		
-		<div class="col-md-2 col-xs-6">
-			<%= t.submit "global.save".t , :class => "btn  btn-default btn-primary pull-left "  %>
-		</div>
-		<div class="col-md-1 col-xs-6  btn">
-			<%= link_to "global.cancel".t, %w[new create].include?(params[:action]) ? root_path : @poll %>
-		</div>
-		
-	</div>
+
+  <div class="clearfix"></div>
+
+  </div>
+
+</div>
+
+  <div class="row">
+
+    <div class="col-md-2 col-xs-6">
+      <%= t.submit "global.save".t , :class => "btn  btn-default btn-primary pull-left "  %>
+    </div>
+    <div class="col-md-1 col-xs-6  btn">
+      <%= link_to "global.cancel".t, %w[new create].include?(params[:action]) ? root_path : @poll %>
+    </div>
+
+  </div>
 
 
 
@@ -134,45 +134,45 @@
   <script type="text/html" id="poll_question">
 
 
-  		<li class="new_question">
-  		  
-	  		<div class="input-group">
+      <li class="new_question">
 
-			  			
-				  <input id="poll_questions_attributes_{{random}}_matter" name="poll[questions_attributes][{{random}}][matter]" placeholder="<%= "questions.write_your_question".t %>"  type="text" class="form-control"  />
-				 <div class="input-group-btn">
-			    	<%= link_to "<span class='glyphicon glyphicon-remove-sign'></span>".html_safe, "#", :class => "remove_new_question  btn btn-default " , :title => "questions.remove_question".t %>
-			  	</div>
-		</div>
+        <div class="input-group">
 
-		</li>
+
+          <input id="poll_questions_attributes_{{random}}_matter" name="poll[questions_attributes][{{random}}][matter]" placeholder="<%= "questions.write_your_question".t %>"  type="text" class="form-control"  />
+         <div class="input-group-btn">
+            <%= link_to "<span class='glyphicon glyphicon-remove-sign'></span>".html_safe, "#", :class => "remove_new_question  btn btn-default " , :title => "questions.remove_question".t %>
+          </div>
+    </div>
+
+    </li>
 
 </script>
 
 <% flash.now[:error] = render 'layouts/shared/error_messages', :target=>@poll if @poll.errors.any? %>
 
 <%= content_for :footer_scripts do %>
-	<script >
-		$(document).ready(function(){
-			window.Questionnaire = new TdB.PollBuilder();
-			$(".show-tooltip").tooltip();
-			$(".switch-checkbox").bootstrapSwitch();
-			
-		
-						
-
-			$("#user_access label.btn").on("click",function(){
-				var _this = this;
-				setTimeout(function(){
-				$(_this).next().addClass("active");
-				$(_this).next().next().addClass("active");
-					},10);
-				
-			});
-			$('#vote_<%= @poll.vote_access.first %>').click();
-		});
+  <script >
+    $(document).ready(function(){
+      window.Questionnaire = new TdB.PollBuilder();
+      $(".show-tooltip").tooltip();
+      $(".switch-checkbox").bootstrapSwitch();
 
 
 
-	</script> 
+
+      $("#user_access label.btn").on("click",function(){
+        var _this = this;
+        setTimeout(function(){
+        $(_this).next().addClass("active");
+        $(_this).next().next().addClass("active");
+          },10);
+
+      });
+      $('#vote_<%= @poll.vote_access.first %>').click();
+    });
+
+
+
+  </script>
 <% end %>
