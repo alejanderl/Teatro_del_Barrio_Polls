@@ -10,7 +10,7 @@ module TestHelpers
   end
 
   def user_logout
-    within "#user_nav" do 
+    within "#user_nav" do
 
       first("i").click
 
@@ -19,14 +19,14 @@ module TestHelpers
     click_link "Salir"
 
   end
- 
+
   def user_login (email, password)
 
     visit new_user_session_path
     fill_in "user_email"   , :with => email
-    fill_in "user_password", :with => password  
-    click_button "Entrar" 
-  	# fakes current user in test scope
+    fill_in "user_password", :with => password
+    click_button "Entrar"
+    # fakes current user in test scope
     @current_user = User.find_by_email email
 
   end
@@ -42,7 +42,7 @@ module TestHelpers
     attrs2[:confirmed_at] =  attrs[:confirmed_at] || Time.now
     attrs2.delete :member
     user = User.new attrs2
-    
+
     user.build_membership if attrs[:member]
 
     user.save
@@ -55,10 +55,10 @@ module TestHelpers
     random = Random.rand(42-10)
     random2 = Random.rand(1000-10)
     attrs2[:email] = attrs[:email] || "email#{random}@localhost.es"
-    attrs2[:active] = attrs[:active] || true 
+    attrs2[:active] = attrs[:active] || true
     attrs2[:membership_code] = attrs[:membership_code] || random2
 
-    Membership.create attrs2  
+    Membership.create attrs2
 
 
 
@@ -71,7 +71,7 @@ module TestHelpers
               :password => "superadmin123",
               :password_confirmation => "superadmin123",
         :admin => true,
-        :confirmed_at => Time.now      
+        :confirmed_at => Time.now
               )
 
     superadmin.update_attributes superadmin: true
@@ -81,7 +81,7 @@ module TestHelpers
                 :password_confirmation => "guest123",
                 :admin => false ,
                 :member => false,
-                :confirmed_at => Time.now         
+                :confirmed_at => Time.now
                 )
 
     create_user(:email => "member@example.com",
@@ -89,16 +89,16 @@ module TestHelpers
             :password_confirmation => "member123",
             :admin => false ,
             :member => true,
-            :confirmed_at => Time.now         
+            :confirmed_at => Time.now
             )
 
     create_user(:email => "admin@example.com",
-    			  :password => "admin123",
-    			  :password_confirmation => "admin123",
+            :password => "admin123",
+            :password_confirmation => "admin123",
             :admin => true,
-            :confirmed_at => Time.now      
-    			  )
-   
+            :confirmed_at => Time.now
+            )
+
   end
 
 
@@ -113,10 +113,10 @@ module TestHelpers
     attrs2[:start_date]  = attrs[:start_date] || (Time.now - 1.hour)
     attrs2[:end_date]    = attrs[:end_date]   || (Time.now + 2.days)
     attrs2[:user_id]     = attrs[:user_id]    || User.where(:admin => "1").first.id
-    attrs2[:vote_access] = attrs[:vote_access]|| ["member"] 
+    attrs2[:vote_access] = attrs[:vote_access]|| ["member"]
     attrs2[:published]   = attrs[:published].nil? ?  true : attrs[:published]
     attrs2[:priority]    = attrs[:priority].nil? ? false : attrs[:priority]
-    
+
     poll = Poll.new attrs2
     poll.vote_access = attrs2[:vote_access]
     questions   = attrs[:questions]  || [{:poll => poll}]
@@ -124,7 +124,7 @@ module TestHelpers
     questions.each do |question|
       create_question question
     end
-    
+
     poll.save
     # return the created object
     poll
@@ -136,8 +136,8 @@ module TestHelpers
     random = Random.rand(42-10)
     attrs2[:poll] = attrs[:poll] || Poll.first
     attrs2[:matter]  = attrs[:matter]  || "pregunta de prueba #{random}  "
-    
-    question = attrs2[:poll].questions.build attrs2 
+
+    question = attrs2[:poll].questions.build attrs2
     question.save
     question
 
@@ -145,7 +145,7 @@ module TestHelpers
   end
 
   def create_term attrs = {}
-    
+
     attrs2 = attrs.dup
     random = Random.rand(1000-12)
     attrs2[:name]    = attrs[:name]               || "term #{random}  "
@@ -154,6 +154,18 @@ module TestHelpers
 
     Term.create attrs2
 
+  end
+
+  # some utilities
+  def render_page(name)
+  png_name = name.strip.gsub(/\W+/, '-')
+  path = File.join(Rails.application.config.integration_test_render_dir, "#{png_name}.png")
+  page.driver.render(path)
+end
+
+  # shortcut for typing save_and_open_page
+  def page!
+    save_and_open_page
   end
 
 end

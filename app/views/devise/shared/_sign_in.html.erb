@@ -1,8 +1,8 @@
-<div id="user_nav">  
+<div id="user_nav">
   <% if user_signed_in? %>
-    
+
     <div class="btn-group" style="margin-top:10px;">
-   	 <a class="btn btn-default  btn-black dropdown-toggle" data-toggle="dropdown"><i class=" glyphicon glyphicon glyphicon-th-list"></i></a>
+      <a class="btn btn-default  btn-black dropdown-toggle" data-toggle="dropdown"><i class=" glyphicon glyphicon glyphicon-th-list"></i></a>
      <ul class="dropdown-menu pull-left">
       <% if allow? "taxonomies", "index" %>
         <li>
@@ -21,21 +21,21 @@
       <% end %>
 
       <li><%= link_to "users.my_profile".t, edit_user_registration_path %></li>
-    		<li><%= link_to "users.sign_out".t , destroy_user_session_path, :method => :delete %></li>
-    		
-        	
+        <li><%= link_to "users.sign_out".t , destroy_user_session_path, :method => :delete %></li>
+
+
      </ul>
     </div><!-- /btn-group -->
-   
-      
-      
-    
 
-   
-  <% else %>  
+
+
+
+
+
+  <% else %>
     <div style="margin-top:10px;">
       <%= link_to '<i class=" glyphicon glyphicon-log-in"></i>'.html_safe, new_user_session_path, class:"btn btn-black" %>
     </div>
- 
-  <% end %>  
-</div>  
+
+  <% end %>
+</div>

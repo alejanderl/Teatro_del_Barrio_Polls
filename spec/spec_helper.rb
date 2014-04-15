@@ -54,10 +54,10 @@ RSpec.configure do |config|
   config.order = "random"
 
   config.include TestHelpers
-  
+
   config.before(:suite) do
-    DatabaseCleaner.strategy = :truncation , {:except => %w[taxonomies terms]}
-    load "#{Rails.root}/db/test_seeds.rb" 
+    DatabaseCleaner.strategy = :truncation
+    load "#{Rails.root}/db/test_seeds.rb"
 
   end
 
@@ -66,6 +66,6 @@ RSpec.configure do |config|
   end
 
   config.after(:each) do
-    DatabaseCleaner.clean 
+    DatabaseCleaner.clean
   end
 end

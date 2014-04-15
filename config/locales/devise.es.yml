@@ -3,7 +3,6 @@
 es:
   devise:
     status:
-      hola: "caracola"
       signed_as_%s_not_you?: "Registrado como %s, no eres tu?"
     confirmations:
       confirmed: "Tu cuenta ya ha sido confirmada."

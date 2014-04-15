@@ -1,15 +1,15 @@
   <a href="javascript:void(0)" onClick="$('#create-term-<%= key %>').toggle();$('#create-term-<%= key %> #term_name').focus();$(this).toggle()" class="btn btn-xs btn-default create-term"><span class="glyphicon glyphicon-plus"></span></a>
 
   <div id="create-term-<%= key %>" style="display:none">
-  <%= form_for(term,:url => taxonomies_url) do |x| %>    
-  	<div class="input-group">
+  <%= form_for(term,:url => taxonomies_url) do |x| %>
+    <div class="input-group">
 
-    	<%= x.text_field :name, :style => "margin:0;", :class =>"form-control"  %>  
-    	<span class="input-group-btn">
-      	    <%= x.submit t("taxonomies.add_term"), :class => "btn btn-primary" %>
-     	 </span>  
+      <%= x.text_field :name, :style => "margin:0;", :class =>"form-control"  %>
+      <span class="input-group-btn">
+            <%= x.submit t("taxonomies.add_term"), :class => "btn btn-primary" %>
+        </span>
 
-    	
+
     </div><!-- /input-group -->
     <%= x.hidden_field :taxonomy_id, :value => key %>
   <% end %>

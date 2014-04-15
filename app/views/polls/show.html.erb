@@ -2,7 +2,7 @@
   <div class="col-md-10 col-xs-12 col-md-offset-1">
 
     <div id="badges" class="  pull-right">
-          
+
       <% unless @poll.published %>
         <span class="label label-warning show-tooltip" data-toggle="tooltip" ><%= "polls.draft".t %></span>
       <% end %>
@@ -33,17 +33,17 @@
     <%= terms_list(@poll) %>
   </div>
 
-  
+
 
 
 
   <div  class="col-md-10 col-xs-12 col-md-offset-1">
 
-     
+
     <br/>
     <br/>
     <em><%= "polls.questions".t %></em>
-     <hr/>    
+     <hr/>
     <% @poll.questions.each do |question|%>
       <div id="question-<%= question.id %>" class="row">
 
@@ -51,7 +51,7 @@
         <br/>
         <div class="col-sm-2 pull-right">
           <em><%=  %></em>
-                    
+
           <ul class="list-group vote-results" style="max-width:100px" class="show-tooltip" data-toggle="tooltip" data-title="<%= "questions.answers".t %>" data-placement="left">
             <li class="list-group-item votes-yes">
               <%= "questions.votes_yes".t %><span class="badge pull-right"><%= question.answers_count_yeses %></span>
@@ -60,7 +60,7 @@
               <%= "questions.votes_no".t %><span class="badge pull-right"><%= question.answers_count_noes %></span>
             </li>
             <li class="list-group-item votes-total">
-              
+
               <%= "questions.total".t %><span class="badge pull-right"><%= question.answers_count %></span></span>
             </li>
           </ul>
@@ -70,15 +70,15 @@
           <%= voting_buttons question %>
         </div>
       </div>
-      <hr/>			
+      <hr/>
     <%end %>
   </div>
   <div class="col-md-10 col-xs-12">
     <% if  allow?("polls","update")&&@poll.is_editable?  %>
-    	<%= link_to "global.edit".t   ,
+      <%= link_to "global.edit".t   ,
                    edit_poll_path(@poll),
                    :class => "btn-default btn" %>
-    	<%= link_to "global.delete".t , @poll ,
+      <%= link_to "global.delete".t , @poll ,
                   :method => :delete,
                   data:({confirm: "global.are_you_sure?".t}) %>
      <% end %>
@@ -93,5 +93,5 @@
      $(".show-tooltip").tooltip();
     })
 
-  </script> 
+  </script>
 <% end %>
