@@ -156,4 +156,16 @@ module TestHelpers
 
   end
 
+  # some utilities
+  def render_page(name)
+  png_name = name.strip.gsub(/\W+/, '-')
+  path = File.join(Rails.application.config.integration_test_render_dir, "#{png_name}.png")
+  page.driver.render(path)
+end
+
+  # shortcut for typing save_and_open_page
+  def page!
+    save_and_open_page
+  end
+
 end

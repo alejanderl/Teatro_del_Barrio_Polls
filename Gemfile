@@ -59,11 +59,14 @@ group :development, :test do
     gem 'delorean'
     gem 'rspec-rails'
     gem 'capybara'
-    gem 'poltergeist'
+    gem 'selenium-webdriver'
     gem 'launchy'
     gem 'factory_girl_rails'
     gem 'database_cleaner'
+
+
     # Gemfile
+
     gem 'debugger'
 end
 # version 2.12 has some problems with heroku
