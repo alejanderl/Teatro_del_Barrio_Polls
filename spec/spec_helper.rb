@@ -56,7 +56,7 @@ RSpec.configure do |config|
   config.include TestHelpers
 
   config.before(:suite) do
-    DatabaseCleaner.strategy = :truncation , {:except => %w[taxonomies terms]}
+    DatabaseCleaner.strategy = :truncation
     load "#{Rails.root}/db/test_seeds.rb"
 
   end

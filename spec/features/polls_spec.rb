@@ -10,19 +10,20 @@ describe "Polls testing"   do
   end
 
 
-  it "logged user create a poll ", :js do
+  it "logged user create a poll ", :js  do
 
 
     user_login "admin@example.com", "admin123"
 
     Term.where("taxonomy_id > 0").destroy_all
-
     %w[general reflexiones estado].each do |name|
       create_term :name => name
     end
 
     visit polls_path
-    click_link "Nuevo"
+    href="/es/polls/new"
+
+    first(:xpath, "//a[@href='#{new_poll_path}']").click
 
     fill_in "poll_title", :with => "Título de la votación"
     fill_in "poll_description", :with => "Descripción de la votación"
@@ -54,8 +55,9 @@ describe "Polls testing"   do
 
     end
 
-
+    click_button "Close"
     click_button "Guardar"
+
     page.should have_content "Título de la votación"
     page.should have_content "Pregunta 5"
     page.should have_content term.name
