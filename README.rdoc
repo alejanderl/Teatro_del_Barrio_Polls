@@ -1,5 +1,18 @@
 == README
 
+# Commands to create the test and development database
+
+```
+psql -d template1
+CREATE ROLE tbarrio WITH SUPERUSER;
+ALTER ROLE tbarrio WITH LOGIN;
+\q
+```
+```
+rake db:create db:migrate
+rake db:create db:migrate RAILS_ENV=test
+```
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
